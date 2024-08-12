@@ -1,2 +1,5 @@
 # Ignore environment configuration files
 .env
+
+# SQLite database file
+db.sqlite3
