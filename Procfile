@@ -1,1 +1,2 @@
-web: gunicorn gardengrill.wsgi
+web: gunicorn main.wsgi
+
