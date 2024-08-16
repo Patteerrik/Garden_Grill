@@ -1,5 +1,5 @@
 ---
-name: Menu requirements
+name: Create a menu
 about: The the key requirements for and easy to find and easy to read menu
 title: ''
 labels: ''
