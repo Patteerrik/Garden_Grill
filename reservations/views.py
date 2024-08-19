@@ -6,4 +6,9 @@ def create_reservation(request):
 
 def list_reservations(request):
     reservations = Reservation.objects.all()
-    return HttpRespons(reservations)
+    # if there is no reservations
+    if not reservations:
+        return HttpResponse("No reservations found.")
+    # else show reservations
+    reservations_list = '\n'.join([f"{res.reservation_name} - {res.date} at {res.time}" for res in reservations])
+    return HttpResponse(reservations_list)
