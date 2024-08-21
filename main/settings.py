@@ -14,10 +14,6 @@ import os
 import environ
 from pathlib import Path
 import dj_database_url
-from dotenv import load_dotenv
-
-
-load_dotenv()
 
 
 env = environ.Env()
@@ -36,6 +32,9 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
+
+if DEBUG:
+
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
