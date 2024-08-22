@@ -10,16 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-from pathlib import Path
+
 import os
-import environ
-import sys
+from pathlib import Path
 import dj_database_url
 
 
-env = environ.Env()
-environ.Env.read_env()
-print("SECRET_KEY:", env('SECRET_KEY', default='Not Found'))
+if os.path.isfile('env.py'):
+    import env
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,15 +30,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DEBUG', default=False)
+DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')
 
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
-CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS')
+ALLOWED_HOSTS = [
+    "localhost,127.0.0.1",
+"gardengrill-d40b8e344381.herokuapp.com",
+"8000-patteerrik-gardengrill-bepklsfb4ex.ws.codeinstitute-ide.net"
+]
 
 
 # Application definition
@@ -97,8 +100,15 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.parse(env('DATABASE_URL'))
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://gardengrill-d40b8e344381.herokuapp.com",
+    "https://8000-patteerrik-gardengrill-bepklsfb4ex.ws.codeinstitute-ide.net"
+]
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -134,7 +144,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
+
 
 
 # Default primary key field type

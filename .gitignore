@@ -1,5 +1,5 @@
 # Ignore environment configuration files
-.env
+env.py
 
 # SQLite database file
 db.sqlite3
