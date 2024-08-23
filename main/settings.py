@@ -38,9 +38,10 @@ DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')
 
 
 ALLOWED_HOSTS = [
-    "localhost,127.0.0.1",
-"gardengrill-d40b8e344381.herokuapp.com",
-"8000-patteerrik-gardengrill-bepklsfb4ex.ws.codeinstitute-ide.net"
+    "localhost",
+    "127.0.0.1",
+    "gardengrill-d40b8e344381.herokuapp.com",
+    "8000-patteerrik-gardengrill-bepklsfb4ex.ws.codeinstitute-ide.net"
 ]
 
 
@@ -144,8 +145,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 # Default primary key field type
