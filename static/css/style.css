@@ -13,6 +13,10 @@ body {
     background-repeat: no-repeat;
 }
 
+main {
+    flex-grow: 1;
+}
+
 footer {
     background-color: rgba(0, 0, 0, 0.7);
     font-size: 1.2rem;
@@ -60,8 +64,52 @@ html body .navbar {
     font-size: 1.5rem;
 }
 
+.bottom-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding: 20px;
+}
 
+.bottom-section .col-md-6 {
+    flex: 1; 
+    padding: 10px; 
+}
 
+.col-md-6 {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    height: 350px;
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
 
+.section-container {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    height: 350px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
+.section-title {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #fafafa; 
+}
 
+.opening-hours-content {
+    text-align: center;
+    color: white;
+    flex-grow: 1;
+}
