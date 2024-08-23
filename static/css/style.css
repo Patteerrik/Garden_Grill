@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-    display:flex;
+    display: flex;
     flex-direction: column;
     font-family: 'Roboto', Arial, sans-serif;
     background-image: url('/static/images/pexels-chanwalrus-941861.webp');
@@ -22,7 +22,7 @@ footer {
     font-size: 1.2rem;
 }
 
-html body .navbar {
+.navbar {
     background-color: rgba(0, 0, 0, 0.7) !important;
     padding: 20px 0;
 }
@@ -32,7 +32,7 @@ html body .navbar {
     font-size: 1.8rem;
     font-weight: 700;
     color: #e6dac4;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     line-height: normal;
 }
 
@@ -46,8 +46,7 @@ html body .navbar {
 }
 
 .nav-link.active {
-    color:white;
-    
+    color: white;
 }
 
 .navbar-brand {
@@ -67,13 +66,9 @@ html body .navbar {
 .bottom-section {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: auto;
     padding: 20px;
-}
-
-.bottom-section .col-md-6 {
-    flex: 1; 
-    padding: 10px; 
 }
 
 .col-md-6 {
@@ -82,34 +77,31 @@ html body .navbar {
     padding: 20px;
     border-radius: 10px;
     height: 350px;
-    text-align: center; 
+    text-align: center; /* Centrera texten horisontellt */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
 }
+
+
 
 .section-container {
     flex: 1;
     margin: 10px;
     padding: 20px;
     border-radius: 10px;
-    height: 350px; 
+    height: 350px; /* Se till att båda sektionerna har samma höjd */
     display: flex;
+    color:#ffffff;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 10px;
-    color: #fafafa; 
+    justify-content: space-around; /* justera till space-around för att centrerat placera rubriker och innehåll */
+    box-sizing: border-box; /* säkerställer att padding inte påverkar den totala höjden */
 }
 
 .opening-hours-content {
     text-align: center;
-    color: white;
-    flex-grow: 1;
+    flex-grow: 1; /* gör att innehållet tar upp utrymmet i boxen */
 }
+
