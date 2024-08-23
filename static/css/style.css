@@ -22,6 +22,13 @@ footer {
     font-size: 1.2rem;
 }
 
+.header-content {
+    position: relative;
+    z-index: 1; /* Bara denna behövs om ingen overlay */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    color:#e6dac4;
+}
+
 .navbar {
     background-color: rgba(0, 0, 0, 0.7) !important;
     padding: 20px 0;
@@ -77,7 +84,7 @@ footer {
     padding: 20px;
     border-radius: 10px;
     height: 350px;
-    text-align: center; /* Centrera texten horisontellt */
+    text-align: center; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,17 +98,17 @@ footer {
     margin: 10px;
     padding: 20px;
     border-radius: 10px;
-    height: 350px; /* Se till att båda sektionerna har samma höjd */
+    height: 350px; 
     display: flex;
     color:#ffffff;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around; /* justera till space-around för att centrerat placera rubriker och innehåll */
-    box-sizing: border-box; /* säkerställer att padding inte påverkar den totala höjden */
+    justify-content: space-around; 
+    box-sizing: border-box; 
 }
 
 .opening-hours-content {
     text-align: center;
-    flex-grow: 1; /* gör att innehållet tar upp utrymmet i boxen */
+    flex-grow: 1; 
 }
 
