@@ -44,6 +44,8 @@ ALLOWED_HOSTS = [
     "8000-patteerrik-gardengrill-bepklsfb4ex.ws.codeinstitute-ide.net"
 ]
 
+GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
+
 
 # Application definition
 
