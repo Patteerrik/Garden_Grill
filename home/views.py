@@ -26,11 +26,11 @@ def register(request):
         password = request.POST['password']
         email = request.POST['email']
         # check if user exist
-        if User.objects.filter(username).exists():
+        if User.objects.filter(username=username).exists():
             messages.error(request, "Username is already taken")
             return render(request, 'register.html')
         else:
-            user = User.objects.create_user(username=usernamne, email=email, password=password)
+            user = User.objects.create_user(username=username, email=email, password=password)
             user.save()
             login(request, user)
             messages.success(request, "Registraion was successful")
