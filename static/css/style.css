@@ -108,7 +108,6 @@ footer {
     align-items: center;
     margin-top: auto;
     padding: 20px;
-    /* background-colo: rgba(0, 0, 0, 0.7);*/
 }
 
 .col-md-6 {
@@ -184,3 +183,13 @@ footer {
     border: 2px solid #e6dac4;
 }
 
+/* Sign up */
+
+.form-control {
+    background-color: #f0f4ff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: #333;
+}
