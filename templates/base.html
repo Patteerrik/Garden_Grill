@@ -70,7 +70,11 @@
         <p class="lead">Discover our carefully crafted menu, featuring fresh, locally-sourced ingredients, served in a warm and inviting atmosphere.</p>
     </div>
   </header>
-
+   <!-- Navigation buttons -->
+   <div class="navigation-buttons">
+     <a href="{% url 'bookings' %}" class="btn btn-primary">Reservation</a>
+     <a href="{% url 'menu' %}" class="btn btn-secondary">Menu</a>
+   </div>
   <main>
     {% block content %}
 

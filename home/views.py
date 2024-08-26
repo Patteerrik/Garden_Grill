@@ -10,3 +10,10 @@ def home(request):
 
 def hello(request):
     return render(request, 'home/hello.html')
+
+def bookings(request):
+    return render(request, 'home/bookings.html')
+
+def menu(request):
+    return render(request, 'home/menu.html')
+    
