@@ -36,4 +36,7 @@ def register(request):
             messages.success(request, "Registraion was successful")
             return redirect('home')
     return render(request, 'home/register.html')
+
+def login(request):
+    return render(request, 'home/login.html')
     
