@@ -1,5 +1,8 @@
-from django.shortcuts import render
-from django.conf import settings
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User # To handle userdata
+from django.contrib.auth import login # To log the user in after registration
+from django.contrib import messages # Display messages
+from django.conf import settings #To use settings
 
 # Create your views here.
 def home(request):
@@ -16,4 +19,21 @@ def bookings(request):
 
 def menu(request):
     return render(request, 'home/menu.html')
+
+def register(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        email = request.POST['email']
+        # check if user exist
+        if User.objects.filter(username).exists():
+            messages.error(request, "Username is already taken")
+            return render(request, 'register.html')
+        else:
+            user = User.objects.create_user(username=usernamne, email=email, password=password)
+            user.save()
+            login(request, user)
+            messages.success(request, "Registraion was successful")
+            return redirect('home')
+    return render(request, 'home/register.html')
     

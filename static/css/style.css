@@ -57,6 +57,8 @@ footer {
     flex-direction: column;
 }
 
+/* Navbar */
+
 .navbar {
     background-color: rgba(0, 0, 0, 0.7) !important;
     padding: 20px 0;
@@ -98,12 +100,15 @@ footer {
     font-size: 1.5rem;
 }
 
+/* Maps and opening hours */
+
 .bottom-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
     padding: 20px;
+    /* background-colo: rgba(0, 0, 0, 0.7);*/
 }
 
 .col-md-6 {
@@ -131,6 +136,8 @@ footer {
     align-items: center;
     justify-content: space-around; 
     box-sizing: border-box; 
+    
+   
 }
 
 .opening-hours-content {
