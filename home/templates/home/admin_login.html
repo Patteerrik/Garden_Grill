@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card custom-card">
+                <div class="card-header text-center">
+                <h2>Administration Login</h2>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'admin_login' %}" method="post">
+                       {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Enter your username" required>
+                        </div> 
+                        <div class="form-group mb-3">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Eneter your password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block header-text %}
+<!-- Override to modify or remove header text in base.html -->
+{% endblock %}
+
+{% block buttons %}
+<!-- Override to modify or remove buttons in base.html -->
+{% endblock %}
+
+{% block bottom-section %}
+<!-- Override to modify or remove bottom section in base.html -->
+{% endblock %}

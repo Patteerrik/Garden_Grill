@@ -50,4 +50,18 @@ def login(request):
             messages.error(request, 'Invalid username or password.')
 
     return render(request, 'home/login.html')
+
+def admin_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None and user.is_staff:  # Checks if user is admin
+            login(request, user)
+            return redirect('booking_management')  # Redirect to booking management page
+        else:
+            messages.error(request, 'Invalid credentials or not authorized')
+    return render(request, 'home/admin_login.html')
+
+def booking_management(request):
     
