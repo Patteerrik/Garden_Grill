@@ -18,6 +18,7 @@ def bookings(request):
     return render(request, 'home/bookings.html')
 
 def menu(request):
+    
     return render(request, 'home/menu.html')
 
 def register(request):
@@ -66,5 +67,6 @@ def admin_login(request):
 def booking_management(request):
 
     return render(request, 'home/bookings.html')
+
 
     
