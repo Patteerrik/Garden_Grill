@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User # To handle userdata
-from django.contrib.auth import login # To log the user in after registration
+from django.contrib.auth import authenticate, login # To log the user in after registration
 from django.contrib import messages # Display messages
 from django.conf import settings #To use settings
 
@@ -28,7 +28,7 @@ def register(request):
         # check if user exist
         if User.objects.filter(username=username).exists():
             messages.error(request, "Username is already taken")
-            return render(request, 'register.html')
+            return render(request, 'home/register.html')
         else:
             user = User.objects.create_user(username=username, email=email, password=password)
             user.save()
@@ -37,7 +37,7 @@ def register(request):
             return redirect('home')
     return render(request, 'home/register.html')
 
-def login(request):
+def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -64,4 +64,7 @@ def admin_login(request):
     return render(request, 'home/admin_login.html')
 
 def booking_management(request):
+
+    return render(request, 'home/bookings.html')
+
     
