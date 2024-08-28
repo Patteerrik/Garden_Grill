@@ -12,3 +12,5 @@ def list_reservations(request):
     # else show reservations
     reservations_list = '\n'.join([f"{res.reservation_name} - {res.date} at {res.time}" for res in reservations])
     return HttpResponse(reservations_list)
+    
+    ########UPPDATERA##########
