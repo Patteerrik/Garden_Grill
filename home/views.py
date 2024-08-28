@@ -3,6 +3,7 @@ from django.contrib.auth.models import User # To handle userdata
 from django.contrib.auth import authenticate, login # To log the user in after registration
 from django.contrib import messages # Display messages
 from django.conf import settings #To use settings
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
@@ -46,7 +47,10 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Login successful!')
-            return redirect('home')
+            if user.is:staff:
+                return redirect('admin_dashbord')
+            else:
+            return redirect('user_dashboard')
         else:
             messages.error(request, 'Invalid username or password.')
 

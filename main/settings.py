@@ -158,6 +158,16 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Borrowed from https://www.youtube.com/watch?v=-E2igrFADI0
+# Account Setup
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_VERIFCATION = 'none'
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_REDIRECT_URL = 'home'  # Redirect successful login
+LOGOUT_REDIRECT_URL = 'login' # Redirect after logout
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
