@@ -47,10 +47,10 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Login successful!')
-            if user.is:staff:
+            if user.is_staff:
                 return redirect('admin_dashbord')
             else:
-            return redirect('user_dashboard')
+                return redirect('user_dashboard')
         else:
             messages.error(request, 'Invalid username or password.')
 
