@@ -63,6 +63,11 @@ INSTALLED_APPS = [
     # Apps
     'home',
     'reservations',
+
+    # crispyforms
+    'crispy_forms',
+    'crispy_bootstrap5',
+
 ]
 
 SITE_ID = 1
@@ -78,7 +83,12 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap5')
+
+
 ROOT_URLCONF = 'main.urls'
+
 
 TEMPLATES = [
     {
