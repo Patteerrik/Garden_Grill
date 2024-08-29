@@ -1,16 +1,31 @@
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Reservation
+from .forms import ReservationForm
 
-def create_reservation(request):
-    return HttpResponse("Reservation created!")
+def update_reservation(request, pk):
+    reservation = get_object_or_404(Reservation, pk=pk)
+    form = ReservationForm(request.POST or None, instance=reservation)
 
-def list_reservations(request):
-    reservations = Reservation.objects.all()
-    # if there is no reservations
-    if not reservations:
-        return HttpResponse("No reservations found.")
-    # else show reservations
-    reservations_list = '\n'.join([f"{res.reservation_name} - {res.date} at {res.time}" for res in reservations])
-    return HttpResponse(reservations_list)
+    if 'update' in request.POST:
+        if form.is_valid():
+            form.save()
+            return redirect('list_reservations')
+    elif 'cnacel' in request.POST:
+        reservation.delete()
+        return redirect('list_reservations')
+
+    return render(request, 'reservations/update_reservation.html', {'form': form, 'reservation': reservation})
     
-    ########UPPDATERA##########
+def create_reservation(request):
+    if request.method == 'POST':
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            new_reservation = form.save()
+            return redirect('reservation_detail', pk=new_reseravtion.pk)
+    else:
+        form = ReservationForm()
+    return render(request, 'reservations/create_reservation.html', {'form': form})
+
+def booking_management(request):
+    return render(request, 'reservations/booking_management.html')
+

@@ -68,9 +68,6 @@ def admin_login(request):
             messages.error(request, 'Invalid credentials or not authorized')
     return render(request, 'home/admin_login.html')
 
-def booking_management(request):
-
-    return render(request, 'home/bookings.html')
 
 
     
