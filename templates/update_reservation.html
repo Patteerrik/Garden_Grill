@@ -17,8 +17,14 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Update reservation</button>
-        <button type="submit" name="cancel" class="btn-danger">Cancel reservation</button>    
+        <button type="submit" name="cancel" class="btn-danger" onclick="return confirmCancellation();">Cancel reservation</button>    
     </form>
+
+<script>
+    function confirmCancellation() {
+        return confirm('Are you sure you want to cancel this reservation?');
+    }
+</script>
 </div>
 {% endblock %}
 {% block bottom-section %}
