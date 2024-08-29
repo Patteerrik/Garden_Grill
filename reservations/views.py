@@ -4,7 +4,7 @@ from .models import Reservation
 from .forms import ReservationForm
 
 def is_admin_user(user):
-    return user.is_authenticated and user.is_admin
+    return user.is_authenticated and user.is_superuser
 
 @login_required
 @user_passes_test(is_admin_user)

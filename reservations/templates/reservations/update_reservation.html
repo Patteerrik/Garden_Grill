@@ -1,16 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Update Reservation{% endblock %}
-
-{% block header-text %}
-<!-- Override to modify or remove header text in base.html -->
-{% endblock %}
-
-{% block buttons %}
-<!-- Override to modify or remove buttons in base.html -->
-{% endblock %}
-
-{‰ block content %}
+{% block content %}
 <div class="container mt-4">
     <h1>Update reservations</h1>
     <form method="post">
@@ -20,13 +10,24 @@
         <button type="submit" name="cancel" class="btn-danger" onclick="return confirmCancellation();">Cancel reservation</button>    
     </form>
 
-<script>
-    function confirmCancellation() {
-        return confirm('Are you sure you want to cancel this reservation?');
-    }
-</script>
+    <script>
+        function confirmCancellation() {
+            return confirm('Are you sure you want to cancel this reservation?');
+        }
+    </script>
 </div>
 {% endblock %}
+
+
+{% block header-text %}
+<!-- Override to modify or remove header text in base.html -->
+{% endblock %}
+
+{% block buttons %}
+<!-- Override to modify or remove buttons in base.html -->
+{% endblock %}
+
 {% block bottom-section %}
 <!-- Override to modify or remove bottom section in base.html -->
 {% endblock %}
+
