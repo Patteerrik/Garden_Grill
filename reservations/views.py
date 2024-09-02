@@ -16,7 +16,7 @@ def update_reservation(request, pk):
     if 'update' in request.POST and form.is_valid():
         form.save()
         return redirect('list_reservations')
-    elif 'cnacel' in request.POST:
+    elif 'cancel' in request.POST:
         reservation.delete()
         return redirect('list_reservations')
 
@@ -27,11 +27,21 @@ def create_reservation(request):
         form = ReservationForm(request.POST)
         if form.is_valid():
             new_reservation = form.save()
-            return redirect('reservation_detail', pk=new_reseravtion.pk)
+            return redirect('success_reservation', pk=new_reservation.pk)
+        else:
+            print(form.errors)
     else:
         form = ReservationForm()
+
     return render(request, 'reservations/create_reservation.html', {'form': form})
 
-def booking_management(request):
-    return render(request, 'reservations/booking_management.html')
+def success_reservation(request, pk):
+    reservation = get_object_or_404(Reservation, pk=pk)
+    return render(request, 'reservations/success_reservation.html', {'reservation': reservation})
+
+def list_reservations(request):
+    reservations = Reservation.objects.all()
+    return render(request, 'reservations/list_reservation.html')
+
+
 
