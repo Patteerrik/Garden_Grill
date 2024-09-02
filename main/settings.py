@@ -72,6 +72,10 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+# Restaurants capacity
+MAX_SEATS = 50
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

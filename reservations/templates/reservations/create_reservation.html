@@ -9,6 +9,16 @@
                     <h2>Create a Reservation</h2>
                 </div>
                 <div class="card-body">
+                    <!-- Message block -->
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <!-- End message block -->
+
                     <form method="post" action="{% url 'create_reservation' %}" class="needs-validation" novalidate>
 
                     <form method="post" class="needs-validation" novalidate>
