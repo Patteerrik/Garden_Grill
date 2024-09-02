@@ -6,7 +6,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Update reservation</button>
+        <button type="submit" name="Update" class="btn btn-primary">Update reservation</button>
         <button type="submit" name="cancel" class="btn-danger" onclick="return confirmCancellation();">Cancel reservation</button>    
     </form>
 

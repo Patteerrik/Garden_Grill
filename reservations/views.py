@@ -16,7 +16,7 @@ def update_reservation(request, pk):
     if 'update' in request.POST and form.is_valid():
         form.save()
         return redirect('list_reservations')
-    elif 'cnacel' in request.POST:
+    elif 'cancel' in request.POST:
         reservation.delete()
         return redirect('list_reservations')
 
@@ -31,6 +31,10 @@ def create_reservation(request):
     else:
         form = ReservationForm()
     return render(request, 'reservations/create_reservation.html', {'form': form})
+
+def list_reservations(request):
+    reservations = Reservation.object.all()
+    return render(request, 'reservations/list_reservations.html', {'reservations': reservations})
 
 def booking_management(request):
     return render(request, 'reservations/booking_management.html')

@@ -1,10 +1,79 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Book a table</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Make reservation</button>
-</form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card custom-card">
+                <div class="card-header text-center">
+                    <h2>Create a Reservation</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label for="reservation_name">Name</label>
+                            <input type="text" class="form-control" id="reservation_name" name="reservation_name" placeholder="Enter your name" required>
+                            <div class="invalid-feedback">
+                                Please enter your name.
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="date">Date</label>
+                            <input type="date" class="form-control" id="date" name="date" required>
+                            <div class="invalid-feedback">
+                                Please select a date.
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="time">Time</label>
+                            <input type="time" class="form-control" id="time" name="time" required>
+                            <div class="invalid-feedback">
+                                Please select a time.
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="number_of_guests">Number of Guests</label>
+                            <input type="number" class="form-control" id="number_of_guests" name="number_of_guests" min="1" max="20" required>
+                            <div class="invalid-feedback">
+                                Please enter the number of guests.
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript för att aktivera Bootstrap validering
+    (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+{% endblock %}
+
+{% block header-text %}
+<!-- Override to modify or remove header text in base.html -->
+{% endblock %}
+
+{% block buttons %}
+<!-- Override to modify or remove buttons in base.html -->
+{% endblock %}
+
+{% block bottom-section %}
+<!-- Override to modify or remove bottom section in base.html -->
 {% endblock %}
