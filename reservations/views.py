@@ -35,6 +35,7 @@ def create_reservation(request):
 
     return render(request, 'reservations/create_reservation.html', {'form': form})
 
+<<<<<<< HEAD
 def success_reservation(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
     return render(request, 'reservations/success_reservation.html', {'reservation': reservation})
@@ -44,4 +45,12 @@ def list_reservations(request):
     return render(request, 'reservations/list_reservation.html')
 
 
+=======
+def list_reservations(request):
+    reservations = Reservation.object.all()
+    return render(request, 'reservations/list_reservations.html', {'reservations': reservations})
+
+def booking_management(request):
+    return render(request, 'reservations/booking_management.html')
+>>>>>>> ca15c55da2de11eab6d8730c8ff35acc20851b73
 
