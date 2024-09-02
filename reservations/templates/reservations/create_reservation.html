@@ -8,11 +8,11 @@
                 <div class="card-header text-center">
                     <h2>Create a Reservation</h2>
                 </div>
-                <div class="card-body"> HEAD
+                <div class="card-body">
                     <form method="post" action="{% url 'create_reservation' %}" class="needs-validation" novalidate>
 
                     <form method="post" class="needs-validation" novalidate>
- ca15c55da2de11eab6d8730c8ff35acc20851b73
+
                         {% csrf_token %}
                         <div class="form-group mb-3">
                             <label for="reservation_name">Name</label>
@@ -51,10 +51,9 @@
 </div>
 
 <script>
- HEAD
 
 
- ca15c55da2de11eab6d8730c8ff35acc20851b73
+
     (function () {
         'use strict'
         var forms = document.querySelectorAll('.needs-validation')
@@ -70,10 +69,7 @@
             })
     })()
 </script>
- HEAD
 
-
- ca15c55da2de11eab6d8730c8ff35acc20851b73
 {% endblock %}
 
 {% block header-text %}
