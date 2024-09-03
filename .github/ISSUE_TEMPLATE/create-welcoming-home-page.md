@@ -1,5 +1,5 @@
 ---
-name: Welcoming Home Page User Story
+name: Create welcoming Home Page
 about: Defines the necessary elements for a welcoming and user friendly homepage
 title: ''
 labels: ''
