@@ -8,11 +8,10 @@ from django.db.models import Sum # To summarize number of guests
 
 
 def is_admin_user(user):
-    return user.is_authenticated and user.is_superuser
+    return user.is_staff
 
 @login_required
 @user_passes_test(is_admin_user)
-
 def update_reservation(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
     form = ReservationForm(request.POST or None, instance=reservation)
@@ -25,6 +24,45 @@ def update_reservation(request, pk):
         return redirect('list_reservations')
 
     return render(request, 'reservations/update_reservation.html', {'form': form, 'reservation': reservation})
+
+@login_required
+@user_passes_test(is_admin_user)
+def list_reservations(request):
+    reservations = Reservation.objects.all()
+    total_spots = 50
+    reserved_spots = sum([res.number_of_guests for res in reservations])
+    available_spots = total_spots - reserved_spots
+
+    if request.method == 'POST':
+        if 'delete' in request.POST:
+            reservation_id = request.POST.get('reservation_id')
+            reservation = get_object_or_404(Reservation, id=reservations_id)
+            reservation.delete()
+            messages.success(request, 'Reservation has been canceled')
+            return redirect('list_reservations')
+
+    return render(request, 'reservations/list_reservations.html', {
+        'reservations': reservations,
+        'available_spots': available_spots,
+        'total_spots': total_spots,
+        'reserved_spots': reserved_spots,
+    })
+
+@login_required
+@user_passes_test(is_admin_user)
+def edit_reservation(request, reservation_id):
+    reservation = get_object_or_404(Reservation, id=reservation_id)
+
+    if request.method == 'POST':
+        form = ReservationForm(request.POST, instance=reservation)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Reservation has been updated.')
+            return redirect('list_reservations')
+    else:
+        form = ReservationForm(instance=reservation)
+
+    return render(request, 'reservations/edit_reservation.html', {'form': form})
     
 def create_reservation(request):
     if request.method == 'POST':
@@ -60,5 +98,7 @@ def list_reservations(request):
 
 def booking_management(request):
     return render(request, 'reservations/booking_management.html')
+
+
 
 
