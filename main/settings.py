@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
+from decouple import config
 
 
 if os.path.isfile('env.py'):
@@ -48,11 +49,13 @@ GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
 
 # https://medium.com/django-unleashed/email-configuration-in-django-3c7d9e149445
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # SMTP server host
-EMAIL_PORT = 587  # SMTP server port
-EMAIL_USE_TLS = True  # True for TLS, False for SSL
-EMAIL_USE_SSL = False  # Set to True if using SSL
-DEFAULT_FROM_EMAIL = 'your_email@example.com' 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False  
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD') 
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
 # Application definition
