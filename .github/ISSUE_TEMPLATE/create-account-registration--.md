@@ -1,5 +1,5 @@
 ---
-name: 'Account Registration User story '
+name: 'Create Account Registration  '
 about: Cover registration, log in requirements and reservation options
 title: ''
 labels: ''
