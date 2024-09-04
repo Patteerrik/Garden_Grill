@@ -7,6 +7,6 @@ urlpatterns = [
     path('update/<int:pk>/', views.update_reservation, name='update_reservation'),
     path('admin/bookings/', views.booking_management, name='booking_management'),
     path('success/<int:pk>/', views.success_reservation, name='success_reservation'),
-    path('reservations/', views.list_reservations, name='list_reservations'),
+    path('', views.list_reservations, name='list_reservation'),
     path('reservations/edit<int:reservation_id>/', views.edit_reservation, name='edit_reservation'),
 ]

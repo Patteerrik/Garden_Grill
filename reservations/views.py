@@ -18,16 +18,16 @@ def update_reservation(request, pk):
 
     if 'update' in request.POST and form.is_valid():
         form.save()
-        return redirect('list_reservations')
+        return redirect('list_reservation')
     elif 'cancel' in request.POST:
         reservation.delete()
-        return redirect('list_reservations')
+        return redirect('list_reservation')
 
     return render(request, 'reservations/update_reservation.html', {'form': form, 'reservation': reservation})
 
 @login_required
 @user_passes_test(is_admin_user)
-def list_reservations(request):
+def list_reservation(request):
     reservations = Reservation.objects.all()
     total_spots = 50
     reserved_spots = sum([res.number_of_guests for res in reservations])
@@ -39,14 +39,15 @@ def list_reservations(request):
             reservation = get_object_or_404(Reservation, id=reservations_id)
             reservation.delete()
             messages.success(request, 'Reservation has been canceled')
-            return redirect('list_reservations')
+            return redirect('list_reservation')
 
-    return render(request, 'reservations/list_reservations.html', {
-        'reservations': reservations,
-        'available_spots': available_spots,
-        'total_spots': total_spots,
-        'reserved_spots': reserved_spots,
-    })
+    return render(request, 'reservations/list_reservation.html', {
+    'reservations': reservations,
+    'available_spots': available_spots,
+    'total_spots': total_spots,
+    'reserved_spots': reserved_spots,
+})
+
 
 @login_required
 @user_passes_test(is_admin_user)
@@ -58,7 +59,7 @@ def edit_reservation(request, reservation_id):
         if form.is_valid():
             form.save()
             messages.success(request,'Reservation has been updated.')
-            return redirect('list_reservations')
+            return redirect('list_reservation')
     else:
         form = ReservationForm(instance=reservation)
 
@@ -94,7 +95,7 @@ def success_reservation(request, pk):
 
 def list_reservations(request):
     reservations = Reservation.objects.all()
-    return render(request, 'reservations/list_reservations.html', {'reservations': reservations})
+    return render(request, 'reservations/list_reservation.html', {'reservations': reservations})
 
 def booking_management(request):
     return render(request, 'reservations/booking_management.html')
