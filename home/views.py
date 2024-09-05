@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login # To log the user in after r
 from django.contrib import messages # Display messages
 from django.conf import settings #To use settings
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model 
+from django.core.mail import send_mail
 
 # Create your views here.
 def home(request):
@@ -27,16 +29,31 @@ def register(request):
         username = request.POST['username']
         password = request.POST['password']
         email = request.POST['email']
-        # check if user exist
-        if User.objects.filter(username=username).exists():
-            messages.error(request, "Username is already taken")
-            return render(request, 'home/register.html')
+        
+        if get_user_model().objects.filter(username=username).exists():
+            return render(request, 'home/register.html', {'error': 'Username already exists'})
+
+        if get_user_model().objects.filter(email=email).exists():
+            return render(request, 'home/register.html', {'error': 'Email already exists'})
+
+        user = get_user_model().objects.create_user(username=username, email=email, password=password)
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            print("Försöker skicka bekräftelsemail...") # Debug
+            send_mail(
+                'Confirmation of registration',
+                f'Thank you {username} for signing up!',
+                settings.DEFAULT_FROM_EMAIL,
+                [email],
+                fail_silently=False
+            )
+            print("E-post skickades!") # Debug
+            return redirect('logged_in_user')
         else:
-            user = User.objects.create_user(username=username, email=email, password=password)
-            user.save()
-            login(request, user)
-            messages.success(request, "Registraion was successful")
-            return redirect('home')
+            return render(request, 'home/register.html', {'error': 'Authentication failed'})
+
     return render(request, 'home/register.html')
 
 def login_view(request):

@@ -12,4 +12,5 @@ urlpatterns = [
     path('reservations/edit<int:reservation_id>/', views.edit_reservation, name='edit_reservation'),
     path('logged_in/', views.logged_in_user, name='logged_in_user'),
     path('logout/', LogoutView.as_view(), name='logout'),
+    
 ]
