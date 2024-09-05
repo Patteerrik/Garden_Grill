@@ -192,7 +192,7 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_EMAIL_VERIFCATION = 'none'
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_REDIRECT_URL = 'home'  # Redirect successful login
-LOGOUT_REDIRECT_URL = 'login' # Redirect after logout
+LOGOUT_REDIRECT_URL = '/' # Redirect after logout
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

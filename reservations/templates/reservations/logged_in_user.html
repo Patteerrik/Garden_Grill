@@ -4,6 +4,8 @@
 <header class="header-section">
     <div class="header-content">
         <h1>Welcome {{ user.is_authenticated|yesno:"to, " }}{{ user.username }}!</h1>
+        <p>Welcome back, {{ user.username }}! Use the 'Reservations' button to make or manage your bookings, or click
+            'Menu' to explore our delicious dishes and seasonal specials.</p>
     </div>
-  </header>
+</header>
 {% endblock %}

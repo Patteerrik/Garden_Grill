@@ -91,10 +91,11 @@ def create_reservation(request):
 
 # Defining registration
 def register(request):
-    if request.method =='POST':
+    if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         email = request.POST['email']
+        
         if get_user_model().objects.filter(username=username).exists():
             return render(request, 'register.html', {'error': 'Username already exists'})
 
@@ -108,17 +109,17 @@ def register(request):
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 
             send_mail(
-                 'Conformation of registration',
-                 f'Thank you {username} for signing up!',
-                 settings.DEFAULT_FROM_EMAIL,
-                 [email],
-                 fail_silently=False
+                'Confirmation of registration',
+                f'Thank you {username} for signing up!',
+                settings.DEFAULT_FROM_EMAIL,
+                [email],
+                fail_silently=False
             )
 
             return redirect('logged_in_user')
         else:
             return render(request, 'register.html', {'error': 'Authentication failed'})
-    
+
     return render(request, 'register.html')
 
 def logged_in_user(request):

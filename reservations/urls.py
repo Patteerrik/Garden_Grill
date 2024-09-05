@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('create/', views.create_reservation, name='create_reservation'),
@@ -10,4 +11,5 @@ urlpatterns = [
     path('', views.list_reservations, name='list_reservation'),
     path('reservations/edit<int:reservation_id>/', views.edit_reservation, name='edit_reservation'),
     path('logged_in/', views.logged_in_user, name='logged_in_user'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]
