@@ -5,6 +5,7 @@ from .forms import ReservationForm
 from django.contrib import messages # To show messages to the user
 from django.conf import settings
 from django.db.models import Sum # To summarize number of guests
+from django.core.mail import send_mail
 
 
 def is_admin_user(user):
@@ -88,6 +89,45 @@ def create_reservation(request):
 
     return render(request, 'reservations/create_reservation.html', {'form': form})
 
+# Defining registration
+def register(request):
+    if request.method =='POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        email = request.POST['email']
+        if get_user_model().objects.filter(username=username).exists():
+            return render(request, 'register.html', {'error': 'Username already exists'})
+
+        if get_user_model().objects.filter(email=email).exists():
+            return render(request, 'register.html', {'error': 'Email already exists'})
+
+        user = get_user_model().objects.create_user(username=username, email=email, password=password)
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+
+            send_mail(
+                 'Conformation of registration',
+                 f'Thank you {username} for signing up!',
+                 settings.DEFAULT_FROM_EMAIL,
+                 [email],
+                 fail_silently=False
+            )
+
+            return redirect('logged_in_user')
+        else:
+            return render(request, 'register.html', {'error': 'Authentication failed'})
+    
+    return render(request, 'register.html')
+
+def logged_in_user(request):
+    # check if user is admin
+    if request.user.is_staff:
+        return render(request, 'reservations/logged_in_admin.html')
+    else:
+        # If user is not admin show user page
+        return render(request, 'reservations/logged_in_user.html')
 
 def success_reservation(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
