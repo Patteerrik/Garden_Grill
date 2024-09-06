@@ -40,22 +40,24 @@ def register(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-            print("Försöker skicka bekräftelsemail...") # Debug
-            try:
+
+            try:  
                 send_mail(
-                    'Confirmation of registration',
-                    f'Thank you {username} for signing up!',
+                    'Confirmation of Registration',
+                    f'Thank you {username} for registering at Garden and Grill!',
                     settings.DEFAULT_FROM_EMAIL,
                     [email],
                     fail_silently=False
                 )
-                print("E-post skickades!") # Debug
             except Exception as e:
-                print(f"E-post misslyckades: {str(e)}") # Debug
-
-            return redirect('reservations:logged_in_user')
-        else:
-            return render(request, 'home/register.html', {'error': 'Authentication failed'})
+                print(f"Error sending email: {str(e)}")
+           
+            if user.username == 'admin0110' or user.is_staff:
+                
+                return redirect('reservations:logged_in_admin')
+            else:
+                
+                return redirect('reservations:logged_in_user')
 
     return render(request, 'home/register.html')
 
@@ -69,9 +71,8 @@ def login_view(request):
             login(request, user)
             messages.success(request, 'Login successful!')
 
-            if user.username == 'admin0110':
-                return redirect('reservations:logged_in_admin')
-            elif user.is_staff:
+            # Kontrollera om det är admin eller vanlig användare
+            if user.username == 'admin0110' or user.is_staff:
                 return redirect('reservations:logged_in_admin')
             else:
                 return redirect('reservations:logged_in_user')
@@ -79,6 +80,7 @@ def login_view(request):
             messages.error(request, 'Invalid username or password.')
 
     return render(request, 'home/login.html')
+
 
 def admin_login(request):
     if request.method == 'POST':

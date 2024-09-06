@@ -12,8 +12,7 @@ urlpatterns = [
     path('success/<int:pk>/', views.success_reservation, name='success_reservation'),
     path('', views.list_reservations, name='list_reservation'),
     path('reservations/edit<int:reservation_id>/', views.edit_reservation, name='edit_reservation'),
-    path('logged_in/', views.logged_in_user, name='logged_in_user'),
-    path('logout/', LogoutView.as_view(), name='logout'),
     path('logged_in_user/', views.logged_in_user, name='logged_in_user'),
+    path('logout/', LogoutView.as_view(), name='logout'),
     path('logged_in_admin/', views.logged_in_admin, name='logged_in_admin'),
 ]

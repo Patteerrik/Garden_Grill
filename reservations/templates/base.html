@@ -40,6 +40,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'menu' %}">Menu</a>
           </li>
+          {% if user.is_authenticated %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Bookings
@@ -53,6 +54,7 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
+          {% endif %}
 
           {% if user.is_authenticated %}
           <li class="nav-item">
@@ -75,19 +77,31 @@
     <div class="header-content">
         <h1>Welcome to Garden and Grill</h1>
         <p>Experience a blend of comfort and elegance in the heart of the city</p>
-        <p class="lead">Discover our carefully crafted menu, featuring fresh, locally-sourced ingredients, served in a warm and inviting atmosphere.</p>
+        <p class="lead">
+          Discover our carefully crafted menu, featuring fresh, locally-sourced ingredients, served in a warm and inviting atmosphere.
+          {% if not user.is_authenticated %}
+          Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">register</a> to make a reservation.
+          {% endif %}
+      </p>
+
     </div>
   </header>
   {% endblock %}
+
    <!-- Navigation buttons -->
    {% block buttons %}
    <div class="navigation-buttons">
       {% if user.is_authenticated %}
+      <!-- Logged in users see both buttons -->
      <a href="{% url 'reservations:create_reservation' %}" class="btn btn-primary">Reservations</a>
-     {% else %}
-     <p>Please <a href="{% url 'login' %}"> log in</a> or <a href="{% url 'register' %}">Register</a> To make a reservation.</p>
-     {% endif %}
      <a href="{% url 'menu' %}" class="btn btn-secondary">Menu</a>
+     {% else %}
+     <!-- Menu button centered for none logged in users -->
+      <div style="text-align: center;">
+        <a href="{% url 'menu' %}" class="btn btn-secondary btn-large">Menu</a>
+      </div>
+     {% endif %}
+     <!-- Menu button is always vissible but changes position based on user login status  -->
    </div>
    {% endblock %}
   <main>

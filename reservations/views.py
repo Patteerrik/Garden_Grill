@@ -17,7 +17,13 @@ def logged_in_admin(request):
 
 @login_required
 def logged_in_user(request):
-    return render(request, 'reservations/logged_in_user.html')
+    print(request.user)  # Debug
+    if request.user.is_staff:
+        print("Admin user logged in.")  # Debug
+        return render(request, 'reservations/logged_in_admin.html')
+    else:
+        print(f"Regular user {request.user.username} logged in.")
+        return render(request, 'reservations/logged_in_user.html')
 
 @login_required
 @user_passes_test(is_admin_user)
@@ -74,6 +80,7 @@ def edit_reservation(request, reservation_id):
 
     return render(request, 'reservations/edit_reservation.html', {'form': form})
     
+@login_required
 def create_reservation(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
