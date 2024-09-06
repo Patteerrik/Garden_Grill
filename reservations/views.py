@@ -12,6 +12,14 @@ def is_admin_user(user):
     return user.is_staff
 
 @login_required
+def logged_in_admin(request):
+    return render(request, 'reservations/logged_in_admin.html')
+
+@login_required
+def logged_in_user(request):
+    return render(request, 'reservations/logged_in_user.html')
+
+@login_required
 @user_passes_test(is_admin_user)
 def update_reservation(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
@@ -93,8 +101,10 @@ def logged_in_user(request):
     print(request.user) # Debug
     # check if user is admin
     if request.user.is_staff:
+        print("Admin user logged in.") # Debug
         return render(request, 'reservations/logged_in_admin.html')
     else:
+        print(f"Regular user {request.user.username} logged in.")
         # If user is not admin show user page
         return render(request, 'reservations/logged_in_user.html')
 

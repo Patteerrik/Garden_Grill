@@ -1,7 +1,8 @@
 
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth.views import LoginView, LogoutView
 from . import views # Imports the views module
+
 
 
 urlpatterns = [

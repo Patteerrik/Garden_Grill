@@ -21,7 +21,6 @@ def bookings(request):
     return render(request, 'home/bookings.html')
 
 def menu(request):
-    
     return render(request, 'home/menu.html')
 
 def register(request):
@@ -42,15 +41,19 @@ def register(request):
         if user is not None:
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             print("Försöker skicka bekräftelsemail...") # Debug
-            send_mail(
-                'Confirmation of registration',
-                f'Thank you {username} for signing up!',
-                settings.DEFAULT_FROM_EMAIL,
-                [email],
-                fail_silently=False
-            )
-            print("E-post skickades!") # Debug
-            return redirect('logged_in_user')
+            try:
+                send_mail(
+                    'Confirmation of registration',
+                    f'Thank you {username} for signing up!',
+                    settings.DEFAULT_FROM_EMAIL,
+                    [email],
+                    fail_silently=False
+                )
+                print("E-post skickades!") # Debug
+            except Exception as e:
+                print(f"E-post misslyckades: {str(e)}") # Debug
+
+            return redirect('reservations:logged_in_user')
         else:
             return render(request, 'home/register.html', {'error': 'Authentication failed'})
 
@@ -61,13 +64,17 @@ def login_view(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
+
         if user is not None:
             login(request, user)
             messages.success(request, 'Login successful!')
-            if user.is_staff:
-                return redirect('admin_dashbord')
+
+            if user.username == 'admin0110':
+                return redirect('reservations:logged_in_admin')
+            elif user.is_staff:
+                return redirect('reservations:logged_in_admin')
             else:
-                return redirect('user_dashboard')
+                return redirect('reservations:logged_in_user')
         else:
             messages.error(request, 'Invalid username or password.')
 
