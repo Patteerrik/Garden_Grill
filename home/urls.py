@@ -1,6 +1,5 @@
 
 from django.urls import path, include
-from django.contrib.auth.views import LoginView, LogoutView
 from . import views # Imports the views module
 
 
@@ -10,7 +9,7 @@ urlpatterns = [
     path('hello/', views.hello, name='hello'),
     path('bookings/', views.bookings, name='bookings'),
     path('menu/', views.menu, name='menu'),
-    path('login/', LoginView.as_view(template_name='home/login.html'), name='login'),
-    path('logout/', LogoutView.as_view(next_page='/login/'), name='logout'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
     path('register/', views.register, name='register'),
 ]

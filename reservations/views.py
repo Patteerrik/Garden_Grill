@@ -26,7 +26,7 @@ def logged_in_user(request):
         return render(request, 'reservations/logged_in_user.html')
 
 @login_required
-@user_passes_test(is_admin_user)
+@user_passes_test(is_admin_user) # Ev ta bort
 def update_reservation(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
     form = ReservationForm(request.POST or None, instance=reservation)
@@ -66,7 +66,7 @@ def list_reservation(request):
 
 @login_required
 @user_passes_test(is_admin_user)
-def edit_reservation(request, reservation_id):
+def edit_reservation(request, reservation_id): # Ev ta bort
     reservation = get_object_or_404(Reservation, id=reservation_id)
 
     if request.method == 'POST':
@@ -105,13 +105,10 @@ def create_reservation(request):
     return render(request, 'reservations/create_reservation.html', {'form': form})
 
 def logged_in_user(request):
-    print(request.user) # Debug
     # check if user is admin
     if request.user.is_staff:
-        print("Admin user logged in.") # Debug
         return render(request, 'reservations/logged_in_admin.html')
     else:
-        print(f"Regular user {request.user.username} logged in.")
         # If user is not admin show user page
         return render(request, 'reservations/logged_in_user.html')
 
