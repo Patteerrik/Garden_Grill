@@ -4,6 +4,8 @@ from django.contrib.auth.views import LogoutView
 
 app_name = 'reservations'
 
+print("URLs loaded!")
+
 urlpatterns = [
     path('create/', views.create_reservation, name='create_reservation'),
     path('list/', views.list_reservations, name='list_reservations'),

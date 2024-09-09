@@ -44,24 +44,33 @@ def update_reservation(request, pk):
 @user_passes_test(is_admin_user)
 def list_reservation(request):
     reservations = Reservation.objects.all()
+
+    print(reservations) # Debug
+
     total_spots = 50
-    reserved_spots = sum([res.number_of_guests for res in reservations])
+    reserved_spots =  sum([res.number_of_guests for res in reservations])
     available_spots = total_spots - reserved_spots
+    
+    # Debug
+    print(f"Reservations: {reservations}")
+    print(f"Total spots: {total_spots}")
+    print(f"Reserved spots: {reserved_spots}")
+    print(f"Available spots: {available_spots}")
 
     if request.method == 'POST':
         if 'delete' in request.POST:
             reservation_id = request.POST.get('reservation_id')
-            reservation = get_object_or_404(Reservation, id=reservations_id)
+            reservation = get_object_or_404(Reservation, id=reservation_id)
             reservation.delete()
             messages.success(request, 'Reservation has been canceled')
-            return redirect('list_reservation')
+            return redirect('reservations:list_reservation')
 
     return render(request, 'reservations/list_reservation.html', {
-    'reservations': reservations,
-    'available_spots': available_spots,
-    'total_spots': total_spots,
-    'reserved_spots': reserved_spots,
-})
+        'reservations': reservations,
+        'available_spots': available_spots,
+        'total_spots': total_spots,
+        'reserved_spots': reserved_spots,
+    })
 
 
 @login_required
