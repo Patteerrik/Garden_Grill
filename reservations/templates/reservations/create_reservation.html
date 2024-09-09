@@ -11,11 +11,13 @@
                 <div class="card-body">
                     <!-- Message block -->
                     {% if messages %}
-                        <ul class="messages">
-                            {% for message in messages %}
-                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                            {% endfor %}
-                        </ul>
+                    <div class="alert alert-success">
+                        {% for message in messages %}
+                            {% if message != 'Login successful!' %}
+                                <p>{{ message }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                     {% endif %}
                     <!-- End message block -->
 

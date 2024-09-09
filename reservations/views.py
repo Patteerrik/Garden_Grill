@@ -6,7 +6,7 @@ from django.contrib import messages # To show messages to the user
 from django.conf import settings
 from django.db.models import Sum # To summarize number of guests
 from django.core.mail import send_mail
-
+from collections import defaultdict
 
 def is_admin_user(user):
     return user.is_staff
@@ -17,7 +17,7 @@ def logged_in_admin(request):
 
 @login_required
 def logged_in_user(request):
-    print(request.user)  # Debug
+    
     if request.user.is_staff:
         print("Admin user logged in.")  # Debug
         return render(request, 'reservations/logged_in_admin.html')
@@ -44,18 +44,24 @@ def update_reservation(request, pk):
 @user_passes_test(is_admin_user)
 def list_reservation(request):
     reservations = Reservation.objects.all()
+    # Dictionary to store reserved seats by date and time
+    spots_per_time = defaultdict(lambda: {'reserved_spots': 0, 'available_spots': 50})
 
-    print(reservations) # Debug
+    # Loop through all reservations an group by date and time
+    for res in reservations:
+        key = (res.date, res.time)
+        spots_per_time[key]['reserved_spots'] += res.number_of_guests
+        spots_per_time[key]['available_spots'] = 50 - spots_per_time[key]['reserved_spots']
 
-    total_spots = 50
-    reserved_spots =  sum([res.number_of_guests for res in reservations])
-    available_spots = total_spots - reserved_spots
-    
-    # Debug
-    print(f"Reservations: {reservations}")
-    print(f"Total spots: {total_spots}")
-    print(f"Reserved spots: {reserved_spots}")
-    print(f"Available spots: {available_spots}")
+    # Convert to a list to send to the template
+    spots_per_time_list = [
+        {'date': date, 
+        'time': time, 
+        'reserved_spots': data['reserved_spots'], 
+        'available_spots': data['available_spots']
+        } 
+        for (date, time), data in spots_per_time.items()
+    ]
 
     if request.method == 'POST':
         if 'delete' in request.POST:
@@ -66,10 +72,8 @@ def list_reservation(request):
             return redirect('reservations:list_reservation')
 
     return render(request, 'reservations/list_reservation.html', {
-        'reservations': reservations,
-        'available_spots': available_spots,
-        'total_spots': total_spots,
-        'reserved_spots': reserved_spots,
+        'spots_per_time_list': spots_per_time_list,
+        'reservations': reservations, 
     })
 
 
@@ -131,6 +135,11 @@ def list_reservations(request):
 
 def booking_management(request):
     return render(request, 'reservations/booking_management.html')
+
+login_required
+def change_reservation(request):
+    #Logic to handle change of reservation
+    return render(request, 'reservations/contact_us.html')
 
 
 

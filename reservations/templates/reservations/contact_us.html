@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card custom-card">
+                <div class="card-header text-center">
+                    <h2>Contact Us to Change Your Reservation</h2>
+                    <p>If you need to change your reservation, please contact us through the form below or give us a call.</p>
+                </div>
+                <div class="card-body">
+                    <form class="form_contact_us" method="post">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" autocomplete="email"
+                                placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="4"
+                                placeholder="Enter your message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block google_maps_script %}
+{% endblock %}
+
+{% block header-text %}
+<!-- Override to modify or remove header text in base.html -->
+{% endblock %}
+
+{% block buttons %}
+<!-- Override to modify or remove buttons in base.html -->
+{% endblock %}
+
+{% block bottom-section %}
+<!-- Override to modify or remove bottom section in base.html -->
+{% endblock %}

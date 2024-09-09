@@ -4,11 +4,9 @@ from django.contrib.auth.views import LogoutView
 
 app_name = 'reservations'
 
-print("URLs loaded!")
-
 urlpatterns = [
     path('create/', views.create_reservation, name='create_reservation'),
-    path('list/', views.list_reservations, name='list_reservations'),
+    path('list/', views.list_reservation, name='list_reservation'),
     path('update/<int:pk>/', views.update_reservation, name='update_reservation'),
     path('admin/bookings/', views.booking_management, name='booking_management'),
     path('success/<int:pk>/', views.success_reservation, name='success_reservation'),
@@ -16,4 +14,5 @@ urlpatterns = [
     path('logged_in_user/', views.logged_in_user, name='logged_in_user'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('logged_in_admin/', views.logged_in_admin, name='logged_in_admin'),
+    path('change/', views.change_reservation, name='change_reservation'),
 ]

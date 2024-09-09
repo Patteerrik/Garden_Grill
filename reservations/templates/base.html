@@ -22,8 +22,8 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <!-- Text Logo as a link to Home -->
-      <a class="navbar-brand" href="{% url 'home' %}">
-
+      <a class="navbar-brand"
+        href="{% if user.is_staff %}{% url 'reservations:logged_in_admin' %}{% else %}{% url 'home' %}{% endif %}">
         <span class="navbar-text">Garden and Grill</span>
         <i class="fa-solid fa-utensils"></i>
       </a>
@@ -46,12 +46,12 @@
               Bookings
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Make reservation</a></li>
-              <li><a class="dropdown-item" href="#">Change reservation</a></li>
+              <li><a href="{% url 'reservations:create_reservation' %}" class="dropdown-item" href="#">Create reservation</a></li>
+              <li><a href="{% url 'reservations:change_reservation' %}" class="dropdown-item" href="#">Change reservation</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
             </ul>
           </li>
           {% endif %}
@@ -75,39 +75,42 @@
   {% block header-text %}
   <header class="header-section">
     <div class="header-content">
-        <h1>Welcome to Garden and Grill</h1>
-        <p>Experience a blend of comfort and elegance in the heart of the city</p>
-        <p class="lead">
-          Discover our carefully crafted menu, featuring fresh, locally-sourced ingredients, served in a warm and inviting atmosphere.
-          {% if not user.is_authenticated %}
-          Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">register</a> to make a reservation.
-          {% endif %}
+      <h1>Welcome to Garden and Grill</h1>
+      <p>Experience a blend of comfort and elegance in the heart of the city</p>
+      <p class="lead">
+        Discover our carefully crafted menu, featuring fresh, locally-sourced ingredients, served in a warm and inviting
+        atmosphere.
+        {% if not user.is_authenticated %}
+        Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">register</a> to make a
+        reservation.
+        {% endif %}
       </p>
 
     </div>
   </header>
   {% endblock %}
 
-   <!-- Navigation buttons -->
-   {% block buttons %}
-   <div class="navigation-buttons">
-      {% if user.is_authenticated %}
-      <!-- If user is admin/staff -->
-        {% if user.is_staff %}
-          <a href="{% url 'reservations:create_reservation' %}" class="btn btn-primary">Create Reservations</a>
-          <a href="{% url 'reservations:list_reservations' %}" class="btn btn-secondary">Manage Reservations</a>
-        {% else %}
-          <!-- If user is not admin/staff -->
-          <a href="{% url 'menu' %}" class="btn btn-secondary">Menu</a>
-        {% endif %}
-     {% else %}
-     <!-- Menu button centered for none logged in users -->
-      <div style="text-align: center;">
-        <a href="{% url 'menu' %}" class="btn btn-secondary btn-large">Menu</a>
-      </div>
-     {% endif %}
-   </div>
-   {% endblock %}
+  <!-- Navigation buttons -->
+  {% block buttons %}
+  <div class="navigation-buttons">
+    {% if user.is_authenticated %}
+    <!-- If user is admin/staff -->
+    {% if user.is_staff %}
+    <a href="{% url 'reservations:create_reservation' %}" class="btn btn-primary">Create Reservations</a>
+    <a href="{% url 'reservations:list_reservation' %}" class="btn btn-secondary">Manage Reservations</a>
+    {% else %}
+    <!-- If user is not admin/staff -->
+     <a href="{% url 'reservations:create_reservation' %}" class="btn btn-primary">Create Reservation</a>
+    <a href="{% url 'menu' %}" class="btn btn-secondary">Menu</a>
+    {% endif %}
+    {% else %}
+    <!-- Menu button centered for none logged in users -->
+    <div style="text-align: center;">
+      <a href="{% url 'menu' %}" class="btn btn-secondary btn-large">Menu</a>
+    </div>
+    {% endif %}
+  </div>
+  {% endblock %}
   <main>
     {% block content %}
     {% endblock %}
@@ -116,19 +119,19 @@
   <!-- Bottom Section -->
   <div class="bottom-section">
     {% block bottom-section %}
-      <!-- google maps -->
-      <div class="col-md-6">
-             <h3 class="text-white">Find us here!</h3>
-             <div id="map" style="width: 400px; height: 300px;"></div>
+    <!-- google maps -->
+    <div class="col-md-6">
+      <h3 class="text-white">Find us here!</h3>
+      <div id="map" style="width: 400px; height: 300px;"></div>
+    </div>
+    <!-- Opening hours -->
+    <div class="col-md-6 section-container">
+      <h3 class="section-title">Opening hours</h3>
+      <div class="opening-hours-content">
+        <p>Monday - Friday: 10:00 - 22:00</p>
+        <p>Saturday: 12:00 - 01:00</p>
+        <p>Sunday: 12:00 - 22:00</p>
       </div>
-      <!-- Opening hours -->
-      <div class="col-md-6 section-container">
-        <h3 class="section-title">Opening hours</h3>
-        <div class="opening-hours-content">
-            <p>Monday - Friday: 10:00 - 22:00</p>
-            <p>Saturday: 12:00 - 01:00</p>
-            <p>Sunday: 12:00 - 22:00</p>
-        </div>
     </div>
     {% endblock %}
   </div>
@@ -148,20 +151,22 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <!-- google maps api -->
   {% block google_maps_script %}
-  <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&callback=initMap" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&callback=initMap" async
+    defer></script>
   <script>
-      function initMap() {
-          var location = { lat: 59.327597, lng: 18.035186 };
-          var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 14,
-              center: location
-          });
-          var marker = new google.maps.Marker({
-              position: location,
-              map: map
-          });
-      }
+    function initMap() {
+      var location = { lat: 59.327597, lng: 18.035186 };
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: location
+      });
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map
+      });
+    }
   </script>
   {% endblock %}
 </body>
+
 </html>
