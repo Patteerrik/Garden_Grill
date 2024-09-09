@@ -94,7 +94,7 @@ def create_reservation(request):
 
             if booked_seats + number_of_guests <= 50:
                 new_reservation = form.save()
-                return redirect('success_reservation', pk=new_reservation.pk)
+                return redirect('reservations:success_reservation', pk=new_reservation.pk)
             else:
                 messages.error(request, f"Only {50 - booked_seats} seats are available for the selected time.")
         else:
