@@ -181,7 +181,16 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = 
+
+# Timeout for session in seconds
+SESSION_COOKIE = 600
+
+# Set whether the session should end when the browser is closed
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# Automatic logout after inactivity
+SESSION_SAVE_EVERY_REQUEST = True
 
 # Borrowed from https://www.youtube.com/watch?v=-E2igrFADI0
 # Account Setup

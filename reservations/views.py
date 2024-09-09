@@ -16,7 +16,7 @@ def logged_in_admin(request):
     return render(request, 'reservations/logged_in_admin.html')
 
 @login_required
-def logged_in_user(request):
+def logged_in_user(request): # Ta bort?
     
     if request.user.is_staff:
         print("Admin user logged in.")  # Debug
@@ -54,6 +54,7 @@ def list_reservation(request):
         spots_per_time[key]['available_spots'] = 50 - spots_per_time[key]['reserved_spots']
 
     # Convert to a list to send to the template
+    # https://www.w3schools.com/python/ref_dictionary_items.asp
     spots_per_time_list = [
         {'date': date, 
         'time': time, 
@@ -136,7 +137,7 @@ def list_reservations(request):
 def booking_management(request):
     return render(request, 'reservations/booking_management.html')
 
-login_required
+@login_required
 def change_reservation(request):
     #Logic to handle change of reservation
     return render(request, 'reservations/contact_us.html')
