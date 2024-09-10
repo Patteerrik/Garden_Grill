@@ -88,11 +88,14 @@ def edit_reservation(request, reservation_id): # Ev ta bort
         if form.is_valid():
             form.save()
             messages.success(request,'Reservation has been updated.')
-            return redirect('list_reservation')
+            return redirect('reservations:list_reservation')
     else:
         form = ReservationForm(instance=reservation)
 
-    return render(request, 'reservations/edit_reservation.html', {'form': form})
+    return render(request, 'reservations/edit_reservation.html', {
+        'form': form,
+        'reservation': reservation.email
+    })
     
 @login_required
 def create_reservation(request):

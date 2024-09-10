@@ -181,7 +181,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = 
+USE_TZ = True
 
 # Timeout for session in seconds
 SESSION_COOKIE = 600
