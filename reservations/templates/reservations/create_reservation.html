@@ -9,26 +9,14 @@
                     <h2>Create a Reservation</h2>
                 </div>
                 <div class="card-body">
-                    <!-- Message block -->
-                    {% if messages %}
-                    <div>
-                        {% for message in messages %}
-                            <div class="alert {{ message.tags }}">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    <!-- End message block -->
 
-                    <form method="post" action="{% url 'reservations:create_reservation' %}" class="needs-validation" novalidate>
-
-                    <form method="post" class="needs-validation" novalidate>
-
+                    <form method="post" action="{% url 'reservations:create_reservation' %}" class="needs-validation"
+                        novalidate>
                         {% csrf_token %}
                         <div class="form-group mb-3">
                             <label for="reservation_name">Name</label>
-                            <input type="text" class="form-control" id="reservation_name" name="reservation_name" placeholder="Enter your name" required>
+                            <input type="text" class="form-control" id="reservation_name" name="reservation_name"
+                                placeholder="Enter your name" required>
                             <div class="invalid-feedback">
                                 Please enter your name.
                             </div>
@@ -49,7 +37,8 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="number_of_guests">Number of Guests</label>
-                            <input type="number" class="form-control" id="number_of_guests" name="number_of_guests" min="1" max="20" required>
+                            <input type="number" class="form-control" id="number_of_guests" name="number_of_guests"
+                                min="1" max="20" required>
                             <div class="invalid-feedback">
                                 Please enter the number of guests.
                             </div>
@@ -61,7 +50,7 @@
         </div>
     </div>
 </div>
-<!-- Special request??? -->
+
 <script>
 
 
