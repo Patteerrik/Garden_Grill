@@ -51,10 +51,11 @@
                     </tr>
                 </thead>
                 <tbody>
+
                     {% for reservation in reservations %}
                     <tr>
                         <td>{{ reservation.reservation_name }}</td>
-                        <td>{{ reservation.email }}</td>
+                        <td>{{ reservation.email }}</td> <!-- Test -->
                         <td>{{ reservation.number_of_guests }}</td>
                         <td>{{ reservation.date }}</td>
                         <td>{{ reservation.time }}</td>

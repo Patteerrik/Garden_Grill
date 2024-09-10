@@ -8,22 +8,23 @@ from django.db.models import Sum # To summarize number of guests
 from django.core.mail import send_mail
 from collections import defaultdict
 
+def logged_in_user(request):
+    # check if user is admin
+    if request.user.is_staff:
+        return render(request, 'reservations/logged_in_admin.html')
+    else:
+        # If user is not admin show user page
+        return render(request, 'reservations/logged_in_user.html')
+
+
 def is_admin_user(user):
     return user.is_staff
+
 
 @login_required
 def logged_in_admin(request):
     return render(request, 'reservations/logged_in_admin.html')
 
-@login_required
-def logged_in_user(request): # Ta bort?
-    
-    if request.user.is_staff:
-        print("Admin user logged in.")  # Debug
-        return render(request, 'reservations/logged_in_admin.html')
-    else:
-        print(f"Regular user {request.user.username} logged in.")
-        return render(request, 'reservations/logged_in_user.html')
 
 @login_required
 @user_passes_test(is_admin_user) # Ev ta bort
@@ -39,6 +40,7 @@ def update_reservation(request, pk):
         return redirect('list_reservation')
 
     return render(request, 'reservations/update_reservation.html', {'form': form, 'reservation': reservation})
+
 
 @login_required
 @user_passes_test(is_admin_user)
@@ -106,11 +108,17 @@ def create_reservation(request):
             time = form.cleaned_data['time']
             number_of_guests = form.cleaned_data['number_of_guests']
 
-            existing_reservations = Reservation.objects.filter(date=date, time=time).aggregate(Sum('number_of_guests'))
+            # Check to see how many seats are available
+            existing_reservations = Reservation.objects.filter(date=date, 
+            time=time).aggregate(Sum('number_of_guests'))
             booked_seats =  existing_reservations['number_of_guests__sum'] or 0
 
             if booked_seats + number_of_guests <= 50:
-                new_reservation = form.save()
+                new_reservation = form.save(commit=False)
+                new_reservation.email = request.user.email # Test
+                new_reservation.reservation_name = request.user.username # Test
+                new_reservation.save()
+
                 return redirect('reservations:success_reservation', pk=new_reservation.pk)
             else:
                 messages.error(request, f"Only {50 - booked_seats} seats are available for the selected time.")
@@ -121,21 +129,14 @@ def create_reservation(request):
 
     return render(request, 'reservations/create_reservation.html', {'form': form})
 
-def logged_in_user(request):
-    # check if user is admin
-    if request.user.is_staff:
-        return render(request, 'reservations/logged_in_admin.html')
-    else:
-        # If user is not admin show user page
-        return render(request, 'reservations/logged_in_user.html')
 
 def success_reservation(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
     return render(request, 'reservations/success_reservation.html', {'reservation': reservation})
 
-def list_reservations(request):
-    reservations = Reservation.objects.all()
-    return render(request, 'reservations/list_reservation.html', {'reservations': reservations})
+#def list_reservations(request):
+ #   reservations = Reservation.objects.all()
+  #  return render(request, 'reservations/list_reservation.html', {'reservations': reservations})
 
 def booking_management(request):
     return render(request, 'reservations/booking_management.html')
