@@ -24,7 +24,7 @@
     <div class="container-fluid">
       <!-- Text Logo as a link to Home -->
       <a class="navbar-brand"
-        href="{% if user.is_staff %}{% url 'reservations:logged_in_admin' %}{% else %}{% url 'home' %}{% endif %}">
+        href="{% if user.is_staff %}{% url 'reservations:logged_in_admin' %}{% elif user.is_authenticated %}{% url 'reservations:logged_in_user' %}{% else %}{% url 'home' %}{% endif %}">
         <span class="navbar-text">Garden and Grill</span>
         <i class="fa-solid fa-utensils"></i>
       </a>
@@ -42,34 +42,40 @@
             <a class="nav-link" href="{% url 'menu' %}">Menu</a>
           </li>
           {% if user.is_authenticated %}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Bookings
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="{% url 'reservations:create_reservation' %}" class="dropdown-item" href="#">Create reservation</a></li>
-              <li><a href="{% url 'reservations:change_reservation' %}" class="dropdown-item" href="#">Change reservation</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-            </ul>
-          </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Bookings
+              </a>
+              <ul class="dropdown-menu">
+                <!-- Links for admin -->
+                {% if user.is_staff %}
+                <li><a href="{% url 'reservations:create_reservation' %}" class="dropdown-item">Create
+                  reservation</a></li>
+                <li><a href="{% url 'reservations:list_reservation' %}" class="dropdown-item">Manage
+                  reservation</a></li>
+                {% else %}
+                <!-- Link for users -->
+                <li><a href="{% url 'reservations:create_reservation' %}" class="dropdown-item">Create
+                  reservation</a></li>
+                <li><a href="{% url 'reservations:change_reservation' %}" class="dropdown-item">Change
+                  reservation</a></li>
+                {% endif %}
+              </ul>
+            </li>
           {% endif %}
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'register' %}">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif %}
 
-          {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'register' %}">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Login</a>
-          </li>
-          {% endif %}
-        </ul>
       </div>
     </div>
   </nav>
@@ -101,7 +107,7 @@
     <a href="{% url 'reservations:list_reservation' %}" class="btn btn-secondary">Manage Reservations</a>
     {% else %}
     <!-- If user is not admin/staff -->
-     <a href="{% url 'reservations:create_reservation' %}" class="btn btn-primary">Create Reservation</a>
+    <a href="{% url 'reservations:create_reservation' %}" class="btn btn-primary">Create Reservation</a>
     <a href="{% url 'menu' %}" class="btn btn-secondary">Menu</a>
     {% endif %}
     {% else %}
