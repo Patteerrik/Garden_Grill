@@ -16,7 +16,7 @@
                         <li><strong>Time:</strong> {{ reservation.time }}</li>
                         <li><strong>Number of Guests:</strong> {{ reservation.number_of_guests }}</li>
                     </ul>
-                    <a href="{% if user.is_staff %}{% url 'reservations:logged_in_admin' %}{% else %}{% url 'reservation:logged_in_user' %}{% endif %}" class="btn btn-primary">Back to Home</a>
+                    <a href="{% if user.is_staff %}{% url 'reservations:logged_in_admin' %}{% else %}{% url 'reservations:logged_in_user' %}{% endif %}" class="btn btn-primary">Back to Home</a>
                 </div>
             </div>
         </div>

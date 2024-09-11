@@ -1,12 +1,21 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404 
+# Render Template, get object or 404, redirect users
 from django.contrib.auth.decorators import login_required, user_passes_test
+# Resrict access to logged in or admin users
 from .models import Reservation
+# Import reservation model
 from .forms import ReservationForm
-from django.contrib import messages # To show messages to the user
+# Import reservationform for bookings
+from django.contrib import messages 
+# To show messages to the user
 from django.conf import settings
-from django.db.models import Sum # To summarize number of guests
+# Access django settings
+from django.db.models import Sum 
+# To summarize number of guests
 from django.core.mail import send_mail
+# Send emails with django
 from collections import defaultdict
+# Dictionary with deafult values
 
 def logged_in_user(request):
     # check if user is admin
@@ -27,26 +36,29 @@ def logged_in_admin(request):
 
 
 @login_required
-@user_passes_test(is_admin_user) # Ev ta bort
-def update_reservation(request, pk):
-    reservation = get_object_or_404(Reservation, pk=pk)
-    form = ReservationForm(request.POST or None, instance=reservation)
-
-    if 'update' in request.POST and form.is_valid():
-        form.save()
-        return redirect('list_reservation')
-    elif 'cancel' in request.POST:
-        reservation.delete()
-        return redirect('list_reservation')
-
-    return render(request, 'reservations/update_reservation.html', {'form': form, 'reservation': reservation})
-
-
-@login_required
 @user_passes_test(is_admin_user)
 def list_reservation(request):
     reservations = Reservation.objects.all()
-    # Dictionary to store reserved seats by date and time
+    # Handle POST requests
+    if request.method == 'POST':
+        reservation_id = request.POST.get('reservation_id')
+        reservation = get_object_or_404(Reservation, id=reservation_id)
+        
+        # Handle reservation edits
+        if 'edit' in request.POST:
+            number_of_guests = request.POST.get('number_of_guests')
+            reservation.number_of_guests = number_of_guests
+            reservation.save()
+            messages.success(request, 'Reservation has ben updated.')
+            return redirect('reservations:list_reservation')
+        # Hanle delition of reservations
+        elif 'delete' in request.POST:
+            reservation.delete()
+            messages.success(request, 'Reservations has been canceled.')
+            return redirect('reservations:list_reservation')
+    
+
+    # Group reservation logic by date and time
     spots_per_time = defaultdict(lambda: {'reserved_spots': 0, 'available_spots': 50})
 
     # Loop through all reservations an group by date and time
@@ -66,44 +78,21 @@ def list_reservation(request):
         for (date, time), data in spots_per_time.items()
     ]
 
-    if request.method == 'POST':
-        if 'delete' in request.POST:
-            reservation_id = request.POST.get('reservation_id')
-            reservation = get_object_or_404(Reservation, id=reservation_id)
-            reservation.delete()
-            messages.success(request, 'Reservation has been canceled')
-            return redirect('reservations:list_reservation')
-
     return render(request, 'reservations/list_reservation.html', {
+        # Send a summary of seats to template
         'spots_per_time_list': spots_per_time_list,
+        # Sends booking to template 
         'reservations': reservations, 
-    })
-
-
-@login_required
-@user_passes_test(is_admin_user)
-def edit_reservation(request, reservation_id): # Ev ta bort
-    reservation = get_object_or_404(Reservation, id=reservation_id)
-
-    if request.method == 'POST':
-        form = ReservationForm(request.POST, instance=reservation)
-        if form.is_valid():
-            form.save()
-            messages.success(request,'Reservation has been updated.')
-            return redirect('reservations:list_reservation')
-    else:
-        form = ReservationForm(instance=reservation)
-
-    return render(request, 'reservations/edit_reservation.html', {
-        'form': form,
-        'reservation': reservation.email
     })
     
 @login_required
 def create_reservation(request):
+    # Check if the request method is post
     if request.method == 'POST':
+        # Bind the form with post data
         form = ReservationForm(request.POST)
         if form.is_valid():
+            # Extract cleaned data from the form
             date = form.cleaned_data['date']
             time = form.cleaned_data['time']
             number_of_guests = form.cleaned_data['number_of_guests']
@@ -113,37 +102,41 @@ def create_reservation(request):
             time=time).aggregate(Sum('number_of_guests'))
             booked_seats =  existing_reservations['number_of_guests__sum'] or 0
 
+            # Ensure total number of booked seats doesn´t exceed 50
             if booked_seats + number_of_guests <= 50:
+                # Save the form without committing
                 new_reservation = form.save(commit=False)
-                new_reservation.email = request.user.email # Test
-                new_reservation.reservation_name = request.user.username # Test
+                # Set email and username for new reservation
+                new_reservation.email = request.user.email 
+                # Set email and username for reservation
+                new_reservation.reservation_name = request.user.username
+                # Save the reservation to the database
                 new_reservation.save()
 
+                # Redirect to success page after reservation is created
                 return redirect('reservations:success_reservation', pk=new_reservation.pk)
             else:
+                # Show error message if there is not not enough avaible seats
                 messages.error(request, f"Only {50 - booked_seats} seats are available for the selected time.")
         else:
+            # Show error message if the form is invalid
             messages.error(request, f" There was an error in the form. Please try again")
     else:
+        # If the request is not post, display an empty form
         form = ReservationForm()
-
+    # Display the reservation form
     return render(request, 'reservations/create_reservation.html', {'form': form})
 
 
 def success_reservation(request, pk):
+    # Retrieve the reservation by pk or return 404 if not found
     reservation = get_object_or_404(Reservation, pk=pk)
+    # Display the success page with reservation details
     return render(request, 'reservations/success_reservation.html', {'reservation': reservation})
-
-#def list_reservations(request):
- #   reservations = Reservation.objects.all()
-  #  return render(request, 'reservations/list_reservation.html', {'reservations': reservations})
-
-def booking_management(request):
-    return render(request, 'reservations/booking_management.html')
 
 @login_required
 def change_reservation(request):
-    #Logic to handle change of reservation
+    
     return render(request, 'reservations/contact_us.html')
 
 

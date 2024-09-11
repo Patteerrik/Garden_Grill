@@ -56,11 +56,18 @@
                     <tr>
                         <td>{{ reservation.reservation_name }}</td>
                         <td>{{ reservation.email }}</td> <!-- Test -->
-                        <td>{{ reservation.number_of_guests }}</td>
+                        <td>
+                            <!-- Redigeringsformulär för antal gäster -->
+                            <form method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="reservation_id" value="{{ reservation.id }}">
+                                <input type="number" name="number_of_guests" value="{{ reservation.number_of_guests }}" min="1">
+                                <button type="submit" name="edit" class="btn btn-sm btn-primary">Update</button>
+                            </form>
+                        </td>
                         <td>{{ reservation.date }}</td>
                         <td>{{ reservation.time }}</td>
                         <td>
-                            <a href="{% url 'reservations:edit_reservation' reservation.id %}" class="btn btn-sm btn-primary">Edit</a>
                             <form method="post" style="display: inline;">
                                 {% csrf_token %}
                                 <input type="hidden" name="reservation_id" value="{{ reservation.id }}">
