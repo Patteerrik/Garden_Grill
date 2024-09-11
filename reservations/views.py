@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404 
+from django.shortcuts import render, get_object_or_404, redirect 
 # Render Template, get object or 404, redirect users
 from django.contrib.auth.decorators import login_required, user_passes_test
 # Resrict access to logged in or admin users
@@ -51,7 +51,7 @@ def list_reservation(request):
             reservation.save()
             messages.success(request, 'Reservation has ben updated.')
             return redirect('reservations:list_reservation')
-        # Hanle delition of reservations
+        # Handle delition of reservations
         elif 'delete' in request.POST:
             reservation.delete()
             messages.success(request, 'Reservations has been canceled.')
@@ -87,7 +87,7 @@ def list_reservation(request):
     
 @login_required
 def create_reservation(request):
-    # Check if the request method is post
+    # Check if the request method is POST
     if request.method == 'POST':
         # Bind the form with post data
         form = ReservationForm(request.POST)
@@ -122,7 +122,7 @@ def create_reservation(request):
             # Show error message if the form is invalid
             messages.error(request, f" There was an error in the form. Please try again")
     else:
-        # If the request is not post, display an empty form
+        # If the request is not POST, display an empty form
         form = ReservationForm()
     # Display the reservation form
     return render(request, 'reservations/create_reservation.html', {'form': form})
@@ -136,8 +136,32 @@ def success_reservation(request, pk):
 
 @login_required
 def change_reservation(request):
+    reservation = None  # Default reservation to None
+    if request.method == 'GET':
+        reservation_id = request.GET.get('reservation_id')  # Hämta reservation_id från GET
+        if reservation_id:
+            reservation = get_object_or_404(Reservation, id=reservation_id)  
+        
+
+    if request.method == 'POST':
+        reservation_id = request.POST.get('reservation_id')  
+        message = request.POST.get('message')  
+        # Skicka mejlet
+        send_mail(
+            subject=f"Change request for reservation {reservation_id}" if reservation_id else "General change request",
+            message=message,
+            from_email=request.user.email,
+            recipient_list=[settings.ADMIN_EMAIL],
+            fail_silently=False,
+        )
+        
+        messages.success(request, 'Your request has been sent')
+        return redirect('reservations:success_reservation', pk=reservation_id) if reservation_id else redirect('reservations:logged_in_user')
+
     
-    return render(request, 'reservations/contact_us.html')
+    return render(request, 'reservations/contact_us.html', {'reservation': reservation})
+
+
 
 
 

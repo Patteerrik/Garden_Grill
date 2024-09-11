@@ -86,6 +86,9 @@ SITE_ID = 1
 # Restaurants capacity
 MAX_SEATS = 50
 
+# Admin email
+ADMIN_EMAIL = os.getenv('EMAIL_HOST_USER')  
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

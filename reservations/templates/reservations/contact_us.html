@@ -12,6 +12,8 @@
                 <div class="card-body">
                     <form class="form_contact_us" method="post">
                         {% csrf_token %}
+                        <input type="hidden" name="reservation_id" value="{{ reservation.id }}">
+
                         <div class="form-group mb-3">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="email" autocomplete="email"
