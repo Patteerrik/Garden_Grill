@@ -142,7 +142,6 @@ def change_reservation(request):
         if reservation_id:
             reservation = get_object_or_404(Reservation, id=reservation_id)  
         
-
     if request.method == 'POST':
         reservation_id = request.POST.get('reservation_id')  
         message = request.POST.get('message')  
@@ -156,12 +155,15 @@ def change_reservation(request):
         )
         
         messages.success(request, 'Your request has been sent')
-        return redirect('reservations:success_reservation', pk=reservation_id) if reservation_id else redirect('reservations:logged_in_user')
-
+        #return redirect('reservations:success_reservation', pk=reservation_id) if reservation_id else redirect('reservations:logged_in_user')
+        return redirect('reservations:success_email')
     
     return render(request, 'reservations/contact_us.html', {'reservation': reservation})
 
 
+@login_required
+def success_email(request):
+   return render(request, 'reservations/success_email.html')
 
 
 
