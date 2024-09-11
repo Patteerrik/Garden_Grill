@@ -138,7 +138,7 @@ def success_reservation(request, pk):
 def change_reservation(request):
     reservation = None  # Default reservation to None
     if request.method == 'GET':
-        reservation_id = request.GET.get('reservation_id')  # Hämta reservation_id från GET
+        reservation_id = request.GET.get('reservation_id')  
         if reservation_id:
             reservation = get_object_or_404(Reservation, id=reservation_id)  
         
@@ -146,11 +146,11 @@ def change_reservation(request):
     if request.method == 'POST':
         reservation_id = request.POST.get('reservation_id')  
         message = request.POST.get('message')  
-        # Skicka mejlet
+        # Send email
         send_mail(
-            subject=f"Change request for reservation {reservation_id}" if reservation_id else "General change request",
-            message=message,
-            from_email=request.user.email,
+            subject=f"Change request for reservation {reservation_id}",
+            message=f"Message from: {request.user.email}\n\n{message}",
+            from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[settings.ADMIN_EMAIL],
             fail_silently=False,
         )
