@@ -1,0 +1,53 @@
+<!-- For user to see their current reservations -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="bg-light mp-4 rounded shadow-sm">
+        <h2>Your Current Reservations</h2>
+
+        <!-- Individual reservation details -->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover mt-3">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Number of People</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reservation in reservations %}
+                    <tr>
+                        <td>{{ reservation.date }}</td>
+                        <td>{{ reservation.time }}</td>
+                        <td>{{ reservation.number_of_guests }}</td>
+                        <td>
+                            <!-- Navigates to the contact form -->
+                            <a href="{% url 'reservations:change_reservation' %}?reservation_id={{ reservation.id }}" class="btn btn-primary btn-sm">Edit</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4">No reservations found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block header-text %}
+<!-- Override to modify or remove header text in base.html -->
+{% endblock %}
+
+{% block buttons %}
+<!-- Override to modify or remove buttons in base.html -->
+{% endblock %}
+
+{% block bottom-section %}
+<!-- Override to modify or remove bottom section in base.html -->
+{% endblock %}

@@ -61,19 +61,22 @@ def list_reservation(request):
     # Group reservation logic by date and time
     spots_per_time = defaultdict(lambda: {'reserved_spots': 0, 'available_spots': 50})
 
-    # Loop through all reservations an group by date and time
+    # Loop through group reservations by date and time, storing emails.
     for res in reservations:
         key = (res.date, res.time)
         spots_per_time[key]['reserved_spots'] += res.number_of_guests
         spots_per_time[key]['available_spots'] = 50 - spots_per_time[key]['reserved_spots']
+        spots_per_time[key]['email'] = res.email
 
     # Convert to a list to send to the template
     # https://www.w3schools.com/python/ref_dictionary_items.asp
     spots_per_time_list = [
-        {'date': date, 
-        'time': time, 
-        'reserved_spots': data['reserved_spots'], 
-        'available_spots': data['available_spots']
+        {
+            'date': date, 
+            'time': time, 
+            'reserved_spots': data['reserved_spots'], 
+            'available_spots': data['available_spots'],
+            'email': data['email']
         } 
         for (date, time), data in spots_per_time.items()
     ]
@@ -182,5 +185,7 @@ def edit_reservation(request, reservation_id):
 
     return render(request, 'reservations/edit_reservations.html', {'form': form, 'reservation': reservation})
 
-
+def users_reservations(request):
+    user_reservations = Reservation.objects.filter(email=request.user.email)
+    return render(request, 'reservations/users_reservations.html', {'reservations': user_reservations})
 
