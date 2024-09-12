@@ -9,10 +9,7 @@ from django.core.mail import send_mail
 
 # Create your views here.
 def home(request):
-    context = {
-        'GOOGLE_MAPS_API_KEY': settings.GOOGLE_MAPS_API_KEY
-    }
-    return render(request, 'home/index.html', context)
+    return render(request, 'home/index.html', {})
 
 def hello(request):
     return render(request, 'home/hello.html')
@@ -22,6 +19,9 @@ def bookings(request):
 
 def menu(request):
     return render(request, 'home/menu.html')
+
+def custom_404(request, exception):
+    return render(request, 'home/404.html', status=404)
 
 def register(request):
     print(request.POST)  

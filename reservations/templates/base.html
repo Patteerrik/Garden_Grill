@@ -59,8 +59,8 @@
                   reservation</a></li>
               <li><a href="{% url 'reservations:change_reservation' %}" class="dropdown-item">Change
                   reservation</a></li>
-                  <li><a href="{% url 'reservations:users_reservations' %}" class="dropdown-item">My
-                    reservations</a></li>
+              <li><a href="{% url 'reservations:users_reservations' %}" class="dropdown-item">My
+                  reservations</a></li>
               {% endif %}
             </ul>
           </li>
@@ -81,6 +81,7 @@
       </div>
     </div>
   </nav>
+  
   {% block header-text %}
   <header class="header-section">
     <div class="header-content">
@@ -98,21 +99,24 @@
     </div>
   </header>
   {% endblock %}
-
+  
   <!-- Navigation buttons -->
   {% block buttons %}
   <div class="navigation-buttons">
     {% if user.is_authenticated %}
+
     <!-- If user is admin/staff -->
     {% if user.is_staff %}
     <a href="{% url 'reservations:create_reservation' %}" class="btn btn-primary">Create Reservations</a>
     <a href="{% url 'reservations:list_reservation' %}" class="btn btn-secondary">Manage Reservations</a>
     {% else %}
+
     <!-- If user is not admin/staff -->
     <a href="{% url 'reservations:create_reservation' %}" class="btn btn-primary">Create Reservation</a>
     <a href="{% url 'menu' %}" class="btn btn-secondary">Menu</a>
     {% endif %}
     {% else %}
+
     <!-- Menu button centered for none logged in users -->
     <div style="text-align: center;">
       <a href="{% url 'menu' %}" class="btn btn-secondary btn-large">Menu</a>
@@ -154,8 +158,6 @@
 
     {% endblock %}
   </div>
-
-
 
   <!-- footer -->
   <footer class="site-footer text-white text-center py-3 mt-auto">

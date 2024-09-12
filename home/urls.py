@@ -1,7 +1,10 @@
 
 from django.urls import path, include
 from . import views # Imports the views module
+from django.conf.urls import handler404
+from home.views import custom_404
 
+handler404 = 'home.views.custom_404'
 
 
 urlpatterns = [

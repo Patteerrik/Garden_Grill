@@ -35,7 +35,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')
+DEBUG = True
 
 
 ALLOWED_HOSTS = [
@@ -44,8 +44,6 @@ ALLOWED_HOSTS = [
     "gardengrill-d40b8e344381.herokuapp.com",
     "8000-patteerrik-gardengrill-bepklsfb4ex.ws.codeinstitute-ide.net"
 ]
-
-GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
 
 # https://medium.com/django-unleashed/email-configuration-in-django-3c7d9e149445
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
