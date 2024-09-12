@@ -167,11 +167,20 @@ def success_email(request):
 
 
 @login_required
-def users_reservations(request):
-    # Filter reservations by users email
-    reservations = Reservation.objects.filter(email=request.user.email)
-    return render(request, 'reservations/users_reservations.html', {'reservations': reservations})
+@user_passes_test(lambda u: u.is_staff)
+def edit_reservation(request, reservation_id):
 
+    reservation = get_object_or_404(Reservation, id=reservation_id)
+    if request.method == 'POST':
+        form = ReservationForm(request.POST, instance=reservation)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Reservations has been updatet!')
+            return redirect('reservations:list_reservation')
+    else:
+        form = ReservationForm(instance=reservation)
+
+    return render(request, 'reservations/edit_reservations.html', {'form': form, 'reservation': reservation})
 
 
 
