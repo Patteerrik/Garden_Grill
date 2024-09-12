@@ -167,6 +167,14 @@ footer {
     color: #333;
 } 
 
+.contact-link  {
+    color: #f5deb3;
+}
+
+.contact-link:hover {
+    color: #e6be8a;
+}
+
 
 /* Reservations */
 

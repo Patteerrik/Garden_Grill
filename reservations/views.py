@@ -166,5 +166,12 @@ def success_email(request):
    return render(request, 'reservations/success_email.html')
 
 
+@login_required
+def users_reservations(request):
+    # Filter reservations by users email
+    reservations = Reservation.objects.filter(email=request.user.email)
+    return render(request, 'reservations/users_reservations.html', {'reservations': reservations})
+
+
 
 

@@ -57,7 +57,7 @@
                         <td>{{ reservation.reservation_name }}</td>
                         <td>{{ reservation.email }}</td> <!-- Test -->
                         <td>
-                            <!-- Redigeringsformulär för antal gäster -->
+                            <!-- Form for number of guests -->
                             <form method="post">
                                 {% csrf_token %}
                                 <input type="hidden" name="reservation_id" value="{{ reservation.id }}">
