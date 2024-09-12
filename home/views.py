@@ -20,8 +20,6 @@ def bookings(request):
 def menu(request):
     return render(request, 'home/menu.html')
 
-def custom_404(request, exception):
-    return render(request, 'home/404.html', status=404)
 
 def register(request):
     print(request.POST)  
@@ -81,7 +79,7 @@ def login_view(request):
             login(request, user)
             messages.success(request, 'Login successful!')
 
-            # Kontrollera om det är admin eller vanlig användare
+            # Check if admin or user
             if user.username == 'admin0011' or user.is_staff:
                 return redirect('reservations:logged_in_admin')
             else:
