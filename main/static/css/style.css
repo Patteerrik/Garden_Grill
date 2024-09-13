@@ -11,6 +11,8 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    min-height: 100vh;
+    overflow-x: hidden; /* Test */
 }
 
 
@@ -18,10 +20,31 @@ body {
 main {
     flex-grow: 1;
 }
-
+/* Footer */
 footer {
     background-color: rgba(0, 0, 0, 0.7);
     font-size: 1.2rem;
+    
+}
+
+footer.site-footer {
+    background-color: rgba(0, 0, 0, 0.7);;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-icons a {
+    margin: 0 10px;
 }
 
 /* Header Section */
@@ -41,13 +64,12 @@ footer {
 }
 
 .header-content h1 {
-    margin-bottom: 20px;
-    font-size: 2.8rem;
+    margin-top: 20px;
 }
   
 .header-content p {
     margin: 10px 0;
-    font-size: 1.2rem;
+    font-siz: 1.2rem;
     max-width: 500px;
 }
 
@@ -68,8 +90,15 @@ footer {
 /* Navbar */
 .navbar {
     background-color: rgba(0, 0, 0, 0.7) !important;
-    padding: 20px 0;
+    padding: 0 20px;
+
+    height: 60px; /* Test fredag*/
+    display: flex; /* Test fredag*/
+    justify-content: space-between; /* Test fredag*/
+    align-items: center; /* Test fredag */
 }
+
+
 
 .navbar-text {
     font-family: 'Playfair Display', serif;
@@ -97,6 +126,15 @@ footer {
     white-space: nowrap;
     align-items: center;
     display: flex;
+
+    font-size: 1.5rem; /* Test fredag */
+}
+
+.navbar-toggler { 
+    display: inline-block; /* Test fredag */
+    border: none; /* fredag */
+    background: transparent; /* freda */
+    margin-left: 15px; /* Test */
 }
 
 .navbar-brand i {
@@ -117,6 +155,7 @@ footer {
     padding: 20px 0;
     color: #ffffff;
     flex-wrap: wrap; 
+    width: 100%; /* Test fredag */
 }
 
 .col-md-6 {
@@ -184,7 +223,50 @@ footer {
 
 /* Reservations */
 
+@media (max-width: 550px) {
+    /* Header  */
+    .header-content h1 {
+        font-size: 1.5rem;   
+    }
+
+    .header-content p, .header-content .lead {
+        font-size: 0.9rem; 
+        line-height: 1.3; 
+        margin-bottom: 5px; 
+    }
+
+   
+    .map-container iframe {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .opening-hours-content {
+        text-align: center;
+    }
+
+    
+    .bottom-section {
+        margin-bottom: 0; 
+    }
+
+}
+
 @media (max-width: 768px) and (min-width: 550px) {
+
+    .header-content h1 {
+        font-size: 1.7rem; 
+        margin-top: 60px;  
+    }
+
+    .header-content p, .header-content .lead {
+        font-size: 1.1rem; 
+        line-height: 1.3; 
+        margin-bottom: 5px; 
+    }
+
     .bottom-section .row {
         display: flex;
         flex-direction: column;
@@ -205,12 +287,25 @@ footer {
     .map-container iframe {
         max-height: 250px;
     }
+
+   
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 768px) {
     .map-container, .opening-hours-content {
         text-align: center;
         margin-bottom: 20px;
+    }
+
+    #menu-button { 
+        display: none;
+    }
+
+    .bottom-section {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
     }
 }
 
@@ -219,21 +314,24 @@ footer {
         justify-content: space-between; 
         width: 80%; 
         margin: 0 auto;
-
-.col-md-5 {
-    max-width: 45%; 
 }
+
+    .map-container iframe {
+        max-height: 350px;
+    }
 }
 
 @media (min-width: 1200px) {
 
-h1 {
-    margin-top: 25px; 
-}
+    h1 {
+        margin-top: 25px; 
+    }
+
     
 .header-section {
     padding-top: 20px !important; /* Test */
 }
+
 /* Deafult button style for logged in users*/
 .btn-primary, .btn-secondary {
     background-color: black;
@@ -249,7 +347,7 @@ h1 {
 
 /* Style for non-logged in users (bigger button) */
 .btn-large {
-    width: 250px; /* Adjust width for larger button */
+    width: 250px; 
     padding: 15px 30px;
     font-size: 20px;
 }
