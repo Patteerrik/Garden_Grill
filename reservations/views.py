@@ -189,3 +189,4 @@ def users_reservations(request):
     user_reservations = Reservation.objects.filter(email=request.user.email)
     return render(request, 'reservations/users_reservations.html', {'reservations': user_reservations})
 
+

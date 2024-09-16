@@ -6,6 +6,7 @@ from django.conf import settings #To use settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model 
 from django.core.mail import send_mail
+from .models import MenuCategory
 
 # Create your views here.
 def home(request):
@@ -95,6 +96,8 @@ def logout_view(request):
     return redirect('login') # Redirect to login page after logout
 
 
-
+def menu_view(request):
+    categories = MenuCategory.objects.prefetch_related('menu_items').all()
+    return render(request, 'home/menu.html', {'categories': categories})
 
     

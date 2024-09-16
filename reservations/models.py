@@ -9,3 +9,5 @@ class Reservation(models.Model):
 
     def __str__(self):
         return f"{self.reservation_name} - {self.date} at {self.time}"
+
+
