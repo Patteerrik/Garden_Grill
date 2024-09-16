@@ -1,24 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
+<div class="menu-container">
     <h1 class="menu-title">Menu</h1>
-    <hr>
-    {% for category in categories %}
-
-        <h2 class="category-title">{{ category.name }}</h2>
-        <p class="category-description">{{ category.description }}</p>
-        <div class="row">
-            {% for item in category.menu_items.all %}
-                <div class="col-md-4 menu-item">
-                    <h3>{{ item.name }}</h3>
-                    <p>{{ item.description }}</p>
-                    <p><strong>Price:</strong> ${{ item.price }}</p>
+    <div class="menu-box">
+        {% for category in categories %}
+            <div class="menu-category">
+                <h2>{{ category.name }}</h2>
+                <p>{{ category.description }}</p>
+                <div class="menu-items">
+                    {% for item in category.menu_items.all %}
+                        <div class="menu-item">
+                            <h3>{{ item.name }}</h3>
+                            <p>{{ item.description }}</p>
+                            <p><strong>Price:</strong> €{{ item.price }}</p>
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
-        </div>
-        <hr>
-    {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
 
