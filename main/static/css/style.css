@@ -1,6 +1,9 @@
 html, body {
     height: 100%;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 body {
@@ -13,7 +16,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
-    overflow-x: hidden; /* Test */
+    overflow-x: hidden; 
 }
 
 
@@ -22,8 +25,7 @@ main {
     flex-grow: 1;
 }
 /* Footer */
-footer {
-    /*background-color: rgba(0, 0, 0, 0.7);*/ 
+footer { 
     font-size: 1.2rem;
     
 }
@@ -33,9 +35,10 @@ footer.site-footer {
     color: white;
     text-align: center;
     padding: 10px 0;
-    width: 100%;
+    width: 100vw;
     position: relative;
     bottom: 0;
+    margin: 0;
 }
 
 .footer-icons {
@@ -55,9 +58,13 @@ footer.site-footer {
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 20vh; 
+    min-height: 60vh; 
+    padding-top: 120px;
     background: rgba(0, 0, 0, 0.5); 
     color: #fff; 
+    width: 100%; 
+    box-sizing: border-box; 
+    margin: 0;
 }
 
 .header-content .menu-button {
@@ -65,13 +72,11 @@ footer.site-footer {
 }
 
 .header-content h1 {
-    margin-top: 20px;
+    margin-top: 30px;
 }
   
 .header-content p {
     margin: 10px 0;
-    font-size: 1.2rem;
-    max-width: 500px;
 }
 
 .header-content {
@@ -84,22 +89,42 @@ footer.site-footer {
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px; /* Test */
-    padding: 20px; /* Test */
+    margin-bottom: 80px; 
+    padding: 20px; 
 }
+
+/* Header section ends */
 
 /* Navbar */
 .navbar {
     background-color: rgba(0, 0, 0, 0.7) !important;
     padding: 0 20px;
-
-    height: 60px; /* Test fredag*/
-    display: flex; /* Test fredag*/
-    justify-content: space-between; /* Test fredag*/
-    align-items: center; /* Test fredag */
+    height: 60px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
 }
 
+.navbar-collapse.collapse.show {
+    position: absolute;
+    top: 60px; 
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9); 
+    z-index: 999; 
+}
 
+.navbar-collapse {
+    display: flex;
+    justify-content: flex-start; 
+    flex-direction: column; 
+    align-items: flex-start; 
+}
 
 .navbar-text {
     font-family: 'Playfair Display', serif;
@@ -112,7 +137,11 @@ footer.site-footer {
 
 .nav-link {
     color: #e6dac4;
-    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 5px 20px;
+    width: 100%; 
+    text-align: left;
+    
 }
 
 .nav-link:hover, .nav-link:focus {
@@ -128,14 +157,14 @@ footer.site-footer {
     align-items: center;
     display: flex;
 
-    font-size: 1.5rem; /* Test fredag */
+    font-size: 1.5rem; 
 }
 
 .navbar-toggler { 
-    display: inline-block; /* Test fredag */
-    border: none; /* fredag */
-    background: transparent; /* freda */
-    margin-left: 15px; /* Test */
+    display: inline-block; 
+    border: none; 
+    background: transparent; 
+    margin-left: 15px; 
 }
 
 .navbar-brand i {
@@ -145,6 +174,39 @@ footer.site-footer {
     margin-left: 10px;
     font-size: 1.5rem;
 }
+
+@media (max-width: 768px) {
+    .navbar-toggler {
+        display: block; 
+    }
+
+    .navbar-collapse {
+        justify-content: flex-end;
+        text-align: right;
+    }
+
+    
+    .navbar-toggler {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        z-index: 10;
+    }
+}
+
+
+@media (max-width: 420px) {
+    .navbar-text {
+        font-size: 1.2rem; 
+    }
+
+    .navbar-toggler {
+        right: 10px;
+        top: 15px;
+    }
+}
+
+/* Navbar ends */
 
 /* Maps and Opening Hours */
 
@@ -156,7 +218,7 @@ footer.site-footer {
     padding: 20px 0;
     color: #ffffff;
     flex-wrap: wrap; 
-    width: 100%; /* Test fredag */
+    width: 100%; 
 }
 
 .col-md-6 {
@@ -179,6 +241,7 @@ footer.site-footer {
 
 
 /* Menu and Booking Buttons */
+
 .navigation-buttons {
     display: flex;
     justify-content: center;
@@ -229,7 +292,7 @@ footer.site-footer {
     justify-content: flex-start; 
     align-items: center;
     min-height: 100vh;
-    padding: 10px;
+    padding: 30px;
     background: none;
     box-sizing: border-box;
 }
@@ -238,8 +301,8 @@ footer.site-footer {
     font-size: 1.8rem; 
     color: #fff;
     text-align: center;
-    margin-bottom: 15px;
-    font-weight: bold;
+    margin-top: 50px;
+    /*font-weight: bold;*/
 }
 
 
@@ -273,7 +336,6 @@ footer.site-footer {
     margin-bottom: 15px;
 }
 
-/* Placing the menu items below each other */
 .menu-items {
     display: flex;
     flex-direction: column;
@@ -281,7 +343,6 @@ footer.site-footer {
     gap: 15px;
 }
 
-/* Menyposternas stil */
 .menu-item {
     background-color: transparent; 
     padding: 10px 0;
@@ -306,8 +367,33 @@ footer.site-footer {
     color: #fff; 
 }
 
+@media (max-width: 768px) {
+    .menu-title {
+        font-size: 1.8rem; 
+    }
 
-@media (min-height: 800px) {
+    .menu-category h2 {
+        font-size: 1.3rem; 
+    }
+
+    .menu-category p {
+        font-size: 1rem; 
+    }
+
+    .menu-item h3 {
+        font-size: 1.2rem; 
+    }
+
+    .menu-item p {
+        font-size: 0.9rem; 
+    }
+
+    .menu-item strong {
+        font-size: 1rem;
+    }
+}
+
+@media (min-height: 768px) {
     .menu-container {
         justify-content: flex-start;
     }
@@ -317,6 +403,7 @@ footer.site-footer {
     }
 }
 
+/* Menu ends here! */
  
 /* Reservations */
 
@@ -426,7 +513,7 @@ footer.site-footer {
 
     
 .header-section {
-    padding-top: 20px !important; /* Test */
+    padding-top: 20px !important;
 }
 
 /* Deafult button style for logged in users*/
