@@ -126,6 +126,10 @@ footer.site-footer {
     align-items: flex-start; 
 }
 
+.navbar-brand .navbar-text {
+    font-size: 1.5rem; 
+}
+
 .navbar-text {
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
@@ -137,7 +141,7 @@ footer.site-footer {
 
 .nav-link {
     color: #e6dac4;
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding: 5px 20px;
     width: 100%; 
     text-align: left;
@@ -174,6 +178,34 @@ footer.site-footer {
     margin-left: 10px;
     font-size: 1.5rem;
 }
+
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background-color: #e6dac4;
+    position: relative;
+    background-image: none;
+  }
+  
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: #e6dac4;
+    position: absolute;
+    left: 0;
+  }
+  
+  .navbar-toggler-icon::before {
+    top: -8px;
+  }
+  
+  .navbar-toggler-icon::after {
+    top: 8px;
+  }
 
 @media (max-width: 768px) {
     .navbar-toggler {
@@ -284,6 +316,8 @@ footer.site-footer {
     color: #e6be8a;
 }
 
+/* Form control ends! */
+
 /* Menu page */
 
 .menu-container {
@@ -297,8 +331,7 @@ footer.site-footer {
     box-sizing: border-box;
 }
 
-.menu-title {
-    font-size: 1.8rem; 
+.menu-title { 
     color: #fff;
     text-align: center;
     margin-top: 50px;
@@ -369,7 +402,7 @@ footer.site-footer {
 
 @media (max-width: 768px) {
     .menu-title {
-        font-size: 1.8rem; 
+        font-size: 1.6rem; 
     }
 
     .menu-category h2 {
