@@ -25,7 +25,7 @@
                         <td>{{ reservation.number_of_guests }}</td>
                         <td>
                             <!-- Navigates to the contact form -->
-                            <a href="{% url 'reservations:change_reservation' %}?reservation_id={{ reservation.id }}" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="{% url 'reservations:change_reservation' %}?reservation_id={{ reservation.id }}" class="btn btn-primary btn-sm users-edit">Edit</a>
                         </td>
                     </tr>
                     {% empty %}
