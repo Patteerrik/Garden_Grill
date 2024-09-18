@@ -1,6 +1,11 @@
 <!-- For user to see their current reservations -->
 {% extends 'base.html' %}
 
+{% load static %} 
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/user_reservations.css' %}">
+{% endblock %}
 {% block content %}
 <div class="container my-4">
     <div class="bg-light mp-4 rounded shadow-sm">

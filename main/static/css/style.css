@@ -76,7 +76,7 @@ footer.site-footer {
 
 /* Specific styling for logged in user content. */
 .logged-in-header .header-content {
-    margin-bottom: 0; /* Ta bort margin-bottom bara för inloggade användare */
+    margin-bottom: 0; 
 }
 
 .header-content .menu-button {
@@ -105,6 +105,35 @@ footer.site-footer {
     padding: 20px; 
 }
 
+@media (min-width: 768px) {
+    .header-section {
+        min-height: 32vh; 
+        padding-top: 50px; 
+        background-size: cover; 
+    }
+}
+
+@media (min-width: 900px) {
+    .header-section {
+        min-height: 40vh; 
+        padding-top: 100px;
+        
+    }
+
+    
+    .header-section h1 {
+        margin: 0; 
+        padding: 10px; 
+        font-size: 2.5rem; 
+    }
+
+    .header-section p {
+        margin: 5px; 
+        padding: 0; 
+        font-size: 1.3rem;
+        width: 800px; 
+    }
+}
 /* Header section ends */
 
 /* Navbar */
@@ -238,7 +267,6 @@ footer.site-footer {
     }
 }
 
-
 @media (max-width: 420px) {
     .navbar-text {
         font-size: 1.2rem; 
@@ -253,6 +281,51 @@ footer.site-footer {
 /* Navbar ends */
 
 /* Maps and Opening Hours */
+
+.opening-hours-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background: none;
+    box-sizing: border-box;
+}
+
+.opening-hours-box {
+    background-color: rgba(0, 0, 0, 0.7); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px; 
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+@media (min-height: 900px) {
+    .opening-hours-container {
+        justify-content: center;
+        
+    }
+
+    .opening-hours-box {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: #ffcc00;
+    margin-bottom: 20px;
+}
+
+.opening-hours-content p {
+    font-size: 1.2rem;
+    color: #ffcc00;
+    margin: 5px 0;
+}
 
 .bottom-section {
     display: flex;
@@ -277,12 +350,27 @@ footer.site-footer {
     justify-content: center;
 }
 
-.map-container iframe {
-    width: 100%;
-    max-width: 100%;
-    max-height: 250px;
+.map-container iframe { 
+    width: 200px;
+    height: 250px;
 }
 
+@media (min-width: 768px) {
+    .map-container iframe {
+        height: 300px;
+        width: 300px;
+        max-height: 300px;
+        max-width: 350px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .map-container iframe {
+        max-height: 350px;
+    }
+}
+
+/* Maps and Opening Hours ends! */
 
 /* Menu and Booking Buttons */
 
@@ -343,121 +431,7 @@ footer.site-footer {
 
 /* Menu page */
 
-.menu-container {
-    display: flex;
-    flex-direction: column; 
-    justify-content: flex-start; 
-    align-items: center;
-    min-height: 100vh;
-    padding: 30px;
-    background: none;
-    box-sizing: border-box;
-}
 
-.menu-title { 
-    color: #fff;
-    text-align: center;
-    margin-top: 50px;
-    /*font-weight: bold;*/
-}
-
-
-.menu-box {
-    background-color: rgba(0, 0, 0, 0.7); 
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 600px; 
-    width: 100%;
-    max-height: 80vh; 
-    overflow-y: auto;
-    box-sizing: border-box;
-}
-
-.menu-category {
-    margin-bottom: 20px;
-    width: 100%;
-    text-align: center;
-}
-
-.menu-category h2 {
-    font-size: 1.5rem;
-    color: #fff;
-    margin-bottom: 8px;
-}
-
-.menu-category p {
-    font-size: 1rem;
-    color: #ccc;
-    margin-bottom: 15px;
-}
-
-.menu-items {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 15px;
-}
-
-.menu-item {
-    background-color: transparent; 
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    text-align: center;
-}
-
-.menu-item h3 {
-    font-size: 1.4rem; 
-    margin-bottom: 8px;
-    color: #ffcc00; 
-    font-weight: 600; 
-}
-
-.menu-item p {
-    font-size: 1rem; 
-    color: #ccc; 
-}
-
-.menu-item strong {
-    font-size: 1.2rem; 
-    color: #fff; 
-}
-
-@media (max-width: 768px) {
-    .menu-title {
-        font-size: 1.6rem; 
-    }
-
-    .menu-category h2 {
-        font-size: 1.3rem; 
-    }
-
-    .menu-category p {
-        font-size: 1rem; 
-    }
-
-    .menu-item h3 {
-        font-size: 1.2rem; 
-    }
-
-    .menu-item p {
-        font-size: 0.9rem; 
-    }
-
-    .menu-item strong {
-        font-size: 1rem;
-    }
-}
-
-@media (min-height: 768px) {
-    .menu-container {
-        justify-content: flex-start;
-    }
-
-    .menu-box {
-        max-height: 70vh; 
-    }
-}
 
 /* Menu ends here! */
 
