@@ -16,6 +16,7 @@ from django.core.mail import send_mail
 # Send emails with django
 from collections import defaultdict
 # Dictionary with deafult values
+from datetime import timedelta
 
 def logged_in_user(request):
     # check if user is admin
@@ -104,9 +105,15 @@ def create_reservation(request):
             existing_reservations = Reservation.objects.filter(date=date, 
             time=time).aggregate(Sum('number_of_guests'))
             booked_seats =  existing_reservations['number_of_guests__sum'] or 0
+            total_seats = 50
+            available_seats = total_seats - booked_seats
 
             # Ensure total number of booked seats doesn´t exceed 50
-            if booked_seats + number_of_guests <= 50:
+            if available_seats <= 0:
+                messages.error(request, "The selected time is fully booked")
+            elif number_of_guests > available_seats:
+                messages.error(request, f"Only {available_seats} seats are available for the chosen time")
+            else:
                 # Save the form without committing
                 new_reservation = form.save(commit=False)
                 # Set email and username for new reservation
@@ -118,12 +125,10 @@ def create_reservation(request):
 
                 # Redirect to success page after reservation is created
                 return redirect('reservations:success_reservation', pk=new_reservation.pk)
-            else:
-                # Show error message if there is not not enough avaible seats
-                messages.error(request, f"Only {50 - booked_seats} seats are available for the selected time.")
         else:
-            # Show error message if the form is invalid
-            messages.error(request, f" There was an error in the form. Please try again")
+                # Show error message 
+                messages.error(request, "Something went wrong with the form.")
+       
     else:
         # If the request is not POST, display an empty form
         form = ReservationForm()
@@ -188,5 +193,8 @@ def edit_reservation(request, reservation_id):
 def users_reservations(request):
     user_reservations = Reservation.objects.filter(email=request.user.email)
     return render(request, 'reservations/users_reservations.html', {'reservations': user_reservations})
+
+def sitting_time():
+    return timedelta(hours=1.5)
 
 
