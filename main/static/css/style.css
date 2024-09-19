@@ -339,18 +339,14 @@ footer.site-footer {
     background-color: rgba(0, 0, 0, 0.7); 
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 400px; 
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); 
     width: 100%;
     box-sizing: border-box;
     text-align: center;
 }
 
-@media (min-height: 768px) {
-
-    .opening-hours-box {
-        width: 300px;
-    }
+.map-container iframe {
+    border-radius: 10px;
 }
 
 @media (min-height: 900px) {
@@ -405,8 +401,6 @@ footer.site-footer {
     .map-container iframe {
         height: 200px;
         width: 250px;
-        max-height: 300px;
-        max-width: 350px;
     }
 
     .opening-hours-box {
@@ -419,39 +413,84 @@ footer.site-footer {
     }
 }
 
-@media (min-width: 1024px) {
-    .map-container iframe {
-        max-height: 350px;
-    }
-}
-
 @media (min-width: 769px) and (max-width: 1024px) {
     
     .bottom-section .row {
-        gap: 20px; 
+        gap: 20px;
+        align-items: flex-start;
     }
 
     .col-md-5 {
-        max-width: 250px;   
+        flex: 1; 
+        padding: 0;
     }
 
     .map-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         width: 100%;
-        height: 300px;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .map-container iframe {
         width: 100%;
-        height: 250px; 
+        height: 250px;
+    }
+
+    .map-title,
+    .section-title {
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        color: #ffcc00;
     }
 
     .opening-hours-box {
-        justify-content: center; 
         width: 100%;
-        height: 300px; 
+        padding: 20px;
+        height: 250px;
+        margin-bottom: 30px;
+    }
+
+    .opening-hours-content {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .opening-hours-content p {
+        margin: 5px 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .map-title,
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .opening-hours-content p {
+        font-size: 1.5rem;
+    }
+
+    .map-container iframe {
+        width: 450px;
+        height: 350px;
+    }
+
+    .opening-hours-box {
+        width: 400px;
+        padding: 20px;
+        height: 350px;
+        margin-bottom: 30px;
+    }
+
+    .opening-hours-content {
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -559,7 +598,7 @@ footer.site-footer {
     }
 
     .map-container iframe {
-        max-height: 250px;
+        height: 250px;
     }
 }
 
@@ -602,7 +641,7 @@ footer.site-footer {
 }
 
     .map-container iframe {
-        max-height: 350px;
+        height: 350px;
     }
 }
 
