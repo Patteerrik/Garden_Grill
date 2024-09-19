@@ -33,4 +33,8 @@
         flex: 0 1 auto;
         margin-top: 10px; /* Ge knappen lite utrymme om den hamnar under tabellen */
     }
+
+    .users-edit {
+        width: 80px;
+    }
 }

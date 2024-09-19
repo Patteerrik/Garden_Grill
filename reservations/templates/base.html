@@ -95,7 +95,7 @@
         Discover our carefully crafted menu, featuring fresh, locally-sourced ingredients, served in a warm and inviting
         atmosphere.
         {% if not user.is_authenticated %}
-        Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">register</a> to make a
+        Please <a href="{% url 'login' %}" class="custom-link">log in</a> or <a href="{% url 'register' %}" class="custom-link">register</a> to make a
         reservation.
         {% endif %}
       </p>
