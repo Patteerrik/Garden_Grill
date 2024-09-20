@@ -55,14 +55,19 @@
 <script>
     (function () {
         'use strict'
+        // Select all form with class 'needs-validation'
         var forms = document.querySelectorAll('.needs-validation')
+        // Turn the list of forms into an array, then go through each form
         Array.prototype.slice.call(forms)
             .forEach(function (form) {
+                // Add a 'submit' event listener to each form
                 form.addEventListener('submit', function (event) {
+                    // If the form is invalid
                     if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
+                        event.preventDefault() // Stop the form from submitting
+                        event.stopPropagation() // Prevent the event from affecting other elements
                     }
+                    // Add the 'was-validated' class to show validation styles
                     form.classList.add('was-validated')
                 }, false)
             })
