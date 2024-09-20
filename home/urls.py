@@ -2,6 +2,7 @@
 from django.urls import path, include
 from . import views # Imports the views module
 from django.conf.urls import handler404
+from .views import logout_view
 
 
 

@@ -9,19 +9,19 @@
         padding: 5px; 
     }
     
-    /* Göra Edit-knappen mindre */
+    
     .btn-edit {
         font-size: 0.8rem; 
-        padding: 5px 10px; /* Mindre padding för knappen */
-        width: auto; /* Anpassa bredden till innehållet */
+        padding: 5px 10px; 
+        width: auto; 
     }
 
-    /* Flex-layout för att göra knappen mer flexibel */
+    
     .table-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap; /* Gör att innehållet bryts om det inte får plats */
+        flex-wrap: wrap; 
     }
 
     .table-row td {
@@ -31,7 +31,7 @@
 
     .table-row .btn-edit {
         flex: 0 1 auto;
-        margin-top: 10px; /* Ge knappen lite utrymme om den hamnar under tabellen */
+        margin-top: 10px; 
     }
 
     .users-edit {

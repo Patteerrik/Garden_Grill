@@ -78,8 +78,7 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            messages.success(request, 'Login successful!')
-
+            
             # Check if admin or user
             if user.username == 'admin0011' or user.is_staff:
                 return redirect('reservations:logged_in_admin')

@@ -551,6 +551,22 @@ footer.site-footer {
 
 /* Register ends here! */
 
+/* Create reservation.html */
+
+#message-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.alert {
+    max-width: fit-content;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Create reservation.html ends here! */
+
 /* Home page for non inlogged users */
 
 @media (max-width: 550px) {
