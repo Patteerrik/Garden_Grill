@@ -35,7 +35,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = [
@@ -55,6 +55,13 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD') 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+# User session ends when the browser is closed
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# User session ends after 5 minutes inactivity
+
+SESSION_COOKIE_AGE = 300
 
 # Application definition
 

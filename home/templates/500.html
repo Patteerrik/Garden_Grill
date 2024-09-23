@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+500 - Internal Server Error
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card custom-card text-center">
+                <div class="card-header">
+                    <h2>500 - Internal Server Error</h2>
+                </div>
+                <div class="card-body">
+                    <p class="lead">Sorry, something went wrong on our end.</p>
+                    <p>Would you like to go back?</p>
+
+                    <!-- Different options for logged in users and guests -->
+                    {% if user.is_staff %}
+                    <a href="{% url 'reservations:logged_in_admin' %}" class="btn btn-primary">Go to Admin Dashboard</a>
+                    {% elif user.is_authenticated %}
+                    <a href="{% url 'reservations:logged_in_user' %}" class="btn btn-primary">Go to Home Page</a>
+                    {% else %}
+                    <a href="{% url 'home' %}" class="btn btn-primary">Go to Home Page</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block header-text %}
+<!-- Override to modify or remove header text in base.html -->
+{% endblock %}
+
+{% block buttons %}
+<!-- Override to modify or remove buttons in base.html -->
+{% endblock %}
+
+{% block bottom-section %}
+<!-- Override to modify or remove bottom section in base.html -->
+{% endblock %}

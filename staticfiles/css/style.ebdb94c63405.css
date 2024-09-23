@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', Arial, sans-serif;
-    background-image: url('/static/images/pexels-chanwalrus-941861.webp');
+    background-image: url("/static/images/pexels-chanwalrus-941861.5f55935a22aa.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

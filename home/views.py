@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model 
 from django.core.mail import send_mail
 from .models import MenuCategory
+from django.http import HttpResponse # Test
 
 # Create your views here.
 def home(request):
@@ -98,5 +99,11 @@ def logout_view(request):
 def menu_view(request):
     categories = MenuCategory.objects.prefetch_related('menu_items').all()
     return render(request, 'home/menu.html', {'categories': categories})
+
+from django.http import HttpResponse
+
+
+
+
 
     
