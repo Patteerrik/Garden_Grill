@@ -17,6 +17,8 @@ from django.core.mail import send_mail
 from collections import defaultdict
 # Dictionary with deafult values
 from datetime import timedelta
+# Django for handling timezones 
+from django.utils import timezone
 
 def logged_in_user(request):
     # check if user is admin
@@ -39,6 +41,13 @@ def logged_in_admin(request):
 @login_required
 @user_passes_test(is_admin_user)
 def list_reservation(request):
+    # Retrieves the current time
+    now = timezone.localtime()
+    # Delete old reservatons 
+    Reservation.objects.filter(date__lt=now.date()).delete()  
+    Reservation.objects.filter(date=now.date(), time__lt=now.time()).delete()
+
+    # Retrieve remaining reservations
     reservations = Reservation.objects.all()
     # Handle POST requests
     if request.method == 'POST':
