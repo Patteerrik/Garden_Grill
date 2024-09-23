@@ -43,30 +43,35 @@ def logged_in_admin(request):
 def list_reservation(request):
     # Retrieves the current time
     now = timezone.localtime()
-    # Delete old reservatons 
+    # Delete old reservations
     Reservation.objects.filter(date__lt=now.date()).delete()  
     Reservation.objects.filter(date=now.date(), time__lt=now.time()).delete()
+    
+    # Handle POST requests
+    if request.method == 'POST' and 'delete' in request.POST:
+        reservation_id = request.POST.get('reservation_id')
+        reservation = get_object_or_404(Reservation, id=reservation_id)
+
+        # Skicka avbokningsmejl
+        try:
+            send_mail(
+                'Your reservation has been canceled',
+                f"Hello {reservation.reservation_name},\n\nYour reservation for {reservation.date} at {reservation.time} has been canceled.",
+                settings.DEFAULT_FROM_EMAIL,
+                [reservation.email],
+                fail_silently=False,
+            )
+            messages.success(request, "Cancellation email sent.")
+        except Exception as e:
+            messages.error(request, f"Failed to send cancellation email: {e}")
+
+        # Ta bort reservationen
+        reservation.delete()
+        messages.success(request, 'Reservation has been canceled.')
+        return redirect('reservations:list_reservation')
 
     # Retrieve remaining reservations
     reservations = Reservation.objects.all()
-    # Handle POST requests
-    if request.method == 'POST':
-        reservation_id = request.POST.get('reservation_id')
-        reservation = get_object_or_404(Reservation, id=reservation_id)
-        
-        # Handle reservation edits
-        if 'edit' in request.POST:
-            number_of_guests = request.POST.get('number_of_guests')
-            reservation.number_of_guests = number_of_guests
-            reservation.save()
-            messages.success(request, 'Reservation has ben updated.')
-            return redirect('reservations:list_reservation')
-        # Handle delition of reservations
-        elif 'delete' in request.POST:
-            reservation.delete()
-            messages.success(request, 'Reservations has been canceled.')
-            return redirect('reservations:list_reservation')
-    
 
     # Group reservation logic by date and time
     spots_per_time = defaultdict(lambda: {'reserved_spots': 0, 'available_spots': 50})
@@ -79,7 +84,6 @@ def list_reservation(request):
         spots_per_time[key]['email'] = res.email
 
     # Convert to a list to send to the template
-    # https://www.w3schools.com/python/ref_dictionary_items.asp
     spots_per_time_list = [
         {
             'date': date, 
@@ -97,6 +101,7 @@ def list_reservation(request):
         # Sends booking to template 
         'reservations': reservations, 
     })
+
     
 @login_required
 def create_reservation(request):
@@ -186,18 +191,46 @@ def success_email(request):
 @login_required
 @user_passes_test(lambda u: u.is_staff)
 def edit_reservation(request, reservation_id):
-
+    # Retrive current reservation
     reservation = get_object_or_404(Reservation, id=reservation_id)
+    
     if request.method == 'POST':
-        form = ReservationForm(request.POST, instance=reservation)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Reservations has been updatet!')
-            return redirect('reservations:list_reservation')
+        # Retrieve updated data from the form
+        reservation_name = request.POST.get('reservation_name')
+        date = request.POST.get('date')
+        time = request.POST.get('time')
+        number_of_guests = request.POST.get('number_of_guests')
+
+        # Update reservation with new data
+        reservation.reservation_name = reservation_name
+        reservation.date = date
+        reservation.time = time
+        reservation.number_of_guests = number_of_guests
+        reservation.save()
+
+        # Send confirmation email after the update   
+        try:
+            send_mail(
+                'Your reservation has been updated',
+                'Your reservation has been updated. Check under \'My reservation\' to see your current reservation.',
+                settings.DEFAULT_FROM_EMAIL,
+                [reservation.email],
+                fail_silently=False,
+            )
+                 
+            messages.success(request, "Test email sent.")
+        except Exception as e:
+            messages.error(request, "Failed to send confirmation email.")
+
+        messages.success(request, 'Reservation has been updated.')
+
+        return redirect('reservations:list_reservation')
     else:
         form = ReservationForm(instance=reservation)
 
     return render(request, 'reservations/edit_reservations.html', {'form': form, 'reservation': reservation})
+
+
 
 def users_reservations(request):
     user_reservations = Reservation.objects.filter(email=request.user.email)
@@ -205,5 +238,3 @@ def users_reservations(request):
 
 def sitting_time():
     return timedelta(hours=1.5)
-
-
