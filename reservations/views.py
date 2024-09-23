@@ -52,7 +52,7 @@ def list_reservation(request):
         reservation_id = request.POST.get('reservation_id')
         reservation = get_object_or_404(Reservation, id=reservation_id)
 
-        # Skicka avbokningsmejl
+        # Send reservation email
         try:
             send_mail(
                 'Your reservation has been canceled',
@@ -217,17 +217,13 @@ def edit_reservation(request, reservation_id):
                 [reservation.email],
                 fail_silently=False,
             )
-                 
-            messages.success(request, "Test email sent.")
+            
+            messages.success(request, 'Reservation has been updated.')
+            return redirect('reservations:list_reservation')
         except Exception as e:
-            messages.error(request, "Failed to send confirmation email.")
-
-        messages.success(request, 'Reservation has been updated.')
-
-        return redirect('reservations:list_reservation')
-    else:
-        form = ReservationForm(instance=reservation)
-
+            messages.error(request, 'Failed to send confirmation email. Reservation was updated, but email was not sent.')
+            
+    form = ReservationForm(instance=reservation)
     return render(request, 'reservations/edit_reservations.html', {'form': form, 'reservation': reservation})
 
 
