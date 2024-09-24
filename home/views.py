@@ -93,8 +93,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    request.session.flush() 
-    messages.info(request, 'You have been logged out.')
+    request.session.flush()
     return redirect('home') # Redirect to login page after logout
 
 
