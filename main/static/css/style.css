@@ -54,10 +54,19 @@ footer.site-footer {
     color: #e6dac4;
 }
 
-/* Color links in home page text */
+/* Links in home page text */
 .custom-link {
-    color: #ffcc00;
+    color: #ebcc1e;
+    text-decoration: none;
+    font-weight: bold;
 }
+
+.custom-link:hover {
+    color: #eed43f; 
+    text-decoration: underline; 
+}
+
+/* Links in home page text ends here! */
 
 /* Header Section */
 .header-section {
@@ -93,10 +102,12 @@ footer.site-footer {
 
 .header-content h1 {
     margin-top: 30px;
+    font-family: 'Georgia', serif;
 }
   
 .header-content p {
     margin: 10px 0;
+    font-family: 'Lato', sans-serif;
 }
 
 .header-content {
@@ -146,6 +157,13 @@ footer.site-footer {
         padding-top: 50px; 
         background-size: cover; 
     }
+
+    /* social media icons */
+
+    .social-media-icons i {
+        padding:8px;
+        font-size:1.5rem;
+}
 }
 
 @media (min-width: 900px) {
@@ -166,6 +184,12 @@ footer.site-footer {
         font-size: 1.3rem;
         width: 800px; 
     }
+
+    /* social media icons */
+    .social-media-icons i {
+        padding:12px;
+        font-size:1.8rem;
+}
 }
 
 @media (min-height: 1200px) {
@@ -347,6 +371,16 @@ footer.site-footer {
 
 .map-container iframe {
     border-radius: 10px;
+}
+
+.map-title,
+    .section-title {
+        color:#FFD700;
+        background:rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+    }
+.opening-hours-content {
+    color:#FFD700;
 }
 
 @media (min-height: 900px) {

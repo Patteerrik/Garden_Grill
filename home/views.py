@@ -90,10 +90,12 @@ def login_view(request):
 
     return render(request, 'home/login.html')
 
+
 def logout_view(request):
     logout(request)
+    request.session.flush() 
     messages.info(request, 'You have been logged out.')
-    return redirect('login') # Redirect to login page after logout
+    return redirect('home') # Redirect to login page after logout
 
 
 def menu_view(request):
