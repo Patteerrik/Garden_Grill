@@ -115,3 +115,9 @@
         max-height: 70vh; 
     }
 }
+
+@media (min-width: 1200px) {
+    .menu-box {
+        max-width: 800px;
+    }
+}

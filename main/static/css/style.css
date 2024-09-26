@@ -402,12 +402,12 @@ footer.site-footer {
     border-radius: 10px; 
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); 
     text-align: center; 
-    width: 100%; 
-    max-width: 300px; 
+    width: 200px;  
 }
 
 .map-container iframe {
     border-radius: 10px;
+    width: 200px;
 }
 
 .map-title,
@@ -478,7 +478,7 @@ footer.site-footer {
     }
 
     .opening-hours-box {
-        margin-top: 2rem; 
+        margin-top: 2.2rem; 
     }
 
     
@@ -488,6 +488,24 @@ footer.site-footer {
 
     .map-title {
         padding: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .map-container iframe, .opening-hours-box {
+        width:300px;
+    }
+
+    .section-title {
+        font-size:1.4rem !important;
+    }
+    .opening-hours-content p {
+        line-height:1.2rem;
+        font-size:1rem !important;
+    } 
+     .opening-hours-content h4 {
+         font-size:1.2rem
     }
 }
 
@@ -530,7 +548,8 @@ footer.site-footer {
     color: #f0f0f0; 
 }
 
-/* Form Control */
+/* Contact us.html */
+
 .form-control {
     background-color: #f0f4ff;
     border: 1px solid #ced4da;
@@ -551,16 +570,73 @@ footer.site-footer {
     text-decoration: underline
 }
 
-/* Form control ends! */
+.menu-box-contact {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding:1px;
+}
 
-/* Register */
+/* Contact us.html ends here! */
+
+/* Success reservation.html */
+
+.text-yellow {
+    color: #FFD700; 
+}
+
+/* Success reservation.html ends here! */
+
+/* Register.html */
 
 .container  {
-    margin-top: 80px;
+    margin-bottom: 80px;
     padding:40px
 }
 
-/* Register ends here! */
+.menu-box {
+    background-color: rgba(0, 0, 0, 0.7); 
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 600px; 
+    width: 100%;
+    max-height: 80vh; 
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.card-header {
+    color:white;
+}
+.form-group {
+    color: #ebcc1e;
+}
+
+.card-footer {
+    color: #ebcc1e;;
+}
+
+.card-footer a {
+    color: white;
+}
+
+/* Register.html ends here! */
+
+/* Login.html */
+
+.custom-background {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.log-in-title {
+    font-size: 1.5rem;
+}
+
+/* Login.html ends here! */
 
 /* Create reservation.html */
 
@@ -577,6 +653,58 @@ footer.site-footer {
 }
 
 /* Create reservation.html ends here! */
+
+/* User reservation.html */
+
+.menu-box-reservations h2 {
+    color: white !important;
+}
+
+.menu-box-reservations {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    background-color: transparent;
+    color: #fff;
+}
+
+.table th {
+    color: #FFD700; 
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+
+.table td {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+/* For empty table */
+.table tbody tr td {
+    color: #f9f9f9;
+    background-color: rgba(0, 0, 0, 0.3); 
+}
+
+/* User reservations.html ends here! */
+
+/* list reservation.html (admin) */
+
+.admin-list-reservations {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom:40px;
+}
+
+.admin-list-reservations h2, h4 {
+    color:white
+}
+
+/* List reservation.html ends here! (admin) */
 
 /* Home page for non inlogged users */
 

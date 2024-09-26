@@ -13,7 +13,7 @@
             {% endfor %}
         </div>
     {% endif %}
-    <div class="bg-light mp-4 rounded shadow-sm">
+    <div class="card custom-card admin-list-reservations">
         <h2>Current reservations</h2>
         
         <!-- Reservation summary per date and time -->
@@ -93,14 +93,14 @@
 <!-- JavaScript to remove the alert after 3 seconds -->
 <script>
     setTimeout(function() {
-        var alert = document.querySelector('.alert');
-        if (alert) {
+        var alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function(alert) {
             alert.style.transition = 'opacity 1s ease-out';
             alert.style.opacity = '0';
             setTimeout(function() {
                 alert.remove();
             }, 1000);
-        }
+        });
     }, 3000);  // 3 seconds delay before fading out
 </script>
 

@@ -4,17 +4,17 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card custom-card">
+            <div class="card custom-card menu-box">
                 <div class="card-header text-center">
                     <h2>Reservation Successful!</h2>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-white">
                     <p>Your reservation has been successfully made. Here are your reservation details:</p>
                     <ul class="list-unstyled">
-                        <li><strong>Name:</strong> {{ reservation.reservation_name }}</li>
-                        <li><strong>Date:</strong> {{ reservation.date }}</li>
-                        <li><strong>Time:</strong> {{ reservation.time }}</li>
-                        <li><strong>Number of Guests:</strong> {{ reservation.number_of_guests }}</li>
+                        <li><strong class="text-yellow">Name:</strong> {{ reservation.reservation_name }}</li>
+                        <li><strong class="text-yellow">Date:</strong> {{ reservation.date }}</li>
+                        <li><strong class="text-yellow">Time:</strong> {{ reservation.time }}</li>
+                        <li><strong class="text-yellow">Number of Guests:</strong> {{ reservation.number_of_guests }}</li>
                     </ul>
                     <a href="{% if user.is_staff %}{% url 'reservations:logged_in_admin' %}{% else %}{% url 'reservations:logged_in_user' %}{% endif %}" class="btn btn-primary">Back to Home</a>
                 </div>

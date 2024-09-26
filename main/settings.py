@@ -61,7 +61,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # User session ends after 5 minutes inactivity
 
-SESSION_COOKIE_AGE = 180
+SESSION_COOKIE_AGE = 1000
 
 SESSION_SAVE_EVERY_REQUEST = False
 
