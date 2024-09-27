@@ -2,7 +2,7 @@
 
 * Garden and Grill is a fictional restaurant located in the centre of stockholm. It is a full-stack web project built using the Django MVC framework. The project aims to provide a user friendly platform where customers can make table reservations at the restaurant "Garden & Grill." The system has been developed with a focus on user experience, security, and efficient reservation management, both for restaurant administrators and guests. [The live link can be found here:](https://gardengrill-d40b8e344381.herokuapp.com/)
 
-![Alt text](README-Images/README-Am_I_Responsive.png)
+![Alt text](main/static/images/AmIResponsive.png)
 
 ## Agile planning
 
@@ -36,19 +36,29 @@
 * The Navbar looks different depending the users logged in status.
 
   * #### Logged-in user
-  ![Alt text](image-url)
+
+  ![Alt text](main/static/images/Logged_in_user_navbar.png)
 
   * #### Not logged-in user
-  ![Alt text](image-url)
+
+  ![Alt text](main/static/images/Not_logged_in_user_navbar.png)
 
 
 ## Footer
 
+![Alt text](main/static/images/Footer.png)
+
 ## Register 
+
+![Alt text](main/static/images/Register_readme.png)
 
 ## Login
 
+![Alt text](main/static/images/Login_readme.png)
+
 ## Create reservation
+
+![Alt text](main/static/images/Create_reservations_readme.png)
 
 ## My reservations
 
