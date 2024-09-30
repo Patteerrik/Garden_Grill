@@ -22,6 +22,7 @@ from django.utils import timezone
 #
 from django import forms
 
+
 def logged_in_user(request):
     # check if user is admin
     if request.user.is_staff:

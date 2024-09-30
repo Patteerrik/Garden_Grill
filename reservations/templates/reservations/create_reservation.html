@@ -45,16 +45,20 @@
                             </div>
                         </div>
 
-                        {% if form.email %}
-                            <div class="form-group mb-3">
-                                <label for="{{ form.email.id_for_label }}">Email</label>
-                                {{ form.email }}
-                                <div class="invalid-feedback">
-                                    Please enter a valid email.
-                                </div>
+                        {% if request.user.is_staff %}
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Enter email for reservation" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid email.
                             </div>
+                        </div>
                         {% endif %}
-                        
+
+
+
+
                         <button type="submit" class="btn btn-primary w-100">Submit</button>
                     </form>
                 </div>
