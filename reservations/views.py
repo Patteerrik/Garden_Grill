@@ -19,6 +19,8 @@ from collections import defaultdict
 from datetime import timedelta
 # Django for handling timezones 
 from django.utils import timezone
+#
+from django import forms
 
 def logged_in_user(request):
     # check if user is admin
@@ -61,13 +63,17 @@ def list_reservation(request):
                 [reservation.email],
                 fail_silently=False,
             )
-            messages.success(request, "Cancellation email sent.")
+            # Success message
+            messages.success(request, "Reservation has been canceled. Cancellation email sent.")
+            reservation.delete() # Delete reservation only if email is successful
         except Exception as e:
+            # Cancel reservation
             messages.error(request, f"Failed to send cancellation email: {e}")
+            messages.success(request, 'Reservation has been canceled.')
 
-        # Ta bort reservationen
+        # Delete reservation
         reservation.delete()
-        messages.success(request, 'Reservation has been canceled.')
+
         return redirect('reservations:list_reservation')
 
     # Retrieve remaining reservations
@@ -105,49 +111,110 @@ def list_reservation(request):
     
 @login_required
 def create_reservation(request):
-    # Check if the request method is POST
     if request.method == 'POST':
-        # Bind the form with post data
         form = ReservationForm(request.POST)
-        if form.is_valid():
-            # Extract cleaned data from the form
-            date = form.cleaned_data['date']
-            time = form.cleaned_data['time']
-            number_of_guests = form.cleaned_data['number_of_guests']
 
-            # Check to see how many seats are available
-            existing_reservations = Reservation.objects.filter(date=date, 
-            time=time).aggregate(Sum('number_of_guests'))
-            booked_seats =  existing_reservations['number_of_guests__sum'] or 0
-            total_seats = 50
-            available_seats = total_seats - booked_seats
+        # 
+        if request.user.is_staff:
+            form.fields['email'] = forms.EmailField(required=True, label="Email for reservation")
 
-            # Ensure total number of booked seats doesn´t exceed 50
-            if available_seats <= 0:
-                messages.error(request, "The selected time is fully booked")
-            elif number_of_guests > available_seats:
-                messages.error(request, f"Only {available_seats} seats are available for the chosen time")
-            else:
-                # Save the form without committing
-                new_reservation = form.save(commit=False)
-                # Set email and username for new reservation
-                new_reservation.email = request.user.email 
-                # Set email and username for reservation
-                new_reservation.reservation_name = request.user.username
-                # Save the reservation to the database
-                new_reservation.save()
+        # n
+        new_reservation = process_reservation_form(request, form)
+        
+        if new_reservation:
+            # 
+            send_reservation_conf_email(new_reservation)
+            # 
+            return redirect('reservations:success_reservation', pk=new_reservation.pk)
 
-                # Redirect to success page after reservation is created
-                return redirect('reservations:success_reservation', pk=new_reservation.pk)
-        else:
-                # Show error message 
-                messages.error(request, "Something went wrong with the form.")
-       
     else:
-        # If the request is not POST, display an empty form
+        # 
         form = ReservationForm()
-    # Display the reservation form
+
+        # 
+        if request.user.is_staff:
+            form.fields['email'] = forms.EmailField()
+
+    # 
     return render(request, 'reservations/create_reservation.html', {'form': form})
+
+
+
+def send_reservation_conf_email(reservation):
+    """
+    Sends a confirmation email to the user after the reservation is saved.
+    This function is separated to keep the create_reservation view cleaner.
+    """
+    subject = 'Reservation Confirmation'
+    message = f"Your reservation for {reservation.date} at {reservation.time} has been successfully made."
+    recipient_list = [reservation.email]
+    
+    send_mail(
+        subject,
+        message,
+        settings.DEFAULT_FROM_EMAIL,
+        recipient_list,               
+        fail_silently=False,
+    )
+
+
+def process_reservation_form(request, form):
+    """
+    Handles the form and creates a new reservation.
+    Manages validation and email assignment.
+    Returns the reservation if successful, otherwise None.
+    This function is separated to keep the create_reservation view cleaner.
+
+    """
+    if form.is_valid():
+        date = form.cleaned_data['date']
+        time = form.cleaned_data['time']
+        number_of_guests = form.cleaned_data['number_of_guests']
+
+        # 
+        is_available, message = check_availability(date, time, number_of_guests)
+        if not is_available:
+            messages.error(request, message)
+            return None
+
+        #
+        new_reservation = form.save(commit=False)
+
+        # 
+        new_reservation.reservation_name = form.cleaned_data.get('reservation_name', request.user.username)
+        
+        if request.user.is_staff:
+            new_reservation.email = form.cleaned_data['email']
+        else:
+            new_reservation.email = request.user.email
+
+        # 
+        new_reservation.save()
+        
+        return new_reservation
+    else:
+        messages.error(request, "Something went wrong with the form.")
+        return None
+
+
+def check_availability(date, time, number_of_guests):
+    """
+    Checks availability for a specific date and time.
+    Returns (is_available, message) with availability status
+    """
+    total_seats = 50  # Total seats available
+    existing_reservations = Reservation.objects.filter(date=date, time=time).aggregate(Sum('number_of_guests'))
+    booked_seats = existing_reservations['number_of_guests__sum'] or 0
+    available_seats = total_seats - booked_seats
+
+    if available_seats <= 0:
+        return False, "The selected time is fully booked."
+    elif number_of_guests > available_seats:
+        return False, f"Only {available_seats} seats are available for the chosen time."
+    
+    return True, None
+
+
 
 
 def success_reservation(request, pk):
