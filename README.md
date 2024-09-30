@@ -1,6 +1,6 @@
 # Garden adn Grill
 
-* Garden and Grill is a fictional restaurant located in the centre of stockholm. It is a full-stack web project built using the Django MVC framework. The project aims to provide a user friendly platform where customers can make table reservations at the restaurant "Garden & Grill." The system has been developed with a focus on user experience, security, and efficient reservation management, both for restaurant administrators and guests. [The live link can be found here:](https://gardengrill-d40b8e344381.herokuapp.com/)
+* Garden and Grill is a fictional restaurant located in the centre of stockholm. It is a full-stack web project built using the Django MVC framework. The project aims to provide a user friendly platform where customers can make table reservations at the restaurant "Garden and Grill." The system has been developed with a focus on user experience, security, and efficient reservation management, both for restaurant administrators and guests. [The live link can be found here:](https://gardengrill-d40b8e344381.herokuapp.com/)
 
 ![Alt text](main/static/images/AmIResponsive.png)
 
@@ -49,7 +49,7 @@
 
 
 ## Footer
-* The footer has a transparent color scheme that complements the background and contains links to social media that open in a new tab.
+* The footer has a transparent color scheme that complements the background and contains links to social media pages that open in a new tab.
 
 ![Alt text](main/static/images/Footer.png)
 
@@ -132,7 +132,15 @@
 
 ## Contact us 
 
+This page contains a simple form with three input fields: Reservation Name, Email, and Message. Users can fill out this form to reach out to the restaurant for questions or updates related to their reservations.
+
 ![Alt text](main/static/images/Contact_us_readme.png)
+
+## Favicon 
+
+* The restaurant's favicon is a simple representation of "Garden and Grill," designed to help users easily locate the site when multiple tabs are open.
+
+![Alt text](main/static/images/Favicon_readme.png)
 
 ## Bugs
 
@@ -141,4 +149,21 @@
 ## Features left to implement
 * Forgot password
 * Search bar so that admin can easily find existing reservations.
+
 ## Deployment
+
+* This app was deployed to Heroku
+  * Sign up for Heroku
+  * Click "create new app"
+  * Give the app a unique name
+  * Click settings in the section on top of the page
+  * Scroll down and press "Add buildpack"
+  * 
+  * Click deploy in the section on top of the page
+  * Select method "Connect to Github" then press "Connect to Github" button
+  * Search for Garden_grill
+  * Click connect
+  * Click "Enable automatic deploys" button to enable Heroku to rebuild the app when a new change is pushed to Github
+
+## Credits
+
