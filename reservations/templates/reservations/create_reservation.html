@@ -11,9 +11,21 @@
                 </div>
                 <div class="card-body">
 
+                    <!-- Display Django messages -->
+                    {% if messages %}
+                        <div class="mt-3">
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }}" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
                     <form method="post" action="{% url 'reservations:create_reservation' %}" class="needs-validation"
                         novalidate>
                         {% csrf_token %}
+
                         <div class="form-group mb-3">
                             <label for="reservation_name">Name</label>
                             <input type="text" class="form-control" id="reservation_name" name="reservation_name"
@@ -66,9 +78,10 @@
 
 <script>
     (function () {
-        'use strict'
-        // Select all form with class 'needs-validation'
-        var forms = document.querySelectorAll('.needs-validation')
+        'use strict';
+        // Select all forms with class 'needs-validation'
+        var forms = document.querySelectorAll('.needs-validation');
+
         // Turn the list of forms into an array, then go through each form
         Array.prototype.slice.call(forms)
             .forEach(function (form) {
@@ -76,15 +89,31 @@
                 form.addEventListener('submit', function (event) {
                     // If the form is invalid
                     if (!form.checkValidity()) {
-                        event.preventDefault() // Stop the form from submitting
-                        event.stopPropagation() // Prevent the event from affecting other elements
+                        event.preventDefault(); // Stop the form from submitting
+                        event.stopPropagation(); // Prevent the event from affecting other elements
                     }
                     // Add the 'was-validated' class to show validation styles
-                    form.classList.add('was-validated')
-                }, false)
-            })
-    })()
+                    form.classList.add('was-validated');
+                }, false);
+            });
+
+        // Hide alert after 3 seconds
+        document.addEventListener('DOMContentLoaded', function () {
+            var alert = document.querySelector('.alert');
+            if (alert) {
+                setTimeout(function () {
+                    alert.style.transition = "opacity 1s";
+                    alert.style.opacity = 0;
+                    setTimeout(function () {
+                        alert.remove();
+                    }, 1000);
+                }, 3000);
+            }
+        });
+    })(); 
 </script>
+
+
 
 {% endblock %}
 

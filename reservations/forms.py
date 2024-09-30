@@ -16,6 +16,7 @@ class ReservationForm(forms.ModelForm):
     def clean_time(self):
         reservation_time = self.cleaned_data.get('time')
 
+
         # Check time is beetween 12:00 PM and 10:00 PM
         if not (OPENING_TIME <= reservation_time <= CLOSING_TIME):
             raise forms.ValidationError("The reservation time must be between 12:00 PM and 10:00 PM.")

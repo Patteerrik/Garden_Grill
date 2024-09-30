@@ -55,7 +55,7 @@ def list_reservation(request):
         reservation_id = request.POST.get('reservation_id')
         reservation = get_object_or_404(Reservation, id=reservation_id)
 
-        # Send reservation email
+        #
         try:
             send_mail(
                 'Your reservation has been canceled',
@@ -64,16 +64,12 @@ def list_reservation(request):
                 [reservation.email],
                 fail_silently=False,
             )
-            # Success message
+            # 
+            reservation.delete()
             messages.success(request, "Reservation has been canceled. Cancellation email sent.")
-            reservation.delete() # Delete reservation only if email is successful
         except Exception as e:
-            # Cancel reservation
+            # 
             messages.error(request, f"Failed to send cancellation email: {e}")
-            messages.success(request, 'Reservation has been canceled.')
-
-        # Delete reservation
-        reservation.delete()
 
         return redirect('reservations:list_reservation')
 
@@ -115,28 +111,27 @@ def create_reservation(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
 
-        # 
         if request.user.is_staff:
             form.fields['email'] = forms.EmailField(required=True, label="Email for reservation")
 
-        # n
         new_reservation = process_reservation_form(request, form)
-        
+
         if new_reservation:
-            # 
             send_reservation_conf_email(new_reservation)
-            # 
             return redirect('reservations:success_reservation', pk=new_reservation.pk)
 
     else:
-        # 
         form = ReservationForm()
 
-        # 
         if request.user.is_staff:
             form.fields['email'] = forms.EmailField()
 
-    # 
+    # Hantera formulärfel som meddelanden
+    if form.errors:
+        for field, errors in form.errors.items():
+            for error in errors:
+                messages.error(request, f"{error}")
+
     return render(request, 'reservations/create_reservation.html', {'form': form})
 
 
@@ -193,9 +188,8 @@ def process_reservation_form(request, form):
         new_reservation.save()
         
         return new_reservation
-    else:
-        messages.error(request, "Something went wrong with the form.")
-        return None
+    # Return None if the form is invalid
+    return None
 
 
 def check_availability(date, time, number_of_guests):
