@@ -45,7 +45,7 @@ def logged_in_admin(request):
 
 
 #@login_required
-@user_passes_test(is_admin_user)
+#@user_passes_test(is_admin_user)
 @csrf_exempt # TILLFÄLLIGT
 def list_reservation(request):
     # Retrieves the current time
@@ -303,7 +303,8 @@ def edit_reservation(request, reservation_id):
 
 
 def users_reservations(request):
-    user_reservations = Reservation.objects.filter(email=request.user.email)
+    user_reservations = Reservation.objects.all() # TILLF*ÄLLIGT
+    # user_reservations = Reservation.objects.filter(email=request.user.email)
     return render(request, 'reservations/users_reservations.html', {'reservations': user_reservations})
 
 def sitting_time():
