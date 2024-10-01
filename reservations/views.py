@@ -22,7 +22,9 @@ from django.utils import timezone
 #
 from django import forms
 
+from django.views.decorators.csrf import csrf_exempt # TILLFÄLLIGT
 
+@csrf_exempt # TILLFÄLLIGT
 def logged_in_user(request):
     # check if user is admin
     if request.user.is_staff:
@@ -35,12 +37,12 @@ def logged_in_user(request):
 def is_admin_user(user):
     return user.is_staff
 
-
+@csrf_exempt # TILLFÄLLIGT
 #@login_required
 def logged_in_admin(request):
     return render(request, 'reservations/logged_in_admin.html')
 
-
+@csrf_exempt # TILLFÄLLIGT
 #@login_required
 @user_passes_test(is_admin_user)
 def list_reservation(request):
@@ -105,7 +107,7 @@ def list_reservation(request):
         'reservations': reservations, 
     })
 
-    
+@csrf_exempt # TILLFÄLLIGT    
 # @login_required
 def create_reservation(request):
     if request.method == 'POST':
@@ -220,6 +222,8 @@ def success_reservation(request, pk):
     # Display the success page with reservation details
     return render(request, 'reservations/success_reservation.html', {'reservation': reservation})
 
+
+@csrf_exempt # TILLFÄLLIGT
 # @login_required
 def change_reservation(request):
     reservation = None  # Default reservation to None
@@ -246,12 +250,12 @@ def change_reservation(request):
     
     return render(request, 'reservations/contact_us.html', {'reservation': reservation})
 
-
+@csrf_exempt # TILLFÄLLIGT
 # @login_required
 def success_email(request):
    return render(request, 'reservations/success_email.html')
 
-
+@csrf_exempt # TILLFÄLLIGT
 #@login_required
 @user_passes_test(lambda u: u.is_staff)
 def edit_reservation(request, reservation_id):
