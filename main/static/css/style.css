@@ -653,6 +653,18 @@ footer.site-footer {
     
 }
 
+.create-res-alert {
+    background-color: #f8d7da;
+    border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+   
+    .create-res-card {
+        min-height: 95vh;
+    }
+}
+
 /* Create reservation.html ends here! */
 
 /* User reservation.html */
