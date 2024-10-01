@@ -132,6 +132,8 @@
 
 * The admin version of the page includes an additional email field to manage reservations more effectively.
 
+![Alt text](main/static/images/Create_reservation_admin_readme.png)
+
 ## Reservation success
 
 * A clear message is displayed to the user with important details about their reservation.
