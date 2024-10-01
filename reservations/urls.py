@@ -15,5 +15,4 @@ urlpatterns = [
     path('change/', views.change_reservation, name='change_reservation'), # Remove?
     path('edit/<int:reservation_id>/', views.edit_reservation, name='edit_reservation'),
     path('my-reservations/', views.users_reservations, name='users_reservations'),
-
 ]

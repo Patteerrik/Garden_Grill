@@ -299,3 +299,4 @@ def users_reservations(request):
 
 def sitting_time():
     return timedelta(hours=1.5)
+
