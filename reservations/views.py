@@ -37,14 +37,16 @@ def logged_in_user(request):
 def is_admin_user(user):
     return user.is_staff
 
-@csrf_exempt # TILLFÄLLIGT
+
 #@login_required
+@csrf_exempt # TILLFÄLLIGT
 def logged_in_admin(request):
     return render(request, 'reservations/logged_in_admin.html')
 
-@csrf_exempt # TILLFÄLLIGT
+
 #@login_required
 @user_passes_test(is_admin_user)
+@csrf_exempt # TILLFÄLLIGT
 def list_reservation(request):
     # Retrieves the current time
     now = timezone.localtime()
@@ -107,8 +109,9 @@ def list_reservation(request):
         'reservations': reservations, 
     })
 
-@csrf_exempt # TILLFÄLLIGT    
+  
 # @login_required
+@csrf_exempt # TILLFÄLLIGT  
 def create_reservation(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
@@ -223,8 +226,9 @@ def success_reservation(request, pk):
     return render(request, 'reservations/success_reservation.html', {'reservation': reservation})
 
 
-@csrf_exempt # TILLFÄLLIGT
+
 # @login_required
+@csrf_exempt # TILLFÄLLIGT  
 def change_reservation(request):
     reservation = None  # Default reservation to None
     if request.method == 'GET':
@@ -250,14 +254,16 @@ def change_reservation(request):
     
     return render(request, 'reservations/contact_us.html', {'reservation': reservation})
 
-@csrf_exempt # TILLFÄLLIGT
+
 # @login_required
+@csrf_exempt # TILLFÄLLIGT  
 def success_email(request):
    return render(request, 'reservations/success_email.html')
 
-@csrf_exempt # TILLFÄLLIGT
+
 #@login_required
 @user_passes_test(lambda u: u.is_staff)
+@csrf_exempt # TILLFÄLLIGT  
 def edit_reservation(request, reservation_id):
     # Retrive current reservation
     reservation = get_object_or_404(Reservation, id=reservation_id)
