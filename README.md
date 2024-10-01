@@ -116,21 +116,21 @@
 
 ![Alt text](main/static/images/Register_readme.png)
 
-## Register success
-
-![Alt text]()
-
 ## Login
 
 * The login page includes fields for 'Username' and 'Password' along with a 'Login' button. Beneath the button, there’s a message: 'Don’t have an account?' with a link directing users to the registration page for sign up.
 
 ![Alt text](main/static/images/Login_readme.png)
 
-## Create reservation
+## Create reservation (User)
 
 * This page contains a form with fields for name, date, time, number of guests, and a submit button, allowing users to easily create a reservation.
 
 ![Alt text](main/static/images/Create_reservations_readme.png)
+
+## Create reservation (Admin)
+
+* The admin version of the page includes an additional email field to manage reservations more effectively.
 
 ## Reservation success
 
@@ -156,19 +156,37 @@
 
  * When an admin cancels a reservation, a cancellation message is shown on the page.
 
- ![Alt text](main/static/images/Cancel_reservation_message_admin_readme.png)
+ ![Alt text](main/static/images/Cancel_reservation_admin_readme.png)
 
 ## Edit reservation (Admin)
 
 * Admins can easily change reservation details. The page contains a form with fields for name, date, time, and number of guests. Pressing the update reservation button, a confirmation email is automatically sent to the user.
 
-![Alt text](main/static/images/Edit_reservations_admin_readme.png)
+![Alt text](main/static/images/edit_reservation_admin_readme.png)
 
 ## Contact us 
 
 This page contains a simple form with three input fields: Reservation Name, Email, and Message. Users can fill out this form to reach out to the restaurant for questions or updates related to their reservations.
 
 ![Alt text](main/static/images/Contact_us_readme.png)
+
+## 404 error page (Admin)
+
+* The 404 error page informs admins that the page they are looking for doesn't exist. It provides a simple message and a clear button to navigate admins back to the admin dashboard.
+
+![Alt text](main/static/images/404_admin_readme.png)
+
+## 404 error page (User)
+
+* The 404 error page for users works similarly to the admin page, featuring a button that navigates the user back to the home page. 
+
+![Alt text](main/static/images/404_user_readme.png)
+
+## 500 error page  
+
+* The 500 error page informs users of an internal server error, indicating the server encountered a problem and couldn't complete their request. It also includes a clear button that navigates users back to the home page.
+
+![Alt text](main/static/images/500_error_readme.png)
 
 ## Favicon 
 
