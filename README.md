@@ -2,7 +2,41 @@
 
 * Garden and Grill is a fictional restaurant located in the centre of stockholm. It is a full-stack web project built using the Django MVC framework. The project aims to provide a user friendly platform where customers can make table reservations at the restaurant "Garden and Grill." The system has been developed with a focus on user experience, security, and efficient reservation management, both for restaurant administrators and guests. [The live link can be found here:](https://gardengrill-d40b8e344381.herokuapp.com/)
 
+
 ![Alt text](main/static/images/AmIResponsive.png)
+
+## Table of Contents
+1. [Introduction](#garden-and-grill)
+2. [Agile Planning](#agile-planning)
+3. [Features](#features)
+    - [Users (Guests)](#users-guests)
+    - [Administrators](#administrators)
+4. [Technologies Used](#technologies-used)
+5. [Navigation Bar](#navigation-bar)
+    - [Logged-in User](#logged-in-user)
+    - [Not Logged-in User](#not-logged-in-user)
+    - [Smaller Screens](#smaller-screens)
+6. [Footer](#footer)
+7. [Home Page](#home-page-not-logged-in-user)
+    - [Home Page (Logged in User)](#home-page-logged-in-user)
+    - [Home Page (Logged in Admin)](#home-page-logged-in-admin)
+8. [Menu](#menu)
+9. [Register](#register)
+10. [Register Success](#register-success)
+11. [Login](#login)
+12. [Create Reservation](#create-reservation)
+13. [Reservation Success](#reservation-success)
+14. [Current Reservations](#current-reservations)
+15. [Manage Reservation (Admin)](#manage-reservation-admin)
+    - [Edit Reservation (Admin)](#edit-reservation-admin)
+    - [Cancel Reservation (Admin)](#cancel-reservation-admin)
+16. [Contact Us](#contact-us)
+17. [Favicon](#favicon)
+18. [Bugs](#bugs)
+19. [Testing and Validation](#testing-and-validation)
+20. [Features Left to Implement](#features-left-to-implement)
+21. [Deployment](#deployment)
+22. [Credits](#credits)
 
 ## Agile planning
 
@@ -145,6 +179,8 @@ This page contains a simple form with three input fields: Reservation Name, Emai
 ## Bugs
 
 ## Testing and validation
+
+For easier readability of the README, I chose to add a separate file for [testing](./testing.md).
 
 ## Features left to implement
 * Forgot password
