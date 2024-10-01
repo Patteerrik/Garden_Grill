@@ -121,13 +121,11 @@ def create_reservation(request):
                 send_reservation_conf_email(new_reservation)
                 return redirect('reservations:success_reservation', pk=new_reservation.pk)
         
-        
         else:
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.error(request, error)
 
-            
             return redirect('reservations:create_reservation')
 
     else:
@@ -135,7 +133,6 @@ def create_reservation(request):
 
         if request.user.is_staff:
             form.fields['email'] = forms.EmailField()
-
 
     return render(request, 'reservations/create_reservation.html', {'form': form})
 
