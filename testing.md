@@ -84,7 +84,7 @@
 | Submit the form without entering the number of guests | A message "Please enter the number of guests." appears | A message "Please enter the number of guests." appears |
 | Submit the form without entering an email | A message "Please enter a valid email." appears | A message "Please enter a valid email." appears |
 | Enter an invalid email address | A message "Invalid email address." appears | A message "Invalid email address." appears |
-| Submit the form with an email that is not registered | The system should process the reservation normally | Not expected result!!!! |
+| Enter an email that is not registered | A message "This email is not registered. Please use a registered email." appears | A message "This email is not registered. Please use a registered email." appears |
 | Attempt to book more than 50 seats (max capacity) for a specific time slot | A message "The selected time is fully booked." appears | A message "The selected time is fully booked." appears |
 
 #### Error Pages (404 and 500)
