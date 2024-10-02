@@ -410,10 +410,15 @@ footer.site-footer {
     width: 200px;
 }
 
+.map-title {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+
 .map-title,
     .section-title {
         color:#FFD700;
-        border-radius: 10px;
+        border-radius: 5px;
     }
 
     .section-title {
@@ -468,6 +473,10 @@ footer.site-footer {
         justify-content: space-between;
         align-items: flex-start;
     }
+
+    .map-title {
+        padding: 10px;
+    }
 }
 
 @media (min-width: 769px) {
@@ -487,7 +496,10 @@ footer.site-footer {
     }
 
     .map-title {
-        padding: 1rem;
+        position: relative;
+        top: -20px;
+        color: #FFD700; 
+        border-radius: 10px;
     }
 }
 
