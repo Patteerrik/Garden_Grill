@@ -93,3 +93,17 @@
 | --- | --- | --- |
 | Visit an invalid URL | The 404 page is displayed with a message and return link | The 404 page is displayed with a message and return link |
 | Trigger a server error | The 500 page is displayed with a message and return link | The 500 page is displayed with a message and return link |
+
+#### Validator testing
+
+##### HTML
+
+##### CSS
+
+##### PYTHON
+
+##### JAVASCRIPT
+
+#### Lighthouse testing
+
+
