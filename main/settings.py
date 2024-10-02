@@ -59,9 +59,9 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
-# User session ends after 5 minutes inactivity
+# User session ends after 10 minutes inactivity
 
-SESSION_COOKIE_AGE = 1000
+SESSION_COOKIE_AGE = 600
 
 SESSION_SAVE_EVERY_REQUEST = False
 
