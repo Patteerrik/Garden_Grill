@@ -11,10 +11,7 @@ from django.http import HttpResponse # Test
 
 # Create your views here.
 def home(request):
-    return render(request, 'home/index.html', {})
-
-def hello(request):
-    return render(request, 'home/hello.html')
+    return render(request, 'base.html', {})
 
 def bookings(request):
     return render(request, 'home/bookings.html')
