@@ -53,6 +53,7 @@
 ##### Create reservation (User)
 
 | Action | Expectation | Result |
+| --- | --- | --- |
 | Create a reservation as a guest | The reservation is created, a confirmation message with details appears, a confirmation email is sent to the user, and the reservation appears in the reservation list | The reservation is created, a confirmation message with details appears, a confirmation email is sent to the user, and the reservation appears in the reservation list |
 | Submit the form without entering a username | A message "Please enter your name." appears | A message "Please enter your name." appears |
 | Submit the form without entering a date | A message "Please select a date." appears | A message "Please select a date." appears |
