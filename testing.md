@@ -106,4 +106,10 @@
 
 #### Lighthouse testing
 
+#### Responsiveness Testing
+
+#### Accessibility Testing
+
+#### Security Testing
+
 
