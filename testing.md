@@ -78,7 +78,8 @@
 | Create a reservation as an admin | The reservation is created with an additional email field, a confirmation message with details appears, a confirmation email is sent, and the reservation appears in the reservation list for logged in admins | The reservation is created with an additional email field, a confirmation message with details appears, a confirmation email is sent, and the reservation appears in the reservation list for logged in admins |
 | Submit the form without entering a username | A message "Please enter your name." appears | A message "Please enter your name." appears |
 | Submit the form without entering a date | A message "Please select a date." appears | A message "Please select a date." appears |
-| Attempt to book a past date | The form should prevent submission and display an appropriate error message | Not expectet result!!!! |
+| Attempt to book a past date | A message "The reservation date cannot be in the past." appears | A message "The reservation date cannot be in the past." appears |
+| Attempt to book a time that has already passed today | A message "The reservation time cannot be in the past." appears | A message "The reservation time cannot be in the past." appears |
 | Submit the form without entering a time | A message "Please select a time." appears | A message "Please select a time." appears |
 | Attempt to book a time outside of restaurant hours | A message "The reservation time must be between 12:00 PM and 10:00 PM." appears | A message "The reservation time must be between 12:00 PM and 10:00 PM." appears |
 | Submit the form without entering the number of guests | A message "Please enter the number of guests." appears | A message "Please enter the number of guests." appears |
