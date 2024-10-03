@@ -1,0 +1,146 @@
+/* Style for menu */
+
+.menu-container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px;
+    background: none;
+    box-sizing: border-box;
+    margin-top:4rem;
+}
+
+.menu-title { 
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+.menu-box {
+    background-color: rgba(0, 0, 0, 0.7); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 600px; 
+    width: 100%;
+    max-height: 80vh; 
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.menu-category {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.menu-category h2 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.menu-category p {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+}
+
+.menu-item {
+    background-color: transparent; 
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.menu-item h3 {
+    font-size: 1.4rem; 
+    margin-bottom: 8px;
+    color: #FFD700; 
+    font-weight: 600; 
+}
+
+.menu-item p {
+    font-size: 1rem; 
+    color: #ccc; 
+}
+
+.menu-item strong {
+    font-size: 1.2rem; 
+    color: #fff; 
+}
+
+@media (max-width: 768px) {
+    .menu-title {
+        font-size: 1.6rem; 
+    }
+
+    .menu-category h2 {
+        font-size: 1.3rem; 
+    }
+
+    .menu-category p {
+        font-size: 1rem; 
+    }
+
+    .menu-item h3 {
+        font-size: 1.2rem; 
+    }
+
+    .menu-item p {
+        font-size: 0.9rem; 
+    }
+
+    .menu-item strong {
+        font-size: 1rem;
+    }
+}
+
+@media (min-height: 768px) {
+    .menu-container {
+        position: fixed;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        padding: 20px;
+    }
+
+    .menu-box {
+        max-height: 70vh; 
+    }
+}
+
+@media (min-width: 768px) {
+    .menu-title {
+        font-size: 1.8rem; 
+    }
+}
+
+@media (min-width: 1024px) {
+    .menu-title {
+        font-size: 2.2rem; 
+    }
+}
+
+@media (min-width: 1200px) {
+    .menu-box {
+        max-width: 800px;
+    }
+
+    .menu-title {
+        padding-bottom: 50px;
+    }
+}
