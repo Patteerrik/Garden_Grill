@@ -104,8 +104,7 @@
         Discover our carefully crafted menu, featuring fresh, locally-sourced ingredients, served in a warm and inviting
         atmosphere.
         {% if not user.is_authenticated %}
-        Please <a href="{% url 'login' %}" class="custom-link" aria-label="Log in to your account">log in</a> or <a href="{% url 'register' %}" class="custom-link">register</a> to make a
-        reservation.
+        Please log in or register to make a reservation.
         {% endif %}
       </p>
 
