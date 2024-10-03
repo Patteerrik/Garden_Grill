@@ -4,11 +4,11 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card custom-card">
+            <div class="card custom-card menu-box">
                 <div class="card-header text-center">
                     <h2>Message Sent Successfully!</h2>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-yellow">
                     <p>Your message has been successfully sent to the restaurant. Thank you for contacting us!</p>
                     <a href="{% if user.is_staff %}{% url 'reservations:logged_in_admin' %}{% else %}{% url 'reservations:logged_in_user' %}{% endif %}" class="btn btn-primary">Back to Home</a>
                 </div>
