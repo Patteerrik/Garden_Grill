@@ -110,7 +110,12 @@
 
 @media (min-height: 768px) {
     .menu-container {
-        justify-content: flex-start;
+        position: fixed;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        padding: 20px;
     }
 
     .menu-box {
