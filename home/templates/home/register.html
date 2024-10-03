@@ -11,8 +11,14 @@
                 </div>
                 <div class="card-body">
                     <!-- Error message display -->
-                    {% if error %}
-                        <div class="alert alert-danger text-center">{{ error }}</div>
+                    {% if messages %}
+                        <div id="message-container" class="text-center mb-3">
+                            {% for message in messages %}
+                                <div class="alert register-alert alert-{{ message.tags }} d-inline-block px-4 py-2" role="alert" style="background-color: #f8d7da; border-radius: 10px;">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
                     {% endif %}
 
                     <form class="form_register" method="post" action="{% url 'register' %}">
@@ -47,6 +53,24 @@
         </div>
     </div>
 </div>
+
+<!-- Function for logout message to disappear after 3 seconds -->
+<script>
+    setTimeout(function() {
+        let alertMessages = document.querySelectorAll('.alert');
+        // Loops through all alert messages
+        alertMessages.forEach(function(alert) {
+            // Css for smooth transition
+            alert.style.transition = 'opacity 0.5s ease';
+            alert.style.opacity = '0';
+            // Wait for transition to complete before removing element
+            setTimeout(function() {
+                // Remove alert message from DOM
+                alert.remove();
+            }, 500); // Transition time
+        });
+    }, 3000); // Alerts hides after 3 seconds
+</script>
 
 {% block google_maps_script %}
 <!-- Override to modify or remove Google Maps script in base.html -->
