@@ -556,8 +556,9 @@ footer.site-footer {
 }
 
 .btn-primary:hover, .btn-secondary:hover {
-    background-color: #635f60; 
+    background-color: #333232; 
     color: #f0f0f0; 
+    border: 2px solid #e6dac4;
 }
 
 /* Contact us.html */
