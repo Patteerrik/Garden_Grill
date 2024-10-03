@@ -85,7 +85,7 @@
             <a class="nav-link" href="{% url 'register' %}">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Login</a>
+            <a class="nav-link" href="{% url 'login' %}">Log in</a>
           </li>
           {% endif %}
         </ul>
@@ -104,7 +104,8 @@
         Discover our carefully crafted menu, featuring fresh, locally-sourced ingredients, served in a warm and inviting
         atmosphere.
         {% if not user.is_authenticated %}
-        Please log in or register to make a reservation.
+        Please log in or register to make a
+        reservation.
         {% endif %}
       </p>
 
