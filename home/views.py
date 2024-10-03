@@ -13,40 +13,45 @@ from django.http import HttpResponse # Test
 def home(request):
     return render(request, 'base.html', {})
 
-def bookings(request):
+def bookings(request): # Remove?
     return render(request, 'home/bookings.html')
 
 def menu(request):
     return render(request, 'home/menu.html')
 
 
-def register(request):
-    print(request.POST)  
+def register(request):  
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         confirm_password = request.POST['confirm_password']
         email = request.POST['email']
 
+        # Check if passwords matches
         if password != confirm_password:
-            print("Passwords do not match")
-            return render(request, 'home/register.html', {'error': 'Passwords do not match'})
+            messages.error(request, 'Passwords do not match.')
+            return redirect('register')
+
+        # Check is username already exists
+        if get_user_model().objects.filter(username=username).exists(): 
+            messages.error(request, 'Username already exists.') 
+            return redirect('register')
 
         
-        if get_user_model().objects.filter(username=username).exists():
-            print("Username already exists")  
-            return render(request, 'home/register.html', {'error': 'Username already exists'})
-
+        # Check if email already exists
         if get_user_model().objects.filter(email=email).exists():
-            print("Email already exists")
-            return render(request, 'home/register.html', {'error': 'Email already exists'})
-
+            messages.error(request, 'Email already exists.')
+            return redirect('register')
+        
+        # Create user
         user = get_user_model().objects.create_user(username=username, email=email, password=password)
-
+        
+        # Authencticate and log the user
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-
+            
+            # Send email verification
             try:  
                 send_mail(
                     'Confirmation of Registration',
@@ -55,15 +60,13 @@ def register(request):
                     [email],
                     fail_silently=False
                 )
-                print('Email was sent!')
             except Exception as e:
-                print(f"Error sending email: {str(e)}")
-           
+                messages.error(request, f"Failed to send confirmation email: {e}")
+
+            # Redirect after logged in status
             if user.username == 'admin0011' or user.is_staff:
-                print('Redirect to admin.')
                 return redirect('reservations:logged_in_admin')
             else:
-                print('Redirect to user')
                 return redirect('reservations:logged_in_user')
 
     return render(request, 'home/register.html')
@@ -85,6 +88,7 @@ def login_view(request):
                 return redirect('reservations:logged_in_user')
         else:
             messages.error(request, 'Invalid username or password.')
+            return redirect('login')
 
     return render(request, 'home/login.html')
 
