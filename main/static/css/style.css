@@ -633,6 +633,11 @@ footer.site-footer {
     color: white;
 }
 
+.register-alert {
+    background-color: #f8d7da;
+    border-radius: 10px;
+}
+
 /* Register.html ends here! */
 
 /* Login.html */
@@ -646,6 +651,11 @@ footer.site-footer {
 
 .log-in-title {
     font-size: 1.5rem;
+}
+
+.login-alert{
+    background-color: #f8d7da;
+    border-radius: 10px;
 }
 
 /* Login.html ends here! */
