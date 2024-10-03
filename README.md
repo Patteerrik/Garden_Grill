@@ -177,6 +177,12 @@ This page contains a simple form with three input fields: Reservation Name, Emai
 
 ![Alt text](main/static/images/Contact_us_readme.png)
 
+## Email success
+
+* 
+
+![Alt text](main/static/images/Success_message_user_readme.png)
+
 ## 404 error page (Admin)
 
 * The 404 error page informs admins that the page they are looking for doesn't exist. It provides a simple message and a clear button to navigate admins back to the admin dashboard.
