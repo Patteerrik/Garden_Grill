@@ -38,8 +38,8 @@
 | Action | Expectation | Result |
 | --- | --- | --- |
 | Log in with valid credentials | The user is logged in and redirected to main page | The user is logged in and redirected to main page |
-| Enter invalid credentials on the login page | A message "Invalid username or password." appears | A message "Invalid username or password." appears |
-| Log in | The user is directed to home page for logged in users | The user is directed to home page for logged in users |
+| Enter invalid username on the login page | A message "Please enter your username." appears | A message "Please enter your username." appears |
+| Enter invalid password on the login page | A message "Please enter your password." appears | A message "Please enter your password." appears |
 | Log out after being logged in | The user is logged out and redirected to home page | The user is logged out and redirected to home page |
 | User session ends when the browser is closed | The session is terminated and the user is logged out | The session is terminated and the user is logged out |
 | User session ends after 10 minutes of inactivity | The session is terminated and the user is logged out | The session is terminated and the user is logged out |
@@ -99,9 +99,9 @@
 
 | Action | Expectation | Result |
 | --- | --- | --- |
-| Enter incorrect username | Error message appears stating the username is incorrect | Works as expected |
-| Enter incorrect email | Error message appears stating the email is invalid | Works as expected    |
-| Leave the message field blank | Error message appears asking the user to fill in the message field | Works as expected |
+| Enter incorrect username | A error message "Invalid username or email." appears | A error message "Invalid username or email." appears |
+| Enter incorrect email | A error message "Invalid username or email." appears | A error message "Invalid username or email." appears | 
+| Leave the message field blank | A error message "Please enter a message of at least 10 characters." appears | A error message "Please enter a message of at least 10 characters." appears |
 
 #### Validator testing
 
