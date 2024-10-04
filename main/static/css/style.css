@@ -591,6 +591,11 @@ footer.site-footer {
     padding:1px;
 }
 
+.contact-us-alert {
+    background-color: #f8d7da;
+    border-radius: 10px;
+}
+
 /* Contact us.html ends here! */
 
 /* Success reservation.html */

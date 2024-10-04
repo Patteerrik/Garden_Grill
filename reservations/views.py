@@ -19,6 +19,10 @@ from collections import defaultdict
 from datetime import timedelta
 # Django for handling timezones 
 from django.utils import timezone
+
+from django.contrib.auth import get_user_model
+
+from django.contrib.messages import get_messages
 #
 from django import forms
 
@@ -128,15 +132,21 @@ def create_reservation(request):
                 for error in errors:
                     messages.error(request, error)
 
-            return redirect('reservations:create_reservation')
+            return render(request, 'reservations/create_reservation.html', {'form': form})
 
     else:
-        form = ReservationForm()
+        
+        initial_data = {
+            'reservation_name': '',
+        }
+
+        form = ReservationForm(initial=initial_data)
 
         if request.user.is_staff:
             form.fields['email'] = forms.EmailField()
 
     return render(request, 'reservations/create_reservation.html', {'form': form})
+
 
 
 
@@ -223,29 +233,52 @@ def success_reservation(request, pk):
 
 @login_required 
 def change_reservation(request):
-    reservation = None  # Default reservation to None
-    if request.method == 'GET':
-        reservation_id = request.GET.get('reservation_id')  
-        if reservation_id:
-            reservation = get_object_or_404(Reservation, id=reservation_id)  
-        
     if request.method == 'POST':
-        reservation_id = request.POST.get('reservation_id')  
-        message = request.POST.get('message')  
-        # Send email
-        send_mail(
-            subject=f"Change request for reservation {reservation_id}",
-            message=f"Message from: {request.user.email}\n\n{message}",
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[settings.ADMIN_EMAIL],
-            fail_silently=False,
-        )
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        message_content = request.POST.get('message')
+
+        context = {
+            'username': username,
+            'email': email,
+            'message_content': message_content,
+        }
+
         
-        messages.success(request, 'Your request has been sent')
-        #return redirect('reservations:success_reservation', pk=reservation_id) if reservation_id else redirect('reservations:logged_in_user')
-        return redirect('reservations:success_email')
-    
-    return render(request, 'reservations/contact_us.html', {'reservation': reservation})
+        if not username or not email:
+            messages.error(request, 'Both username and email are required.')
+            return render(request, 'reservations/contact_us.html', context)
+
+        
+        User = get_user_model()
+        try:
+            user = User.objects.get(username=username, email=email)
+        except User.DoesNotExist:
+            messages.error(request, 'Invalid username or email.')
+            return render(request, 'reservations/contact_us.html', context)
+
+        
+        if not message_content or len(message_content) < 10:
+            messages.error(request, 'Message must be at least 10 characters long.')
+            return render(request, 'reservations/contact_us.html', context)
+
+        try:
+            
+            send_mail(
+                subject="Change request for reservation",
+                message=f"Message from: {user.email}\n\n{message_content}",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.ADMIN_EMAIL],  
+                fail_silently=False,
+            )
+            messages.success(request, "Your request has been sent successfully.")
+            return redirect('reservations:success_email') 
+
+        except Exception as e:
+            messages.error(request, f"Failed to send message: {str(e)}")
+            return render(request, 'reservations/contact_us.html', context)
+
+    return render(request, 'reservations/contact_us.html')
 
 
 @login_required  

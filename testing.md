@@ -99,7 +99,9 @@
 
 | Action | Expectation | Result |
 | --- | --- | --- |
-|  |  | Works as expected |
+| Enter incorrect username | Error message appears stating the username is incorrect | Works as expected |
+| Enter incorrect email | Error message appears stating the email is invalid | Works as expected    |
+| Leave the message field blank | Error message appears asking the user to fill in the message field | Works as expected |
 
 #### Validator testing
 

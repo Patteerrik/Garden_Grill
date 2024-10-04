@@ -21,7 +21,7 @@ class ReservationForm(forms.ModelForm):
         
         if reservation_date < today:
             raise forms.ValidationError("The reservation date cannot be in the past.")
-        
+
         return reservation_date
     
     def clean_time(self):
