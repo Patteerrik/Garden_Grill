@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="container mt-5">
-     <div class="row justify-content-center">
+    <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card custom-card custom-background">
                 <div class="card-header text-center log-in-title">
@@ -13,25 +13,29 @@
                 <!-- Logout message -->
                 <div class="card-body">
                     {% if messages %}
-                        <div id="message-container" class="text-center mb-3">
-                            {% for message in messages %}
-                                <div class="alert login-alert alert-{{ message.tags }} d-inline-block px-4 py-2" role="alert">
-                                    {{ message }}
-                                </div>
-                            {% endfor %}
+                    <div id="message-container" class="text-center mb-3">
+                        {% for message in messages %}
+                        <div class="alert login-alert alert-{{ message.tags }} d-inline-block px-4 py-2" role="alert">
+                            {{ message }}
                         </div>
+                        {% endfor %}
+                    </div>
                     {% endif %}
-                    <form action="{% url 'login' %}" method="post">
+                    <form action="{% url 'login' %}" method="post" class="needs-validation" novalidate>
                         {% csrf_token %}
                         <div class="form-group mb-3">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" name="username" id="username" placeholder="Enter your username" autocomplete="username" required>
+                            <input type="text" class="form-control" name="username" id="username"
+                                   placeholder="Enter your username" value="{{ username|default_if_none:'' }}" required>
+                            <div class="invalid-feedback">Please enter your username.</div>
                         </div>
                         <div class="form-group mb-3">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" autocomplete="current-password" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" id="password"
+                                   placeholder="Enter your password" required>
+                            <div class="invalid-feedback">Please enter your password.</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
                     </form>
                 </div>
                 <div class="card-footer text-center">
@@ -39,24 +43,38 @@
                 </div>
             </div>
         </div>
-     </div>
+    </div>
 </div>
 <!-- Function for logout message to disappear after 3 seconds -->
 <script>
-    setTimeout(function() {
-        let alertMessages = document.querySelectorAll('.alert');
-        // Loops through all alert messages
-        alertMessages.forEach(function(alert) {
-            // Css for smooth transition
-            alert.style.transition = 'opacity 0.5s ease';
-            alert.style.opacity = '0';
-            // Wait for transition to complete before removing element
-            setTimeout(function() {
-                // Remove alert message from DOM
-                alert.remove();
-            }, 500); // Transition time
+    (function () {
+        'use strict';
+        var forms = document.querySelectorAll('.needs-validation');
+
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var alert = document.querySelector('.alert');
+            if (alert) {
+                setTimeout(function () {
+                    alert.style.transition = "opacity 1s";
+                    alert.style.opacity = 0;
+                    setTimeout(function () {
+                        alert.remove();
+                    }, 1000);
+                }, 3000);
+            }
         });
-    }, 3000); // Alerts hides after 3 seconds
+    })();
 </script>
 
 {% endblock %}
