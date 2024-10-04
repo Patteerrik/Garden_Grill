@@ -29,21 +29,21 @@
                         <div class="form-group mb-3">
                             <label for="reservation_name">Name</label>
                             <input type="text" class="form-control" id="reservation_name" name="reservation_name"
-                                placeholder="Enter your name" required>
+                                placeholder="Enter your name" value="{{ form.reservation_name.value }}" required>
                             <div class="invalid-feedback">
                                 Please enter your name.
                             </div>
                         </div>
                         <div class="form-group mb-3">
                             <label for="date">Date</label>
-                            <input type="date" class="form-control" id="date" name="date" required>
+                            <input type="date" class="form-control" id="date" name="date" value="{{ form.date.value }}" required>
                             <div class="invalid-feedback">
                                 Please select a date.
                             </div>
                         </div>
                         <div class="form-group mb-3">
                             <label for="time">Time</label>
-                            <input type="time" class="form-control" id="time" name="time" required>
+                            <input type="time" class="form-control" id="time" name="time" value="{{ form.time.value }}" required>
                             <div class="invalid-feedback">
                                 Please select a time.
                             </div>
@@ -51,7 +51,7 @@
                         <div class="form-group mb-3">
                             <label for="number_of_guests">Number of Guests</label>
                             <input type="number" class="form-control" id="number_of_guests" name="number_of_guests"
-                                min="1" max="50" required>
+                                min="1" max="50" value="{{ form.number_of_guests.value }}" required>
                             <div class="invalid-feedback">
                                 Please enter the number of guests.
                             </div>
@@ -61,7 +61,7 @@
                         <div class="form-group mb-3">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="email"
-                                placeholder="Enter email for reservation" required>
+                                placeholder="Enter email for reservation" value="{{ form.email.value }}" required>
                             <div class="invalid-feedback">
                                 Please enter a valid email.
                             </div>

@@ -11,26 +11,46 @@
                     <p>If you need to change your reservation, please contact us through the form below.</p>
                 </div>
                 <div class="card-body">
-                    <form class="form_contact_us" method="post">
-                        {% csrf_token %}
-                        <input type="hidden" name="reservation_id" value="{{ reservation.id }}">
+                    <!-- Display Django messages -->
+                    {% if messages %}
+                    <div class="mt-3 contact-us-alert">
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}" role="alert">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
 
+                    <!-- Contact form -->
+                    <form class="form_contact_us needs-validation" method="post" novalidate>
+                        {% csrf_token %}
+                        <input type="hidden" name="reservation_id"
+                            value="{% if reservation %}{{ reservation.id }}{% endif %}">
+
+                        <!-- Username Field -->
                         <div class="form-group mb-3">
-                            <label for="reservation_name">Reservation Name</label>
-                            <input type="text" class="form-control" id="reservation_name" name="reservation_name"
-                                placeholder="Enter your reservation name" required>
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username"
+                                value="{{ username|default_if_none:'' }}" placeholder="Enter your username" required>
+                            <div class="invalid-feedback">Please enter your username.</div>
                         </div>
 
-
+                        <!-- Email Field -->
                         <div class="form-group mb-3">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" autocomplete="email"
-                                placeholder="Enter your email" required>
+                            <input type="email" class="form-control" id="email" name="email"
+                                value="{{ email|default_if_none:'' }}" placeholder="Enter your email" required>
+                            <div class="invalid-feedback">Please enter a valid email.</div>
                         </div>
+
+                        <!-- Message Field -->
                         <div class="form-group mb-3">
                             <label for="message">Message</label>
                             <textarea class="form-control" id="message" name="message" rows="4"
-                                placeholder="Enter your message" required></textarea>
+                                placeholder="Enter your message"
+                                required>{{ message_content|default_if_none:'' }}</textarea>
+                            <div class="invalid-feedback">Please enter a message of at least 10 characters.</div>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Submit</button>
                     </form>
@@ -39,6 +59,51 @@
         </div>
     </div>
 </div>
+
+<script>
+    (function () {
+        'use strict';
+        var forms = document.querySelectorAll('.needs-validation');
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var alert = document.querySelector('.contact-us-alert');
+
+
+            if (alert) {
+
+                setTimeout(function () {
+                    alert.style.transition = "opacity 1s";
+                    alert.style.opacity = 0;
+
+
+                    setTimeout(function () {
+                        alert.remove();
+                    }, 1000);
+                }, 3000);
+            }
+        });
+
+        // Remove green checkmark on server validation failure
+        document.querySelectorAll('.form-control').forEach(function (input) {
+            if (input.value && input.classList.contains('is-invalid')) {
+                input.classList.remove('is-valid');
+            }
+        });
+    })();
+</script>
+
 {% endblock %}
 
 {% block google_maps_script %}
