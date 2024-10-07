@@ -1,4 +1,4 @@
-/* Style for menu */
+/* Style for menu. Moved to a separate file for better readability */
 
 .menu-container {
     display: flex;

@@ -8,7 +8,7 @@
         <div class="col-md-6">
             <div class="card custom-card custom-background">
                 <div class="card-header text-center log-in-title">
-                    <h2">Login</h2>
+                    <h2>Login</h2>
                 </div>
                 <!-- Logout message -->
                 <div class="card-body">
@@ -47,9 +47,10 @@
 </div>
 <!-- Function for logout message to disappear after 3 seconds -->
 <script>
+    /* jshint esversion: 6 */
     (function () {
         'use strict';
-        var forms = document.querySelectorAll('.needs-validation');
+        const forms = document.querySelectorAll('.needs-validation');
 
         Array.prototype.slice.call(forms)
             .forEach(function (form) {
@@ -63,7 +64,7 @@
             });
 
         document.addEventListener('DOMContentLoaded', function () {
-            var alert = document.querySelector('.alert');
+            const alert = document.querySelector('.alert');
             if (alert) {
                 setTimeout(function () {
                     alert.style.transition = "opacity 1s";

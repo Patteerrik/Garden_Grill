@@ -1,6 +1,5 @@
-
 from django.urls import path, include
-from . import views # Imports the views module
+from . import views  # Imports the views module
 from django.conf.urls import handler404, handler500
 from .views import logout_view
 

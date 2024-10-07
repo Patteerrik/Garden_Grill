@@ -36,14 +36,14 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="date">Date</label>
-                            <input type="date" class="form-control" id="date" name="date" value="{{ form.date.value }}" required>
+                            <input type="date" class="form-control" id="date" name="date" value="{{ form.date.value|default_if_none:'' }}" required>
                             <div class="invalid-feedback">
                                 Please select a date.
                             </div>
                         </div>
                         <div class="form-group mb-3">
                             <label for="time">Time</label>
-                            <input type="time" class="form-control" id="time" name="time" value="{{ form.time.value }}" required>
+                            <input type="time" class="form-control" id="time" name="time" value="{{ form.time.value|default_if_none:'' }}" required>
                             <div class="invalid-feedback">
                                 Please select a time.
                             </div>
@@ -77,10 +77,11 @@
 </div>
 
 <script>
+    /* jshint esversion: 6 */
     (function () {
         'use strict';
         // Select all forms with class 'needs-validation'
-        var forms = document.querySelectorAll('.needs-validation');
+        const forms = document.querySelectorAll('.needs-validation');
 
         // Turn the list of forms into an array, then go through each form
         Array.prototype.slice.call(forms)
@@ -99,7 +100,7 @@
 
         // Hide alert after 3 seconds
         document.addEventListener('DOMContentLoaded', function () {
-            var alert = document.querySelector('.alert');
+            const alert = document.querySelector('.alert');
             if (alert) {
                 setTimeout(function () {
                     alert.style.transition = "opacity 1s";

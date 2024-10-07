@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect 
+from django.shortcuts import render, get_object_or_404, redirect
 # Render Template, get object or 404, redirect users
 from django.contrib.auth.decorators import login_required, user_passes_test
 # Resrict access to logged in or admin users
@@ -6,18 +6,18 @@ from .models import Reservation
 # Import reservation model
 from .forms import ReservationForm
 # Import reservationform for bookings
-from django.contrib import messages 
+from django.contrib import messages
 # To show messages to the user
 from django.conf import settings
 # Access django settings
-from django.db.models import Sum 
+from django.db.models import Sum
 # To summarize number of guests
 from django.core.mail import send_mail
 # Send emails with django
 from collections import defaultdict
 # Dictionary with deafult values
 from datetime import timedelta
-# Django for handling timezones 
+# Django for handling timezones
 from django.utils import timezone
 
 from django.contrib.auth import get_user_model
@@ -25,8 +25,6 @@ from django.contrib.auth import get_user_model
 from django.contrib.messages import get_messages
 #
 from django import forms
-
-
 
 
 def logged_in_user(request):
@@ -53,9 +51,9 @@ def list_reservation(request):
     # Retrieves the current time
     now = timezone.localtime()
     # Delete old reservations
-    Reservation.objects.filter(date__lt=now.date()).delete()  
+    Reservation.objects.filter(date__lt=now.date()).delete()
     Reservation.objects.filter(date=now.date(), time__lt=now.time()).delete()
-    
+
     # Handle POST requests
     if request.method == 'POST' and 'delete' in request.POST:
         reservation_id = request.POST.get('reservation_id')
@@ -65,16 +63,21 @@ def list_reservation(request):
         try:
             send_mail(
                 'Your reservation has been canceled',
-                f"Hello {reservation.reservation_name},\n\nYour reservation for {reservation.date} at {reservation.time} has been canceled.",
+                f"Hello {reservation.reservation_name},\n\n"
+                f"Your reservation for {reservation.date} at "
+                f"{reservation.time} has been canceled.",
                 settings.DEFAULT_FROM_EMAIL,
                 [reservation.email],
                 fail_silently=False,
             )
-            # 
+            #
             reservation.delete()
-            messages.success(request, "Reservation has been canceled. Cancellation email sent.")
+            messages.success(
+                request,
+                "Reservation has been canceled. "
+                "Cancellation email sent.")
         except Exception as e:
-            # 
+            #
             messages.error(request, f"Failed to send cancellation email: {e}")
 
         return redirect('reservations:list_reservation')
@@ -83,59 +86,70 @@ def list_reservation(request):
     reservations = Reservation.objects.all()
 
     # Group reservation logic by date and time
-    spots_per_time = defaultdict(lambda: {'reserved_spots': 0, 'available_spots': 50})
+    spots_per_time = defaultdict(
+        lambda: {'reserved_spots': 0, 'available_spots': 50}
+    )
 
     # Loop through group reservations by date and time, storing emails.
     for res in reservations:
         key = (res.date, res.time)
         spots_per_time[key]['reserved_spots'] += res.number_of_guests
-        spots_per_time[key]['available_spots'] = 50 - spots_per_time[key]['reserved_spots']
+        spots_per_time[key]['available_spots'] = (
+            50 - spots_per_time[key]['reserved_spots']
+        )
         spots_per_time[key]['email'] = res.email
 
     # Convert to a list to send to the template
     spots_per_time_list = [
         {
-            'date': date, 
-            'time': time, 
-            'reserved_spots': data['reserved_spots'], 
+            'date': date,
+            'time': time,
+            'reserved_spots': data['reserved_spots'],
             'available_spots': data['available_spots'],
             'email': data['email']
-        } 
+        }
         for (date, time), data in spots_per_time.items()
     ]
 
     return render(request, 'reservations/list_reservation.html', {
         # Send a summary of seats to template
         'spots_per_time_list': spots_per_time_list,
-        # Sends booking to template 
-        'reservations': reservations, 
+        # Sends booking to template
+        'reservations': reservations,
     })
 
-  
+
 @login_required
 def create_reservation(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
 
         if request.user.is_staff:
-            form.fields['email'] = forms.EmailField(required=True, label="Email for reservation")
+            form.fields['email'] = forms.EmailField(
+                required=True,
+                label="Email for reservation"
+            )
 
         if form.is_valid():
             new_reservation = process_reservation_form(request, form)
 
             if new_reservation:
                 send_reservation_conf_email(new_reservation)
-                return redirect('reservations:success_reservation', pk=new_reservation.pk)
-        
+                return redirect(
+                    'reservations:success_reservation',
+                    pk=new_reservation.pk
+                )
+
         else:
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.error(request, error)
 
-            return render(request, 'reservations/create_reservation.html', {'form': form})
+            return render
+            (request, 'reservations/create_reservation.html', {'form': form})
 
     else:
-        
+
         initial_data = {
             'reservation_name': '',
         }
@@ -145,9 +159,8 @@ def create_reservation(request):
         if request.user.is_staff:
             form.fields['email'] = forms.EmailField()
 
-    return render(request, 'reservations/create_reservation.html', {'form': form})
-
-
+    return render
+    (request, 'reservations/create_reservation.html', {'form': form})
 
 
 def send_reservation_conf_email(reservation):
@@ -156,14 +169,17 @@ def send_reservation_conf_email(reservation):
     This function is separated to keep the create_reservation view cleaner.
     """
     subject = 'Reservation Confirmation'
-    message = f"Your reservation for {reservation.date} at {reservation.time} has been successfully made."
+    message = (
+        f"Your reservation for {reservation.date} at {reservation.time} "
+        "has been successfully made."
+    )
     recipient_list = [reservation.email]
-    
+
     send_mail(
         subject,
         message,
         settings.DEFAULT_FROM_EMAIL,
-        recipient_list,               
+        recipient_list,
         fail_silently=False,
     )
 
@@ -181,8 +197,9 @@ def process_reservation_form(request, form):
         time = form.cleaned_data['time']
         number_of_guests = form.cleaned_data['number_of_guests']
 
-        # 
-        is_available, message = check_availability(date, time, number_of_guests)
+        #
+        is_available, message = check_availability
+        (date, time, number_of_guests)
         if not is_available:
             messages.error(request, message)
             return None
@@ -190,17 +207,19 @@ def process_reservation_form(request, form):
         #
         new_reservation = form.save(commit=False)
 
-        # 
-        new_reservation.reservation_name = form.cleaned_data.get('reservation_name', request.user.username)
-        
+        #
+        new_reservation.reservation_name = (
+            form.cleaned_data.get('reservation_name', request.user.username)
+        )
+
         if request.user.is_staff:
             new_reservation.email = form.cleaned_data['email']
         else:
             new_reservation.email = request.user.email
 
-        # 
+        #
         new_reservation.save()
-        
+
         return new_reservation
     # Return None if the form is invalid
     return None
@@ -212,15 +231,20 @@ def check_availability(date, time, number_of_guests):
     Returns (is_available, message) with availability status
     """
     total_seats = 50  # Total seats available
-    existing_reservations = Reservation.objects.filter(date=date, time=time).aggregate(Sum('number_of_guests'))
+    existing_reservations = Reservation.objects.filter(
+        date=date, time=time
+    ).aggregate(Sum('number_of_guests'))
+
     booked_seats = existing_reservations['number_of_guests__sum'] or 0
     available_seats = total_seats - booked_seats
 
     if available_seats <= 0:
         return False, "The selected time is fully booked."
     elif number_of_guests > available_seats:
-        return False, f"Only {available_seats} seats are available for the chosen time."
-    
+        return False, (
+            f"Only {available_seats} seats are available for the chosen time."
+        )
+
     return True, None
 
 
@@ -228,10 +252,13 @@ def success_reservation(request, pk):
     # Retrieve the reservation by pk or return 404 if not found
     reservation = get_object_or_404(Reservation, pk=pk)
     # Display the success page with reservation details
-    return render(request, 'reservations/success_reservation.html', {'reservation': reservation})
+    return render(
+        request, 'reservations/success_reservation.html',
+        {'reservation': reservation}
+    )
 
 
-@login_required 
+@login_required
 def change_reservation(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -244,12 +271,10 @@ def change_reservation(request):
             'message_content': message_content,
         }
 
-        
         if not username or not email:
             messages.error(request, 'Both username and email are required.')
             return render(request, 'reservations/contact_us.html', context)
 
-        
         User = get_user_model()
         try:
             user = User.objects.get(username=username, email=email)
@@ -257,22 +282,23 @@ def change_reservation(request):
             messages.error(request, 'Invalid username or email.')
             return render(request, 'reservations/contact_us.html', context)
 
-        
         if not message_content or len(message_content) < 10:
-            messages.error(request, 'Message must be at least 10 characters long.')
+            messages.error
+            (request, 'Message must be at least 10 characters long.')
             return render(request, 'reservations/contact_us.html', context)
 
         try:
-            
+
             send_mail(
                 subject="Change request for reservation",
                 message=f"Message from: {user.email}\n\n{message_content}",
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[settings.ADMIN_EMAIL],  
+                recipient_list=[settings.ADMIN_EMAIL],
                 fail_silently=False,
             )
-            messages.success(request, "Your request has been sent successfully.")
-            return redirect('reservations:success_email') 
+            messages.success
+            (request, "Your request has been sent successfully.")
+            return redirect('reservations:success_email')
 
         except Exception as e:
             messages.error(request, f"Failed to send message: {str(e)}")
@@ -281,9 +307,9 @@ def change_reservation(request):
     return render(request, 'reservations/contact_us.html')
 
 
-@login_required  
+@login_required
 def success_email(request):
-   return render(request, 'reservations/success_email.html')
+    return render(request, 'reservations/success_email.html')
 
 
 @login_required
@@ -291,7 +317,7 @@ def success_email(request):
 def edit_reservation(request, reservation_id):
     # Retrive current reservation
     reservation = get_object_or_404(Reservation, id=reservation_id)
-    
+
     if request.method == 'POST':
         # Retrieve updated data from the form
         reservation_name = request.POST.get('reservation_name')
@@ -306,30 +332,43 @@ def edit_reservation(request, reservation_id):
         reservation.number_of_guests = number_of_guests
         reservation.save()
 
-        # Send confirmation email after the update   
+        # Send confirmation email after the update
         try:
             send_mail(
                 'Your reservation has been updated',
-                'Your reservation has been updated. Check under \'My reservation\' to see your current reservation.',
+                'Your reservation has been updated. '
+                'Check under \'My reservation\' '
+                'to see your current reservation.',
                 settings.DEFAULT_FROM_EMAIL,
                 [reservation.email],
                 fail_silently=False,
             )
-            
+
             messages.success(request, 'Reservation has been updated.')
             return redirect('reservations:list_reservation')
         except Exception as e:
-            messages.error(request, 'Failed to send confirmation email. Reservation was updated, but email was not sent.')
-            
-    form = ReservationForm(instance=reservation)
-    return render(request, 'reservations/edit_reservations.html', {'form': form, 'reservation': reservation})
+            messages.error(
+                request,
+                'Failed to send confirmation email. Reservation was updated, '
+                'but email was not sent.'
+            )
 
+    form = ReservationForm(instance=reservation)
+    return render(
+        request,
+        'reservations/edit_reservations.html',
+        {'form': form, 'reservation': reservation}
+    )
 
 
 def users_reservations(request):
     user_reservations = Reservation.objects.filter(email=request.user.email)
-    return render(request, 'reservations/users_reservations.html', {'reservations': user_reservations})
+    return render(
+        request,
+        'reservations/users_reservations.html',
+        {'reservations': user_reservations}
+    )
+
 
 def sitting_time():
     return timedelta(hours=1.5)
-

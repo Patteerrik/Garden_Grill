@@ -107,11 +107,27 @@
 
 ##### HTML
 
+![Alt text](main/static/images/Html-validator-readme.png)
+
+* All pages were tested with the [W3C VALIDATOR](https://validator.w3.org/) and passed without errors.
+
 ##### CSS
+
+![Alt text](main/static/images/Css-validator-readme.png)
+
+* All pages were tested with the [Jigsaw Validator](https://jigsaw.w3.org/css-validator/) and passed without errors.
 
 ##### PYTHON
 
+![Alt text](main/static/images/python-validator-readme.png)
+
+* All pages were tested with the [CI Python Linter](https://pep8ci.herokuapp.com/#) and passed without errors.
+
 ##### JAVASCRIPT
+
+![Alt text](main/static/images/JS-validator-readme.png)
+
+* All pages were tested with the [Jshint Validator](https://jshint.com/) and passed without any errors.
 
 #### Lighthouse testing
 

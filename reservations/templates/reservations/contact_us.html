@@ -61,9 +61,10 @@
 </div>
 
 <script>
+    /* jshint esversion: 6 */
     (function () {
         'use strict';
-        var forms = document.querySelectorAll('.needs-validation');
+        const forms = document.querySelectorAll('.needs-validation');
         Array.prototype.slice.call(forms)
             .forEach(function (form) {
                 form.addEventListener('submit', function (event) {
@@ -75,11 +76,8 @@
                 }, false);
             });
 
-
         document.addEventListener('DOMContentLoaded', function () {
-
-            var alert = document.querySelector('.contact-us-alert');
-
+            const alert = document.querySelector('.contact-us-alert');
 
             if (alert) {
 
