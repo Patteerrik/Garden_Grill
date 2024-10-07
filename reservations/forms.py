@@ -10,6 +10,7 @@ CLOSING_TIME = time(22, 0)  # 10:00 PM
 
 
 class ReservationForm(forms.ModelForm):
+    email = forms.EmailField(required=False, label="Email for reservation")
 
     class Meta:
         model = Reservation

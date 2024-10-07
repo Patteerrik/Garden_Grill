@@ -4,8 +4,7 @@
 <header class="header-section logged-in-header">
     <div class="header-content logged-in-content">
         <h1>Welcome {{ user.is_authenticated|yesno:", " }}{{ user.username }}!</h1>
-        <p>Welcome back, {{ user.username }}! Use the 'Create Reservation' button to make a new booking, or <a
-                href="{% url 'reservations:change_reservation' %}" class="contact-link">contact us</a> to change or cancel an existing reservation. You can also
+        <p>Welcome back, {{ user.username }}! Use the 'Create Reservation' button to make a new booking, or contact us to change or cancel an existing reservation. You can also
             click
             'Menu' to explore our delicious dishes and seasonal specials.</p>
     </div>

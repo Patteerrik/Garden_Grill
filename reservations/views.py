@@ -145,22 +145,31 @@ def create_reservation(request):
                 for error in errors:
                     messages.error(request, error)
 
-            return render
-            (request, 'reservations/create_reservation.html', {'form': form})
+            return render(
+                request,
+                'reservations/create_reservation.html',
+                {'form': form}
+            )
 
     else:
 
         initial_data = {
             'reservation_name': '',
+            'email': '',
+            'time': '',
+            'number_of_guests': ''
         }
 
         form = ReservationForm(initial=initial_data)
 
         if request.user.is_staff:
-            form.fields['email'] = forms.EmailField()
+            form.fields['email'].required = True
 
-    return render
-    (request, 'reservations/create_reservation.html', {'form': form})
+    return render(
+        request,
+        'reservations/create_reservation.html',
+        {'form': form}
+    )
 
 
 def send_reservation_conf_email(reservation):
@@ -198,8 +207,9 @@ def process_reservation_form(request, form):
         number_of_guests = form.cleaned_data['number_of_guests']
 
         #
-        is_available, message = check_availability
-        (date, time, number_of_guests)
+        is_available, message = check_availability(
+            date, time, number_of_guests
+        )
         if not is_available:
             messages.error(request, message)
             return None
@@ -344,7 +354,11 @@ def edit_reservation(request, reservation_id):
                 fail_silently=False,
             )
 
-            messages.success(request, 'Reservation has been updated.')
+            messages.success(
+                request,
+                'Reservation has been updated. '
+                'A confirmation email has been sent.'
+            )
             return redirect('reservations:list_reservation')
         except Exception as e:
             messages.error(

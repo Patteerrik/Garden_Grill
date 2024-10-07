@@ -8,6 +8,8 @@ from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 from .models import MenuCategory
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
 
 
 # Create your views here.
@@ -17,34 +19,52 @@ def home(request):
 
 def register(request):
     if request.method == 'POST':
-        username = request.POST.get('username', '')
         email = request.POST.get('email', '')
+        username = request.POST.get('username', '')
         password = request.POST.get('password', '')
         confirm_password = request.POST.get('confirm_password', '')
 
         context = {
-            'username': username,
             'email': email,
+            'username': username,
         }
 
-        # Validering
-        if password != confirm_password:
-            messages.error(request, 'Passwords do not match.')
+        #
+        try:
+            validate_email(email)
+
+            #
+            local_part, domain_part = email.rsplit('@', 1)
+            domain_name, tld = domain_part.rsplit('.', 1)
+
+            if len(local_part) < 2 or len(domain_name) < 2 or len(tld) < 2:
+                raise ValidationError('Email is not valid.')
+
+        except ValidationError:
+            messages.error(request, 'Email is not valid.')
             return render(request, 'home/register.html', context)
 
-        if User.objects.filter(username=username).exists():
-            messages.error(request, 'Username already exists.')
-            return render(request, 'home/register.html', context)
-
+        #
         if User.objects.filter(email=email).exists():
             messages.error(request, 'Email already exists.')
             return render(request, 'home/register.html', context)
 
+        #
+        if User.objects.filter(username=username).exists():
+            messages.error(request, 'Username already exists.')
+            return render(request, 'home/register.html', context)
+
+        #
+        if password != confirm_password:
+            messages.error(request, 'Passwords do not match.')
+            return render(request, 'home/register.html', context)
+
+        #
         user = User.objects.create_user(
             username=username,
             email=email,
-            password=password
-            )
+            password=password if password else None
+        )
         messages.success(request, f"Welcome, {username}!")
         return redirect('login')
 
