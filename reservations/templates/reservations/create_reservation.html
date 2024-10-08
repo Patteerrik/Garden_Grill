@@ -76,46 +76,6 @@
     </div>
 </div>
 
-<script>
-    /* jshint esversion: 6 */
-    (function () {
-        'use strict';
-        // Select all forms with class 'needs-validation'
-        const forms = document.querySelectorAll('.needs-validation');
-
-        // Turn the list of forms into an array, then go through each form
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                // Add a 'submit' event listener to each form
-                form.addEventListener('submit', function (event) {
-                    // If the form is invalid
-                    if (!form.checkValidity()) {
-                        event.preventDefault(); // Stop the form from submitting
-                        event.stopPropagation(); // Prevent the event from affecting other elements
-                    }
-                    // Add the 'was-validated' class to show validation styles
-                    form.classList.add('was-validated');
-                }, false);
-            });
-
-        // Hide alert after 3 seconds
-        document.addEventListener('DOMContentLoaded', function () {
-            const alert = document.querySelector('.alert');
-            if (alert) {
-                setTimeout(function () {
-                    alert.style.transition = "opacity 1s";
-                    alert.style.opacity = 0;
-                    setTimeout(function () {
-                        alert.remove();
-                    }, 1000);
-                }, 3000);
-            }
-        });
-    })(); 
-</script>
-
-
-
 {% endblock %}
 
 {% block header-text %}

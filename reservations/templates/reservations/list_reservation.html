@@ -90,21 +90,6 @@
     </div>
 </div>
 
-<!-- JavaScript to remove the alert after 3 seconds -->
-<script>
-    /* jshint esversion: 6 */
-    setTimeout(function() {
-        const alerts = document.querySelectorAll('.alert');
-        alerts.forEach(function(alert) {
-            alert.style.transition = 'opacity 1s ease-out';
-            alert.style.opacity = '0';
-            setTimeout(function() {
-                alert.remove();
-            }, 1000);
-        });
-    }, 3000);  // 3 seconds delay before fading out
-</script>
-
 {% endblock %}
 
 {% block google_maps_script %}

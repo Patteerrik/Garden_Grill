@@ -58,39 +58,6 @@
     </div>
 </div>
 
-<!-- Function for logout message to disappear after 3 seconds -->
-<script>
-    /* jshint esversion: 6 */
-    (function () {
-        'use strict';
-        const forms = document.querySelectorAll('.needs-validation');
-
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const alert = document.querySelector('.alert');
-            if (alert) {
-                setTimeout(function () {
-                    alert.style.transition = "opacity 1s";
-                    alert.style.opacity = 0;
-                    setTimeout(function () {
-                        alert.remove();
-                    }, 1000);
-                }, 3000);
-            }
-        });
-    })();
-</script>
-
 {% block google_maps_script %}
 <!-- Override to modify or remove Google Maps script in base.html -->
 {% endblock %}

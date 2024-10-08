@@ -32,7 +32,7 @@
                         <div class="form-group mb-3">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" id="username" name="username"
-                                value="{{ username|default_if_none:'' }}" placeholder="Enter your username" required>
+                                value="{{ username|default_if_none:'' }}" placeholder="Enter your username" autocomplete="username" required>
                             <div class="invalid-feedback">Please enter your username.</div>
                         </div>
 
@@ -40,7 +40,7 @@
                         <div class="form-group mb-3">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="email"
-                                value="{{ email|default_if_none:'' }}" placeholder="Enter your email" required>
+                                value="{{ email|default_if_none:'' }}" placeholder="Enter your email" autocomplete="email" required>
                             <div class="invalid-feedback">Please enter a valid email.</div>
                         </div>
 
@@ -52,55 +52,13 @@
                                 required>{{ message_content|default_if_none:'' }}</textarea>
                             <div class="invalid-feedback">Please enter a message of at least 10 characters.</div>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        <button type="submit" class="btn btn-primary w-100 submit-contact">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    /* jshint esversion: 6 */
-    (function () {
-        'use strict';
-        const forms = document.querySelectorAll('.needs-validation');
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const alert = document.querySelector('.contact-us-alert');
-
-            if (alert) {
-
-                setTimeout(function () {
-                    alert.style.transition = "opacity 1s";
-                    alert.style.opacity = 0;
-
-
-                    setTimeout(function () {
-                        alert.remove();
-                    }, 1000);
-                }, 3000);
-            }
-        });
-
-        // Remove green checkmark on server validation failure
-        document.querySelectorAll('.form-control').forEach(function (input) {
-            if (input.value && input.classList.contains('is-invalid')) {
-                input.classList.remove('is-valid');
-            }
-        });
-    })();
-</script>
 
 {% endblock %}
 
