@@ -105,6 +105,7 @@
 
 #### Validator testing
 
+
 ##### HTML
 
 ![Alt text](main/static/images/Html-validator-readme.png)
@@ -129,11 +130,22 @@
 
 * All pages were tested with the [Jshint Validator](https://jshint.com/) and passed without any errors.
 
+### Accessibility Testing
+
 #### Lighthouse testing
+
+* After a lot of effort and improvements, I’ve managed to score green in all Lighthouse metrics across every page. Lighthouse highlighted areas to improve in SEO and Best Practices on mobile, but by adding meta descriptions and keywords, I was able to push the SEO score to 100. The best practice warnings were related to the Google Map iframe, which I couldn’t fully resolve. Overall, I’m proud of the results and the enhanced user experience!
+
+![Alt text](main/static/images/Lighthouse-test-readme.png)
+
+
 
 #### Responsiveness Testing
 
-#### Accessibility Testing
+* The site has been tested on iMac, iPhone, iPad, and Samsung phones, using both Google Chrome and Safari browsers.
+
+#### Auotmatic testing
+
 
 #### Security Testing
 
