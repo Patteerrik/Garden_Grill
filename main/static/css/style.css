@@ -13,19 +13,13 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', Arial, sans-serif;
-    background-image: url('../images/pexels-chanwalrus-small.webp');
+    background-image: url('../images/pexels-chanwalrus-941861.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    /*background-attachment: fixed;*/
     min-height: 100vh;
     overflow-x: hidden; 
-}
-
-@media (min-width: 768px) {
-    body {
-        background-image: url('../images/pexels-chanwalrus-941861.webp');
-    }
 }
 
 /* Layout/Structure */
@@ -50,35 +44,11 @@ footer.site-footer {
     margin: 0; 
 }
 
-.footer-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.footer-icons a {
-    margin: 0 10px;
-}
-
 /* Color for social media icons */
 .social-media-icons i {
     color: #e6dac4;
     padding:5px;
 }
-
-/* Links in home page text */
-.custom-link {
-    color: #ebcc1e;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.custom-link:hover {
-    color: #eed43f; 
-    text-decoration: underline; 
-}
-
-/* Links in home page text ends here! */
 
 /* Header Section */
 .header-section {
@@ -89,7 +59,7 @@ footer.site-footer {
     text-align: center;
     min-height: 60vh; 
     padding-top: 130px;
-    background: rgba(0, 0, 0, 0.5); 
+    background: rgba(0, 0, 0, 0.7); 
     color: #fff; 
     width: 100%; 
     box-sizing: border-box; 
@@ -118,7 +88,10 @@ footer.site-footer {
 }
   
 .header-content p {
-    font-family: 'Lato', sans-serif;
+    /*font-family: 'Lato', sans-serif;*/
+    font-size: 1.2em;
+    line-height: 1.5;
+    font-family: 'Roboto', sans-serif;
 }
 
 .header-content {
@@ -452,6 +425,8 @@ footer.site-footer {
     }
 
 @media (min-width: 768px) {
+
+
     .map-container iframe {
         height: 370px;
         width: 250px;
@@ -552,6 +527,7 @@ footer.site-footer {
     margin-top: 20px; 
 }
 
+@media (min-width: 768px) {
 .btn-primary, .btn-secondary {
     background-color: black;
     border: 2px solid #e6dac4; 
@@ -569,7 +545,7 @@ footer.site-footer {
     color: #f0f0f0; 
     border: 2px solid #e6dac4;
 }
-
+}
 /* Contact us.html */
 
 .form-control {
@@ -580,17 +556,6 @@ footer.site-footer {
     margin-bottom: 20px;
     color: #333;
 } 
-
-.contact-link  {
-    color: #ebcc1e;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.contact-link:hover {
-    color: #eed43f; 
-    text-decoration: underline
-}
 
 .menu-box-contact {
     background-color: rgba(0, 0, 0, 0.7);
@@ -603,6 +568,15 @@ footer.site-footer {
 .contact-us-alert {
     background-color: #f8d7da;
     border-radius: 10px;
+}
+
+.submit-contact {
+    background-color: black;
+    border: 2px solid #e6dac4;
+    border-radius: 12px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
 }
 
 /* Contact us.html ends here! */
