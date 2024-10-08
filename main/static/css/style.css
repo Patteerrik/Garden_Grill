@@ -13,11 +13,10 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', Arial, sans-serif;
-    background-image: url('../images/pexels-chanwalrus-941861.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /*background-attachment: fixed;*/
+    /*background-attachment: fixed;*/ /* Kolla innan inlämning */
     min-height: 100vh;
     overflow-x: hidden; 
 }
@@ -525,6 +524,15 @@ footer.site-footer {
     justify-content: center;
     gap: 20px;
     margin-top: 20px; 
+}
+
+.btn-primary, .btn-secondary {
+    background-color: black;
+    border: 2px solid #e6dac4;
+    border-radius: 12px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
 }
 
 @media (min-width: 768px) {
