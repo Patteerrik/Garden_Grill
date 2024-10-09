@@ -139,7 +139,6 @@
 ![Alt text](main/static/images/Lighthouse-test-readme.png)
 
 
-
 #### Responsiveness Testing
 
 * The site has been tested on iMac, iPhone, iPad, and Samsung phones, using both Google Chrome and Safari browsers.

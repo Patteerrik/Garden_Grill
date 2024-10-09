@@ -45,6 +45,8 @@
 
 ## Agile planning
 
+![Alt text]()
+
 ## Features
 
 ### Users (Guests)
