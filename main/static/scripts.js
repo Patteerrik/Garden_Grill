@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     var loadMapBtn = document.getElementById("load-map-btn");
 
-    // 
     if (loadMapBtn) {
         loadMapBtn.addEventListener("click", function () {
             var mapContainer = document.getElementById("map-container");
@@ -10,7 +9,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 <iframe src="https://maps.google.com/maps?q=59.327597,18.035186&t=&z=13&ie=UTF8&iwloc=&output=embed" 
                         style="border:0;" loading="lazy" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             `;
-            this.style.display = 'none'; // G
+
+            // Change top value for .map-title when map is displayed
+            var mapTitle = document.querySelector(".map-title");
+            if (mapTitle) {
+                mapTitle.style.top = "25px"; // Change top value to 25px when map is displayed
+            }
+
+            this.style.display = 'none'; // Hides button when maps is loaded
         });
     }
 });
