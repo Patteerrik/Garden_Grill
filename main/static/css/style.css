@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-
 html, body {
     height: 100%;
     margin: 0;
@@ -505,7 +503,7 @@ footer.site-footer {
 }
 
 @media (min-width: 1200px) {
-    .map-container iframe, .opening-hours-box {
+    #map-container iframe, .opening-hours-box {
         width: 300px; 
         height: 400px; 
     }
@@ -628,7 +626,8 @@ footer.site-footer {
 
 .card-footer a {
     color: white;
-}/* Style for menu. Moved to a separate file for better readability */
+}
+/* Style for menu. Moved to a separate file for better readability */
 
 .menu-container {
     display: flex;
