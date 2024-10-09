@@ -386,7 +386,7 @@ footer.site-footer {
     width: 200px;  
 }
 
-.map-container iframe {
+#map-container iframe {
     border-radius: 10px;
     width: 200px;
 }
@@ -426,9 +426,10 @@ footer.site-footer {
 @media (min-width: 768px) {
 
 
-    .map-container iframe {
+    #map-container iframe {
         height: 370px;
         width: 250px;
+        margin-bottom:2.6rem
     }
 
     .opening-hours-box {
@@ -464,9 +465,9 @@ footer.site-footer {
 
 @media (min-width: 769px) {
 
-    .map-container {
+    #map-container {
         margin-top: -20px; 
-        padding: 5px; 
+        padding: 55px; 
     }
 
     .opening-hours-box {
@@ -480,7 +481,6 @@ footer.site-footer {
 
     .map-title {
         position: relative;
-        top: -20px;
         color: #FFD700; 
         border-radius: 10px;
     }
@@ -488,7 +488,7 @@ footer.site-footer {
 
 @media (min-width: 1024px) {
 
-    .map-container iframe, .opening-hours-box {
+    #map-container iframe, .opening-hours-box {
         width:300px;
     }
 
