@@ -32,10 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
-                    event.preventDefault();
+                    event.preventDefault(); // Prevent form submission if invalid
                     event.stopPropagation();
                 }
-                form.classList.add('was-validated');
+                form.classList.add('was-validated'); // Add validation styles to the form
             }, false);
         });
     // Alert fade-out logic
@@ -43,12 +43,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const alert = document.querySelector('.contact-us-alert');
 
         if (alert) {
-
+            // Fade out the alert after 3 seconds
             setTimeout(function () {
                 alert.style.transition = "opacity 1s";
                 alert.style.opacity = 0;
 
-
+                // Remove the alert from DOM after fading out
                 setTimeout(function () {
                     alert.remove();
                 }, 1000);
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Remove green checkmark on server validation failure
     document.querySelectorAll('.form-control').forEach(function (input) {
         if (input.value && input.classList.contains('is-invalid')) {
-            input.classList.remove('is-valid');
+            input.classList.remove('is-valid'); // Remove valid class if the field is invalid
         }
     });
 })();
@@ -77,12 +77,12 @@ document.addEventListener('DOMContentLoaded', function () {
         .forEach(function (form) {
             // Add a 'submit' event listener to each form
             form.addEventListener('submit', function (event) {
-                // If the form is invalid
+                // Prevent submission if form is invalid
                 if (!form.checkValidity()) {
-                    event.preventDefault(); // Stop the form from submitting
+                    event.preventDefault(); // Stop form submission
                     event.stopPropagation(); // Prevent the event from affecting other elements
                 }
-                // Add the 'was-validated' class to show validation styles
+                // Add validation classes to the form
                 form.classList.add('was-validated');
             }, false);
         });
@@ -93,11 +93,11 @@ document.addEventListener('DOMContentLoaded', function () {
         if (alert) {
             setTimeout(function () {
                 alert.style.transition = "opacity 1s";
-                alert.style.opacity = 0;
+                alert.style.opacity = 0; // Fade out the alert
                 setTimeout(function () {
-                    alert.remove();
+                    alert.remove(); // Remove the alert from the DOM after fade out
                 }, 1000);
-            }, 3000);
+            }, 3000); 
         }
     });
 })();
@@ -105,13 +105,14 @@ document.addEventListener('DOMContentLoaded', function () {
 // List reservation
 
 /* jshint esversion: 6 */
+// Automatically hide alerts after 3 seconds
 setTimeout(function() {
     const alerts = document.querySelectorAll('.alert');
     alerts.forEach(function(alert) {
-        alert.style.transition = 'opacity 1s ease-out';
-        alert.style.opacity = '0';
+        alert.style.transition = 'opacity 1s ease-out'; // Fade-out transition
+        alert.style.opacity = '0'; // Set alert opacity to 0 for fade out effect
         setTimeout(function() {
-            alert.remove();
+            alert.remove(); // Remove alert from DOM after fade out
         }, 1000);
     });
 }, 3000);  // 3 seconds delay before fading out
@@ -121,27 +122,29 @@ setTimeout(function() {
 /* jshint esversion: 6 */
 (function () {
     'use strict';
+    // Form validation for register page
     const forms = document.querySelectorAll('.needs-validation');
-
+    // Apply validation to each form
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
+                    event.preventDefault(); // Stop form submission if invalid
+                    event.stopPropagation(); // Prevent the event from affecting other elements
                 }
-                form.classList.add('was-validated');
+                form.classList.add('was-validated'); // Add validation styles to the form
             }, false);
         });
-
+    
+    // Hide alert after 3 seconds
     document.addEventListener('DOMContentLoaded', function () {
         const alert = document.querySelector('.alert');
         if (alert) {
             setTimeout(function () {
                 alert.style.transition = "opacity 1s";
-                alert.style.opacity = 0;
+                alert.style.opacity = 0; // Fade out the alert
                 setTimeout(function () {
-                    alert.remove();
+                    alert.remove(); // Remove alert from DOM after fading out
                 }, 1000);
             }, 3000);
         }
@@ -153,27 +156,29 @@ setTimeout(function() {
 /* jshint esversion: 6 */
 (function () {
     'use strict';
+    // Apply validation to forms in the login page
     const forms = document.querySelectorAll('.needs-validation');
 
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
+                    event.preventDefault(); // Prevent form submission if invalid
+                    event.stopPropagation(); // Prevent the event from affecting other elements
                 }
-                form.classList.add('was-validated');
+                form.classList.add('was-validated'); // Add validation styles to the form
             }, false);
         });
 
+    // Hide alert after 3 seconds
     document.addEventListener('DOMContentLoaded', function () {
         const alert = document.querySelector('.alert');
         if (alert) {
             setTimeout(function () {
                 alert.style.transition = "opacity 1s";
-                alert.style.opacity = 0;
+                alert.style.opacity = 0; // Fade out the alert
                 setTimeout(function () {
-                    alert.remove();
+                    alert.remove(); // Remove alert from DOM after fading out
                 }, 1000);
             }, 3000);
         }
