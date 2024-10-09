@@ -86,6 +86,8 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 * Python
 * Bootstrap
 
+### Wireframes
+
 
 ### Navigation bar 
 * The navigationbar appears on every page and is responsive.
