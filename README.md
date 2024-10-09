@@ -86,7 +86,7 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 * Python
 * Bootstrap
 
-### Wireframes
+## Wireframes
 
 
 ### Navigation bar 
