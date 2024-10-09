@@ -45,7 +45,24 @@
 
 ## Agile planning
 
-![Alt text]()
+## Agile Development Approach
+
+* This project followed a simplified Agile methodology. The work was broken down into small, manageable user stories, each with clear acceptance criteria. 
+
+### Sprints
+* This project followed a simplified Kanban methodology. Tasks were tracked and managed using a Kanban board in GitHub Projects, with user stories moving from “To Do” to “In Progress” to “Done” as work progressed. This allowed for continuous delivery of features without the time-boxed structure of sprints.
+
+### Prioritization
+* Tasks were labeled based on priority, following the categories:
+- **Must have:** Core features necessary for project functionality.
+- **Should have:** Important features that enhance the user experience but are not critical.
+- **Could have:** Optional features that would be nice to implement if time allowed.
+
+### Kanban Board
+I utilized GitHub Projects to track and organize user stories. The Kanban board visually represented the progress of each task from “To Do” to “Done.” Each user story included clear acceptance criteria to define when the task could be marked as complete.
+
+
+![Alt text](main/static/images/Agile-readme.png)
 
 ## Features
 
@@ -235,4 +252,4 @@ For easier readability of the README, I chose to add a separate file for [testin
   * Click "Enable automatic deploys" button to enable Heroku to rebuild the app when a new change is pushed to Github
 
 ## Credits
-
+* My mentor Gareth McGirr
