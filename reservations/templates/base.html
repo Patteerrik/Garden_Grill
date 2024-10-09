@@ -49,7 +49,8 @@
 
 <body class="d-flex flex-column min-vh-100">
   <!-- Backround image -->
-  <img src="{% static 'images/pexels-chanwalrus-941861.webp' %}" alt="Background image" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; object-fit: cover;">
+  <img src="{% static 'images/pexels-chanwalrus-941861.webp' %}" alt="Background image" loading="lazy"
+    style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; object-fit: cover;">
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -129,7 +130,7 @@
         reservation.
         {% endif %}
       </p>
-      
+
     </div>
   </header>
   {% endblock %}
@@ -154,8 +155,8 @@
     <!-- Menu button centered for none logged in users -->
     <div style="text-align: center;">
       <a href="{% url 'menu' %}" class="btn btn-secondary btn-large" id="menu-button">Menu</a>
-      
-  
+
+
     </div>
     {% endif %}
   </div>
