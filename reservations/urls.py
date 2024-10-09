@@ -1,9 +1,14 @@
 from django.urls import path
+# Import the path function to define URL patterns
 from . import views
+# Import views from the current app reservations
 from django.contrib.auth.views import LogoutView
+# Import Django's built-in LogoutView to handle user logouts
+
 
 app_name = 'reservations'
 
+# Define URL patterns for the reservations app
 urlpatterns = [
     path('create/',
          views.create_reservation, name='create_reservation'),
