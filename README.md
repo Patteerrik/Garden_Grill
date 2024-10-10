@@ -88,9 +88,57 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 
 ## Wireframes
 
-* Home page
-![Alt text](main/static/images/figma-homepage-desktop-readme.png)![Alt text](main/static/images/figma-homepage-mobile-readme.png)
+### Home Page
 
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-homepage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400"height=110>
+    </td>
+    <td>
+      <img src="main/static/images/figma-small-homepage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+### Log in page
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-loginpage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-loginpage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+### Register page 
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-registerpage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-registerpage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+### Menu page
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-menupage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-menupage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
 
 ### Navigation bar 
 * The navigationbar appears on every page and is responsive.
