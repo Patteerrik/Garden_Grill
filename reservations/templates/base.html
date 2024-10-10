@@ -111,16 +111,21 @@
   </nav>
 
   <!-- Welcome message -->
-  {% block header-text %}
-  <header class="header-section">
-    <div class="header-content">
-      {% if user.is_authenticated %}
-      <!-- Message fo logged in users -->
-      <h1>Welcome back, {{ user.username }}!</h1>
-      <p>Use the 'Create Reservation' button to make a new booking, or contact us to change or cancel an existing
-        reservation. You can also explore our menu.</p>
+{% block header-text %}
+<header class="header-section">
+  <div class="header-content">
+    {% if user.is_authenticated %}
+      {% if user.is_staff %}
+        <!-- Message for logged in admin users -->
+        <h1>Welcome Admin!</h1>
       {% else %}
-      <!-- Message fo non logged in users -->
+        <!-- Message for logged in regular users -->
+        <h1>Welcome back, {{ user.username }}!</h1>
+        <p>Use the 'Create Reservation' button to make a new booking, or contact us to change or cancel an existing
+          reservation. You can also explore our menu.</p>
+      {% endif %}
+    {% else %}
+      <!-- Message for non logged in users -->
       <h1>Welcome to Garden and Grill</h1>
       <p>Experience a blend of comfort and elegance in the heart of the city.</p>
       <p class="lead">
@@ -131,10 +136,10 @@
         atmosphere.
         Please log in or register to make a reservation.
       </p>
-      {% endif %}
-    </div>
-  </header>
-  {% endblock %}
+    {% endif %}
+  </div>
+</header>
+{% endblock %}
 
   <!-- Navigation buttons -->
   {% block buttons %}
@@ -168,41 +173,43 @@
   </main>
 
 
-  <!-- Bottom Section -->
-  <div class="bottom-section">
-    <div class="row justify-content-center align-items-center">
-      {% block bottom-section %}
-      <!-- google maps -->
-      <div class="col-md-5 d-flex flex-column justify-content-center align-items-center mb-4 mb-md-0">
-        <h2 class="map-title text-center">Find us here!</h2>
-        <button id="load-map-btn" class="btn btn-primary">Show Map</button>
-        <div id="map-container" style="padding-bottom: 20px;"></div>
-      </div>
+  <!-- Bottom Section (hidden for admin users) -->
+{% if not user.is_staff %}
+<div class="bottom-section">
+  <div class="row justify-content-center align-items-center">
+    {% block bottom-section %}
+    <!-- google maps -->
+    <div class="col-md-5 d-flex flex-column justify-content-center align-items-center mb-4 mb-md-0">
+      <h2 class="map-title text-center">Find us here!</h2>
+      <button id="load-map-btn" class="btn btn-primary">Show Map</button>
+      <div id="map-container" style="padding-bottom: 20px;"></div>
+    </div>
 
-      <!-- Opening hours -->
-      <div
-        class="col-md-5 d-flex flex-column justify-content-center align-items-center text-center opening-hours-container">
-        <div class="opening-hours-box">
-          <h3 class="section-title">Opening Hours</h3>
-          <div class="opening-hours-content">
-            <h4>Lunch Opening Times</h4>
-            <p>Monday to Saturday: 12pm - 3:45pm</p>
-            <p>Sunday: 12pm - 4pm</p>
+    <!-- Opening hours -->
+    <div
+      class="col-md-5 d-flex flex-column justify-content-center align-items-center text-center opening-hours-container">
+      <div class="opening-hours-box">
+        <h3 class="section-title">Opening Hours</h3>
+        <div class="opening-hours-content">
+          <h4>Lunch Opening Times</h4>
+          <p>Monday to Saturday: 12pm - 3:45pm</p>
+          <p>Sunday: 12pm - 4pm</p>
 
-            <h4>Dining Opening Times</h4>
-            <p>Monday: 4pm - 10pm</p>
-            <p>Tuesday: 4pm - 10pm</p>
-            <p>Wednesday: 4pm - 10pm</p>
-            <p>Thursday: 4pm - 10pm</p>
-            <p>Friday: 4pm - 10pm</p>
-            <p>Saturday: 4pm - 10pm</p>
-            <p>Sunday: 4pm - 10pm</p>
-          </div>
+          <h4>Dining Opening Times</h4>
+          <p>Monday: 4pm - 10pm</p>
+          <p>Tuesday: 4pm - 10pm</p>
+          <p>Wednesday: 4pm - 10pm</p>
+          <p>Thursday: 4pm - 10pm</p>
+          <p>Friday: 4pm - 10pm</p>
+          <p>Saturday: 4pm - 10pm</p>
+          <p>Sunday: 4pm - 10pm</p>
         </div>
       </div>
-      {% endblock %}
     </div>
+    {% endblock %}
   </div>
+</div>
+{% endif %}
 
 
   <!-- footer -->
