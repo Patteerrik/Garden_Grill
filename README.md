@@ -93,10 +93,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-homepage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400"height=150>
+      <img src="main/static/images/figma-homepage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400"height=350>
     </td>
     <td>
-      <img src="main/static/images/figma-small-homepage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=150>
+      <img src="main/static/images/figma-small-homepage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -106,10 +106,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-loginpage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-loginpage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-loginpage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-loginpage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -119,10 +119,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-registerpage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-registerpage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-registerpage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-registerpage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -132,10 +132,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-menupage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-menupage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-menupage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-menupage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -145,10 +145,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-loginpage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-loginpage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-loginpage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-loginpage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -158,10 +158,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-loggedinuser-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-loggedinuser-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-loggedinuser-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-loggedinuser-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -171,10 +171,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-createreserv-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-createreserv-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-createreserv-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-createreserv-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -184,10 +184,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-myreserv-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-myreserv-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-myreserv-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-myreserv-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -197,10 +197,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-contactus-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-contactus-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-contactus-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-contactus-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -210,10 +210,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-messagesuccess-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-messagesuccess-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-messagesuccess-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-messagesuccess-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -223,10 +223,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-loggedinadmin-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-loggedinadmin-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-loggedinadmin-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-loggedinadmin-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -236,10 +236,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-createreserv-admin-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-createreserv-admin-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-createreserv-admin-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-createreserv-admin-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -249,10 +249,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-reservationsuccess-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-reservationsuccess-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-reservationsuccess-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-reservationsuccess-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -262,10 +262,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-managereserv-admin-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-managereserv-admin-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-myreserv-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-myreserv-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -275,10 +275,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-404-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-404-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-404-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-404-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -289,10 +289,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-404-admin-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-404-admin-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-404-admin-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-404-admin-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
@@ -302,10 +302,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-500-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+      <img src="main/static/images/figma-500-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="350">
     </td>
     <td>
-      <img src="main/static/images/figma-500-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-500-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=350>
     </td>
   </tr>
 </table>
