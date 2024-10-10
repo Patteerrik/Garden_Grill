@@ -88,6 +88,9 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 
 ## Wireframes
 
+* Home page
+![Alt text](main/static/images/figma-homepage-desktop-readme.png)![Alt text](main/static/images/figma-homepage-mobile-readme.png)
+
 
 ### Navigation bar 
 * The navigationbar appears on every page and is responsive.
