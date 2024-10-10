@@ -93,10 +93,10 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 <table>
   <tr>
     <td>
-      <img src="main/static/images/figma-homepage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400"height=110>
+      <img src="main/static/images/figma-homepage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400"height=150>
     </td>
     <td>
-      <img src="main/static/images/figma-small-homepage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+      <img src="main/static/images/figma-small-homepage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=150>
     </td>
   </tr>
 </table>
