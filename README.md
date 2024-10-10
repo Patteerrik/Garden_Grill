@@ -140,6 +140,176 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
   </tr>
 </table>
 
+### Log in page
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-loginpage-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-loginpage-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+### Logged in user
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-loggedinuser-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-loggedinuser-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+### Create reservation (user)
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-createreserv-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-createreserv-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+### My reservations (user)
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-myreserv-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-myreserv-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+### Contact us page
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-contactus-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-contactus-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+### Message success
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-messagesuccess-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-messagesuccess-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+### Logged in admin
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-loggedinadmin-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-loggedinadmin-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+### Create reservation (admin)
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-createreserv-admin-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-createreserv-admin-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+### Reservation success
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-reservationsuccess-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-reservationsuccess-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+### Manage reservations (admin)
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-managereserv-admin-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-myreserv-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+### 404 error page (user)
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-404-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-404-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+
+### 404 error page (admin)
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-404-admin-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-404-admin-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
+### 500 error page 
+
+<table>
+  <tr>
+    <td>
+      <img src="main/static/images/figma-500-desktop-readme.png" alt="Home Page Desktop Wireframe" width="400" height="110">
+    </td>
+    <td>
+      <img src="main/static/images/figma-500-mobile-readme.png" alt="Home Page Mobile Wireframe" width="200" height=110>
+    </td>
+  </tr>
+</table>
+
 ### Navigation bar 
 * The navigationbar appears on every page and is responsive.
 * It helps to organize content for an easy to use experience.
