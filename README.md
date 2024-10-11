@@ -45,21 +45,19 @@
 
 ## Agile planning
 
-## Agile Development Approach
-
-* This project followed a simplified Agile methodology. The work was broken down into small, manageable user stories, each with clear acceptance criteria. 
+* This project followed a simplified Agile approach. The work was broken down into small tasks called user stories, each with clear goals to meet. 
 
 ### Sprints
-* This project followed a simplified Kanban methodology. Tasks were tracked and managed using a Kanban board in GitHub Projects, with user stories moving from “To Do” to “In Progress” to “Done” as work progressed. This allowed for continuous delivery of features without the time-boxed structure of sprints.
+This project used a simple Kanban method. Tasks were tracked on a GitHub Projects board, with user stories moving from "To Do" to "In Progress" and then to "Done." This helped deliver features continuously without using sprints.
 
 ### Prioritization
 * Tasks were labeled based on priority, following the categories:
-- **Must have:** Core features necessary for project functionality.
-- **Should have:** Important features that enhance the user experience but are not critical.
-- **Could have:** Optional features that would be nice to implement if time allowed.
+- **Must have:** Key features that the project needs to work.
+- **Should have:** Features that improve the user experience but aren't essential.
+- **Could have:** Extra features that are nice to add if there's time.
 
 ### Kanban Board
-I utilized GitHub Projects to track and organize user stories. The Kanban board visually represented the progress of each task from “To Do” to “Done.” Each user story included clear acceptance criteria to define when the task could be marked as complete.
+I used GitHub Projects to keep track of and organize user stories. The Kanban board showed the progress of each task, moving from "To Do" to "Done." Each user story had clear acceptance criteria to know when the task was finished.
 
 
 ![Alt text](main/static/images/Agile-readme.png)
@@ -68,7 +66,7 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 
 ### Users (Guests)
 * Users can register, log in and log out.
-* Guests can book a table using a simpl form where they enter their name, date, time and number of guests.
+* Guests can book a table using a simple form where they enter their name, date, time and number of guests.
 * Guests can manage their booking by sending a request email to the restaurant.
 * When a reservation is created, updated or canceled the user recieves a confirmation email.
 
@@ -328,7 +326,6 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 *  On smaller screens, the navbar uses a hamburger icon with a dropdown menu.
   ![Alt text](main/static/images/Navbar_sscreens_readme.png)
 
-
 ## Footer
 * The footer has a transparent color scheme that complements the background and contains links to social media pages that open in a new tab.
 
@@ -383,7 +380,7 @@ I utilized GitHub Projects to track and organize user stories. The Kanban board 
 
 ## Reservation success
 
-* A clear message is displayed to the user with important details about their reservation.
+* A clear message is displayed to the user with important details about their reservation. A button is provided to easily navigate the user back to the homepage.
 
 ![Alt text](main/static/images/Reservation_successful_readme.png)
 
@@ -421,7 +418,7 @@ This page contains a simple form with three input fields: Reservation Name, Emai
 
 ## Email success
 
-* 
+* A clear message indicating that the user's message has been successfully sent to the restaurant. A button is provided to easily navigate the user back to the homepage.
 
 ![Alt text](main/static/images/Success_message_user_readme.png)
 
@@ -451,12 +448,14 @@ This page contains a simple form with three input fields: Reservation Name, Emai
 
 ## Bugs
 
+* I'm not sure if it's a bug, but I had trouble getting a good score on the Lighthouse test because of the iframe maps. I fixed it by replacing the maps with a button to improve the page loading time.
+
 ## Testing and validation
 
 For easier readability of the README, I chose to add a separate file for [testing](./testing.md).
 
 ## Features left to implement
-* Forgot password
+* Forgot password on the log in page
 * Search bar so that admin can easily find existing reservations.
 
 ## Deployment
@@ -475,4 +474,6 @@ For easier readability of the README, I chose to add a separate file for [testin
   * Click "Enable automatic deploys" button to enable Heroku to rebuild the app when a new change is pushed to Github
 
 ## Credits
+
 * My mentor Gareth McGirr
+
