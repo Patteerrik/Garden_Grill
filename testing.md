@@ -132,6 +132,8 @@
 
 ### Accessibility Testing
 
+
+
 #### Lighthouse testing
 
 * After a lot of effort and improvements, I’ve managed to score green in all Lighthouse metrics across every page. Lighthouse highlighted areas to improve in SEO and Best Practices on mobile, but by adding meta descriptions and keywords, I was able to push the SEO score to 100. The best practice warnings were related to the Google Map iframe, which I couldn’t fully resolve. Overall, I’m proud of the results and the enhanced user experience!
@@ -145,6 +147,9 @@
 
 #### Auotmatic testing
 
+* This test checks if the ReservationForm works with good data. It gives the form a name, date, time, and number of guests. If the form accepts the data, the test passes. If the form does not accept it, the test fails and shows "Form is invalid.
+
+![Alt text](main/static/images/automatic-test-readme.png)
 
 #### Security Testing
 
