@@ -11,12 +11,16 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 
+# Imports OS module
 import os
+# Imports Path class for handling file and directory paths
 from pathlib import Path
+# External library for handling the database URL
 import dj_database_url
+# For reading environment variables securely
 from decouple import config
 
-
+# Load environment variables if the env.py file exists
 if os.path.isfile('env.py'):
     import env
 
@@ -37,6 +41,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 
+# List of allowed hosts for the project to handle
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
@@ -44,6 +49,8 @@ ALLOWED_HOSTS = [
     "8000-patteerrik-gardengrill-bepklsfb4ex.ws.codeinstitute-ide.net"
 ]
 
+
+# Email backend configuration using Gmail's SMTP server
 # https://medium.com/django-unleashed/email-configuration-in-django-3c7d9e149445
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -54,18 +61,8 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-# User session ends when the browser is closed
-
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
-# User session ends after 10 minutes inactivity
-
-SESSION_COOKIE_AGE = 600
-
-SESSION_SAVE_EVERY_REQUEST = False
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -77,22 +74,23 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
-    # Apps
+    # Custom applications
     'home',
     'reservations',
 
-    # crispyforms
+    # Form handling with Crispy Forms and Bootstrap 5
     'crispy_forms',
     'crispy_bootstrap5',
 
 ]
 
+# Site framework
 SITE_ID = 1
 
-# Restaurants capacity
+# Restaurant's maximum seating capacity
 MAX_SEATS = 50
 
-# Admin email
+# Admin email for reservation notifications
 ADMIN_EMAIL = os.getenv('EMAIL_HOST_USER')
 
 
@@ -109,13 +107,16 @@ MIDDLEWARE = [
 
 ]
 
+# Crispy forms settings
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap5')
 
 
+# Root URL configuration
 ROOT_URLCONF = 'main.urls'
 
 
+# Template settings for rendering HTML pages
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -132,6 +133,7 @@ TEMPLATES = [
     },
 ]
 
+# Authentication backends for both Django admin and allauth
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
@@ -140,33 +142,25 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+# WSGI application entry point
 WSGI_APPLICATION = 'main.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#    'default': {
-#       'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-# }
-
+# Database configuration, using dj_database_url
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 
+# Trusted origins for CSRF protection
 CSRF_TRUSTED_ORIGINS = [
     "https://gardengrill-d40b8e344381.herokuapp.com",
     "https://8000-patteerrik-gardengrill-bepklsfb4ex.ws.codeinstitute-ide.net"
 ]
 
 
-# Password validation
+# Password validation settings
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
     'NAME':
@@ -188,50 +182,53 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
+# Internationalization and localization settings
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
+# Timezone set to Stockholm
 TIME_ZONE = 'Europe/Stockholm'
-
+# Enable internationalizatio
 USE_I18N = True
-
+# Use timezone-aware dates and times
 USE_TZ = True
 
-# Timeout for session in seconds
+
+# Session settings to expire sessions after inactivity
+# End session after 10 minutes of inactivity
 SESSION_COOKIE = 600
-
-# Set whether the session should end when the browser is closed
+# End session when browser closes
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
-# Automatic logout after inactivity
+# Save the session after every request
 SESSION_SAVE_EVERY_REQUEST = True
 
-# Borrowed from https://www.youtube.com/watch?v=-E2igrFADI0
-# Account Setup
 
+# https://www.youtube.com/watch?v=-E2igrFADI0
+# Account 
+# Allow login by username or email
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_EMAIL_VERIFCATION = 'none'
-ACCOUNT_USERNAME_MIN_LENGTH = 4
+ACCOUNT_USERNAME_MIN_LENGTH = 4  # Minimum length for username
 LOGIN_REDIRECT_URL = 'home'  # Redirect successful login
 LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = '/static/'
+STATIC_URL = '/static/'  # URL for static files
 STATICFILES_DIRS = [
-    BASE_DIR / 'main/static',
+    BASE_DIR / 'main/static',  # Directory for static files
 ]
+# Directory for collected static files
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
+# Use WhiteNoise for static file serving
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
+# Specify MIME types for CSS and JavaScript
 WHITENOISE_MIMETYPES = {
     '.css': 'text/css',
     '.js': 'application/javascript',
@@ -239,5 +236,4 @@ WHITENOISE_MIMETYPES = {
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

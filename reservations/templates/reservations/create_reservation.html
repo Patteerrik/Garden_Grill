@@ -1,5 +1,5 @@
 <!-- For all users to create a reservation -->
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- Inherit base template -->
 
 {% block content %}
 <div class="container mt-5">
@@ -7,6 +7,7 @@
         <div class="col-md-6">
             <div class="card custom-card menu-box create-res-card">
                 <div class="card-header text-center">
+                    <!-- Page heading -->
                     <h2>Create a Reservation</h2>
                 </div>
                 <div class="card-body">
@@ -16,58 +17,65 @@
                         <div class="mt-3 create-res-alert">
                             {% for message in messages %}
                                 <div class="alert alert-{{ message.tags }}" role="alert">
-                                    {{ message }}
+                                    {{ message }} <!-- Loop to display messages like errors or success -->
                                 </div>
                             {% endfor %}
                         </div>
                     {% endif %}
 
+                    <!-- Form to create a reservation -->
                     <form method="post" action="{% url 'reservations:create_reservation' %}" class="needs-validation"
                         novalidate>
-                        {% csrf_token %}
+                        {% csrf_token %} <!-- CSRF token for form security -->
 
                         <div class="form-group mb-3">
+                            <!-- Input field for user's name -->
                             <label for="reservation_name">Name</label>
                             <input type="text" class="form-control" id="reservation_name" name="reservation_name"
                                 placeholder="Enter your name" value="{{ form.reservation_name.value }}" required>
                             <div class="invalid-feedback">
-                                Please enter your name.
+                                Please enter your name. <!-- Feedback if name field is empty -->
                             </div>
                         </div>
                         <div class="form-group mb-3">
+                            <!-- Input field for reservation date -->
                             <label for="date">Date</label>
                             <input type="date" class="form-control" id="date" name="date" value="{{ form.date.value|default_if_none:'' }}" required>
                             <div class="invalid-feedback">
-                                Please select a date.
+                                Please select a date. <!-- Feedback if date field is empty -->
                             </div>
                         </div>
                         <div class="form-group mb-3">
+                            <!-- Input field for reservation time -->
                             <label for="time">Time</label>
                             <input type="time" class="form-control" id="time" name="time" value="{{ form.time.value|default_if_none:'' }}" required>
                             <div class="invalid-feedback">
-                                Please select a time.
+                                Please select a time. <!-- Feedback if time field is empty -->
                             </div>
                         </div>
                         <div class="form-group mb-3">
+                            <!-- Input field for number of guests -->
                             <label for="number_of_guests">Number of Guests</label>
                             <input type="number" class="form-control" id="number_of_guests" name="number_of_guests"
                                 min="1" max="50" value="{{ form.number_of_guests.value }}" required>
                             <div class="invalid-feedback">
-                                Please enter the number of guests.
+                                Please enter the number of guests. <!-- Feedback if guests field is empty -->
                             </div>
                         </div>
 
+                        <!-- Email field for staff/admins only -->
                         {% if request.user.is_staff %}
                         <div class="form-group mb-3">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="email"
                                 placeholder="Enter email for reservation" value="{{ form.email.value }}" required>
                             <div class="invalid-feedback">
-                                Please enter a valid email.
+                                Please enter a valid email.<!-- Feedback if email field is empty -->
                             </div>
                         </div>
                         {% endif %}
 
+                        <!-- Submit button for the form -->
                         <button type="submit" class="btn btn-primary w-100">Submit</button>
                     </form>
                 </div>

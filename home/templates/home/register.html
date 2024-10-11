@@ -1,18 +1,19 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- Inherit base template -->
 
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card custom-card menu-box"> <!-- TEST -->
+            <div class="card custom-card menu-box">
                 <div class="card-header text-center">
+                    <!-- Display the page title-->
                     <h2>Sign Up</h2>
-
                 </div>
                 <div class="card-body">
                     <!-- Error message display -->
                     {% if messages %}
                     <div id="message-container" class="text-center mb-3">
+                        <!-- Loop through all messages -->
                         {% for message in messages %}
                         <div class="alert register-alert alert-{{ message.tags }} d-inline-block px-4 py-2" role="alert"
                             style="background-color: #f8d7da; border-radius: 10px;">
@@ -21,35 +22,49 @@
                         {% endfor %}
                     </div>
                     {% endif %}
+
+                    <!-- Sign-up form begins here -->
                     <form method="post" action="{% url 'register' %}" class="needs-validation" novalidate>
-                        {% csrf_token %}
+                        {% csrf_token %} <!-- CSRF token for form security -->
+
+                        <!-- Username input field -->
                         <div class="form-group mb-3">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" id="username" name="username"
                                    value="{{ username|default_if_none:'' }}" placeholder="Enter your username" autocomplete="username" required>
                             <div class="invalid-feedback">Please enter your username.</div>
                         </div>
+
+                        <!-- Email input field -->
                         <div class="form-group mb-3">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="email"
                                    value="{{ email|default_if_none:'' }}" placeholder="Enter your email" autocomplete="email" required>
                             <div class="invalid-feedback">Please enter a valid email.</div>
                         </div>
+
+                        <!-- Password input field -->
                         <div class="form-group mb-3">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password"
                                    placeholder="Enter your password" autocomplete="new-password" required>
                             <div class="invalid-feedback">Please enter your password.</div>
                         </div>
+
+                        <!-- Confirm password input field -->
                         <div class="form-group mb-3">
                             <label for="confirm_password">Confirm Password</label>
                             <input type="password" class="form-control" id="confirm_password" name="confirm_password"
                                    placeholder="Confirm your password" autocomplete="new-password" required>
                             <div class="invalid-feedback">Please confirm your password.</div>
                         </div>
+
+                        <!-- Submit button -->
                         <button type="submit" class="btn btn-primary w-100">Sign up</button>
                     </form>
                 </div>
+
+                <!-- Footer with login link -->
                 <div class="card-footer text-center">
                     <small>Already have an account? <a href="{% url 'login' %}">Login here</a></small>
                 </div>

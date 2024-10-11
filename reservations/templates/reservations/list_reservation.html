@@ -1,9 +1,9 @@
 <!-- For admins to see current reservation list -->
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- Inherit base template -->
 
 {% block content %}
 <div class="container my-4">
-    <!-- Block for displaying messages -->
+    <!-- Block for displaying error or alert messages -->
     {% if messages %}
         <div class="mt-3">
             {% for message in messages %}
@@ -64,7 +64,7 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                    <!-- Loop through each reservation in the list -->
                     {% for reservation in reservations %}
                     <tr>
                         <td>{{ reservation.reservation_name }}</td>
@@ -73,9 +73,9 @@
                         <td>{{ reservation.time }}</td>
                         <td>{{ reservation.number_of_guests }}</td>
                         <td>
-                            <!-- Navigates to the edit page -->
+                            <!-- Edit bitton that navigates to the edit reservation page -->
                             <a href="{% url 'reservations:edit_reservation' reservation.id %}" class="btn btn-primary btn-sm">Edit</a>
-                            <!-- Form for cancel -->
+                            <!-- Form for cancelelling the reservation -->
                             <form method="post" style="display: inline;">
                                 {% csrf_token %}
                                 <input type="hidden" name="reservation_id" value="{{ reservation.id }}">

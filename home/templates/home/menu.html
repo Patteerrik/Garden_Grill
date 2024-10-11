@@ -1,8 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Inherit base template -->
 
-{% load static %} 
+{% load static %} <!-- Load static files -->
 
-{% block extra_css %}
+{% block extra_css %} <!-- Block for extra CSS specific to this page -->
 <link rel="stylesheet" href="{% static 'css/menu.css' %}">
 {% endblock %}
 
@@ -11,16 +11,25 @@
     
         
     <div class="menu-box">
+        <!-- Display the page title -->
         <h1 class="menu-title">Menu</h1>
+        <!-- Loop through each menu category -->
         {% for category in categories %}
+            <!-- Container for each category -->
             <div class="menu-category">
+                <!-- Display the category name -->
                 <h2>{{ category.name }}</h2>
+                <!-- Display the category description -->
                 <p>{{ category.description }}</p>
                 <div class="menu-items">
+                    <!-- Loop through each menu item in the category -->
                     {% for item in category.menu_items.all %}
                         <div class="menu-item">
+                            <!-- Display the item name -->
                             <h3>{{ item.name }}</h3>
+                            <!-- Display the item description -->
                             <p>{{ item.description }}</p>
+                            <!-- Display the item price -->
                             <p><strong>Price:</strong> €{{ item.price }}</p>
                         </div>
                     {% endfor %}

@@ -1,15 +1,19 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- Inherit base template -->
 
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
+            <!-- Card to display the success message after the user sends a message -->
             <div class="card custom-card menu-box">
+                <!-- Card header containing the title for message success -->
                 <div class="card-header text-center">
                     <h2>Message Sent Successfully!</h2>
                 </div>
+                <!-- Card body containing the confirmation message and a button to return to home -->
                 <div class="card-body text-yellow">
                     <p>Your message has been successfully sent to the restaurant. Thank you for contacting us!</p>
+                    <!-- Back to home button for all users -->
                     <a href="{% if user.is_staff %}{% url 'reservations:logged_in_admin' %}{% else %}{% url 'reservations:logged_in_user' %}{% endif %}" class="btn btn-primary">Back to Home</a>
                 </div>
             </div>
@@ -19,13 +23,13 @@
 {% endblock %}
 
 {% block header-text %}
-<!-- Override to modify or remove header text in base.html -->
+<!-- Block to override or remove header text in base.html -->
 {% endblock %}
 
 {% block buttons %}
-<!-- Override to modify or remove buttons in base.html -->
+<!-- Block to override or remove buttons in base.html -->
 {% endblock %}
 
 {% block bottom-section %}
-<!-- Override to modify or remove bottom section in base.html -->
+<!-- Block to override or remove bottom section in base.html -->
 {% endblock %}

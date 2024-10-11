@@ -1,5 +1,5 @@
 <!-- Page for user login -->
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- Inherit base template -->
 
 {% block content %}
 
@@ -8,36 +8,48 @@
         <div class="col-md-6">
             <div class="card custom-card custom-background">
                 <div class="card-header text-center log-in-title">
+                    <!-- Display the page title -->
                     <h2>Login</h2>
                 </div>
                 <!-- Logout message -->
                 <div class="card-body">
-                    {% if messages %}
+                    {% if messages %} <!-- Display any message -->
                     <div id="message-container" class="text-center mb-3">
+                        <!-- Loop through each message -->
                         {% for message in messages %}
                         <div class="alert login-alert alert-{{ message.tags }} d-inline-block px-4 py-2" role="alert">
-                            {{ message }}
+                            {{ message }} <!-- Display the message text -->
                         </div>
                         {% endfor %}
                     </div>
                     {% endif %}
+
+                    <!-- Login form begins -->
                     <form action="{% url 'login' %}" method="post" class="needs-validation" novalidate>
-                        {% csrf_token %}
+                        {% csrf_token %} <!-- CSRF token for security -->
+
+                        <!-- Username input field -->
                         <div class="form-group mb-3">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" name="username" id="username"
                                    placeholder="Enter your username" value="{{ username|default_if_none:'' }}" required>
                             <div class="invalid-feedback">Please enter your username.</div>
                         </div>
+
+                        <!-- Password input field -->
                         <div class="form-group mb-3">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" name="password" id="password"
                                    placeholder="Enter your password" required>
                             <div class="invalid-feedback">Please enter your password.</div>
                         </div>
+
+                        <!-- Submit button -->
                         <button type="submit" class="btn btn-primary w-100">Login</button>
                     </form>
                 </div>
+
+                <!-- Footer with registration link -->
                 <div class="card-footer text-center">
                     <small>Don´t have an account? <a href="{% url 'register' %}">Register here</a></small>
                 </div>

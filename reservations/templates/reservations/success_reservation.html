@@ -1,21 +1,26 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- Inherit base template -->
 
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
+            <!-- Card element to display reservation success message -->
             <div class="card custom-card menu-box">
+                <!-- Card header displaying the success title -->
                 <div class="card-header text-center">
                     <h2>Reservation Successful!</h2>
                 </div>
                 <div class="card-body text-white">
+                    <!-- Success message and reservation details -->
                     <p>Your reservation has been successfully made. Here are your reservation details:</p>
                     <ul class="list-unstyled">
+                        <!-- Display reservation details dynamically -->
                         <li><strong class="text-yellow">Name:</strong> {{ reservation.reservation_name }}</li>
                         <li><strong class="text-yellow">Date:</strong> {{ reservation.date }}</li>
                         <li><strong class="text-yellow">Time:</strong> {{ reservation.time }}</li>
                         <li><strong class="text-yellow">Number of Guests:</strong> {{ reservation.number_of_guests }}</li>
                     </ul>
+                    <!-- Back to home button with dynamic URL for admin or regular users -->
                     <a href="{% if user.is_staff %}{% url 'reservations:logged_in_admin' %}{% else %}{% url 'reservations:logged_in_user' %}{% endif %}" class="btn btn-primary">Back to Home</a>
                 </div>
             </div>
@@ -25,13 +30,13 @@
 {% endblock %}
 
 {% block header-text %}
-<!-- Override to modify or remove header text in base.html -->
+<!-- Block to override or remove header text in base.html -->
 {% endblock %}
 
 {% block buttons %}
-<!-- Override to modify or remove buttons in base.html -->
+<!-- Block to override or remove buttons in base.html -->
 {% endblock %}
 
 {% block bottom-section %}
-<!-- Override to modify or remove bottom section in base.html -->
+<!-- Block to override or remove bottom section in base.html -->
 {% endblock %}

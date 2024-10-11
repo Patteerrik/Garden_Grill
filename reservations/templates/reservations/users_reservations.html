@@ -1,13 +1,12 @@
 <!-- For user to see their current reservations -->
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- Inherit base template -->
 
-{% load static %} 
+{% load static %} <!-- Load static files -->
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/user_reservations.css' %}">
 {% endblock %}
 {% block content %}
 <div class="container my-4">
+    <!-- Container for displaying user reservations -->
     <div class="menu-box-reservations mp-4 rounded shadow-sm">
         <h2>Your Current Reservations</h2>
 
@@ -23,17 +22,19 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Loop through each reservation -->
                     {% for reservation in reservations %}
                     <tr>
                         <td>{{ reservation.date }}</td>
                         <td>{{ reservation.time }}</td>
                         <td>{{ reservation.number_of_guests }}</td>
                         <td>
-                            <!-- Navigates to the contact form -->
+                            <!-- Link to edit a reservation, including the reservation ID directly in the URL -->
                             <a href="{% url 'reservations:change_reservation' %}?reservation_id={{ reservation.id }}" class="btn btn-primary btn-sm users-edit">Edit</a>
                         </td>
                     </tr>
                     {% empty %}
+                    <!-- Display this if there are no reservations -->
                     <tr>
                         <td colspan="4">No reservations found.</td>
                     </tr>

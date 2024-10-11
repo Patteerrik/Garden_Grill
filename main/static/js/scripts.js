@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 })();
 
-// Create reservation
+// Create reservation page
 
 /* jshint esversion: 6 */
 (function () {
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 })();
 
-// List reservation
+// List reservation page
 
 /* jshint esversion: 6 */
 // Automatically hide alerts after 3 seconds
@@ -151,7 +151,7 @@ setTimeout(function() {
     });
 })();
 
-// Log in
+// Log in page
 
 /* jshint esversion: 6 */
 (function () {
