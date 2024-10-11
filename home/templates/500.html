@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- Inherit base template -->
 
 {% block title %}
 500 - Internal Server Error
@@ -10,18 +10,23 @@
         <div class="col-md-8">
             <div class="card custom-card text-center menu-box">
                 <div class="card-header">
+                    <!-- Display the page title-->
                     <h2>500 - Internal Server Error</h2>
                 </div>
                 <div class="card-body text-yellow">
+                    <!-- Error message for the user -->
                     <p class="lead">Sorry, something went wrong on our end.</p>
                     <p>Would you like to go back?</p>
 
                     <!-- Different options for logged in users and guests -->
                     {% if user.is_staff %}
+                    <!-- Redirect to admin dashboard if the user is an admin -->
                     <a href="{% url 'reservations:logged_in_admin' %}" class="btn btn-primary">Go to Admin Dashboard</a>
                     {% elif user.is_authenticated %}
+                    <!-- Redirect to home page for logged in users -->
                     <a href="{% url 'reservations:logged_in_user' %}" class="btn btn-primary">Go to Home Page</a>
                     {% else %}
+                    <!-- Redirect to home page for guests -->
                     <a href="{% url 'home' %}" class="btn btn-primary">Go to Home Page</a>
                     {% endif %}
                 </div>
