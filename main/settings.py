@@ -20,6 +20,8 @@ import dj_database_url
 # For reading environment variables securely
 from decouple import config
 
+import sys # TEST
+
 # Load environment variables if the env.py file exists
 if os.path.isfile('env.py'):
     import env
@@ -150,7 +152,9 @@ WSGI_APPLICATION = 'main.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
-
+# Use SQLite for testing
+if 'test' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
 # Trusted origins for CSRF protection
 CSRF_TRUSTED_ORIGINS = [
