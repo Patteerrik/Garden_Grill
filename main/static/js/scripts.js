@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 // Adds an event handler to load the map when the "Load Map" button is clicked (main page)
 document.addEventListener('DOMContentLoaded', function () {
     var loadMapBtn = document.getElementById("load-map-btn");
@@ -23,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Contact us page
 
-/* jshint esversion: 6 */
+
 (function () {
     'use strict';
     // Form validation
@@ -66,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Create reservation page
 
-/* jshint esversion: 6 */
+
 (function () {
     'use strict';
     // Select all forms with class 'needs-validation'
@@ -104,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // List reservation page
 
-/* jshint esversion: 6 */
+
 // Automatically hide alerts after 3 seconds
 setTimeout(function() {
     const alerts = document.querySelectorAll('.alert');
@@ -119,7 +121,7 @@ setTimeout(function() {
 
 // Register page
 
-/* jshint esversion: 6 */
+
 (function () {
     'use strict';
     // Form validation for register page
@@ -153,7 +155,7 @@ setTimeout(function() {
 
 // Log in page
 
-/* jshint esversion: 6 */
+
 (function () {
     'use strict';
     // Apply validation to forms in the login page

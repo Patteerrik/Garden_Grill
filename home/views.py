@@ -33,7 +33,7 @@ def register(request):
         password = request.POST.get('password', '')  # Get password
         # Confirm passsword
         confirm_password = request.POST.get('confirm_password', '')
-        
+
         # Keep form data if validation fails
         context = {
             'email': email,
@@ -47,7 +47,7 @@ def register(request):
             #
             local_part, domain_part = email.rsplit('@', 1)
             domain_name, tld = domain_part.rsplit('.', 1)
-            
+
             # Ensure minimum length requirements
             if len(local_part) < 2 or len(domain_name) < 2 or len(tld) < 2:
                 raise ValidationError('Email is not valid.')
@@ -81,7 +81,7 @@ def register(request):
         # Success message and redirect to login page
         messages.success(request, f"Welcome, {username}!")
         return redirect('login')
-    
+
     # Show the registration form
     return render(request, 'home/register.html')
 
@@ -96,7 +96,7 @@ def login_view(request):
         # Authenticate the user based on the entered credentials
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            # If credentials are correct, log the user in and redirect to the homepage
+            # If credentials correct, log user in and redirect to the homepage
             login(request, user)
             return redirect('reservations:logged_in_user')
         else:
@@ -105,7 +105,7 @@ def login_view(request):
             return render(request, 'home/login.html', {
                 'username': username,
             })
-    
+
     # Show the login form
     return render(request, 'home/login.html')
 

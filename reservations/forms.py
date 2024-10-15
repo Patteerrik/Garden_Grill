@@ -19,18 +19,18 @@ class ReservationForm(forms.ModelForm):
         model = Reservation
         # Specify the fields that will be included in the form
         fields = ['reservation_name', 'date', 'time', 'number_of_guests']
-    
+
     # Custom validation for the reservation date
     def clean_date(self):
         reservation_date = self.cleaned_data.get('date')
         today = date.today()
-        
+
         # Check that the reservation date is not in the past
         if reservation_date < today:
             raise forms.ValidationError(
                 "The reservation date cannot be in the past."
                 )
-        
+
         # Return the cleaned date if valid
         return reservation_date
 
@@ -45,7 +45,7 @@ class ReservationForm(forms.ModelForm):
             raise forms.ValidationError(
                 "The reservation time must be between 12:00 PM and 10:00 PM."
                 )
-        
+
         # Checks that time is not in the past
         if (
             reservation_date == date.today() and
@@ -54,7 +54,7 @@ class ReservationForm(forms.ModelForm):
             raise forms.ValidationError(
                 "The reservation time cannot be in the past."
             )
-        
+
         # Return the cleaned time if valid
         return reservation_time
 
@@ -68,7 +68,8 @@ class ReservationForm(forms.ModelForm):
             # Check if the email exists in the user database
             if not User.objects.filter(email=email).exists():
                 raise forms.ValidationError(
-                    "This email is not registered. Please use a registered email."
+                    "This email is not registered. "
+                    "Please use a registered email."
                 )
 
         # Return the email if valid

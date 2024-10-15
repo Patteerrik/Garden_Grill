@@ -132,7 +132,7 @@
 
 ##### JAVASCRIPT
 
-![Alt text](main/static/images/JS-validator-readme.png)
+![Alt text](main/static/images/JSnew-validator-readme.png)
 
 * All pages were tested with the [Jshint Validator](https://jshint.com/) and passed without any errors.
 

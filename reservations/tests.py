@@ -1,6 +1,7 @@
 from django.test import TestCase
 from reservations.forms import ReservationForm
 
+
 class TestReservationForm(TestCase):
     # This is a test class for the ReservationForm
 

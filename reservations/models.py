@@ -1,6 +1,7 @@
 from django.db import models
 # Import Django's models module
 
+
 class Reservation(models.Model):
     # Define a date field for the reservation date
     date = models.DateField()
@@ -13,6 +14,6 @@ class Reservation(models.Model):
     # Define an email field to store the user's email
     email = models.EmailField()
 
-     # String representation of the reservation
+    # String representation of the reservation
     def __str__(self):
         return f"{self.reservation_name} - {self.date} at {self.time}"

@@ -20,7 +20,8 @@ import dj_database_url
 # For reading environment variables securely
 from decouple import config
 
-import sys # TEST
+import sys  # TEST
+
 
 # Load environment variables if the env.py file exists
 if os.path.isfile('env.py'):
@@ -167,9 +168,9 @@ CSRF_TRUSTED_ORIGINS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
-    'NAME':
-        'django.contrib.auth.password_validation.'
-        'UserAttributeSimilarityValidator'
+        'NAME':
+            'django.contrib.auth.password_validation.'
+            'UserAttributeSimilarityValidator'
     },
     {
         'NAME':
@@ -207,7 +208,7 @@ SESSION_SAVE_EVERY_REQUEST = True
 
 
 # https://www.youtube.com/watch?v=-E2igrFADI0
-# Account 
+# Account
 # Allow login by username or email
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True

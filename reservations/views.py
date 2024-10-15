@@ -75,7 +75,7 @@ def list_reservation(request):
                 [reservation.email],
                 fail_silently=False,
             )
-            # If email is sent, delete the reservation and show a success message
+            # If email is sent, delete the reservation and show message
             reservation.delete()
             messages.success(
                 request,
@@ -116,8 +116,8 @@ def list_reservation(request):
         }
         for (date, time), data in spots_per_time.items()
     ]
-    
-    # Display the list of reservations and available seat summaries in the template
+
+    # Display the list of reservations and available seat summaries
     return render(request, 'reservations/list_reservation.html', {
         # Seat summary
         'spots_per_time_list': spots_per_time_list,
@@ -136,12 +136,12 @@ def create_reservation(request):
         if form.is_valid():
             new_reservation = process_reservation_form(request, form)
 
-            # If the reservation is successfully created, send confirmation email
+            # If the reservation is successfull, send confirmation email
             if new_reservation:
                 send_reservation_conf_email(new_reservation)
                 return redirect(
                     'reservations:success_reservation',
-                    pk=new_reservation.pk # Redirect to the success page
+                    pk=new_reservation.pk  # Redirect to the success page
                 )
 
         else:
@@ -149,7 +149,7 @@ def create_reservation(request):
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.error(request, error)
-            
+
             # Re-render the reservation creation page with the form
             return render(
                 request,
@@ -215,7 +215,9 @@ def process_reservation_form(request, form):
         number_of_guests = form.cleaned_data['number_of_guests']
 
         # Check if there are enough available seats
-        is_available, message = check_availability(date, time, number_of_guests)
+        is_available, message = check_availability(
+            date, time, number_of_guests
+        )
 
         if not is_available:
             messages.error(request, message)
@@ -239,13 +241,12 @@ def process_reservation_form(request, form):
     return None
 
 
-
 def check_availability(date, time, number_of_guests):
     """
     Checks availability for a specific date and time within a 1.5 hour window.
     Returns (is_available, message) with availability status.
     """
-    total_seats = 50  # Maximum number of seats per sitting 
+    total_seats = 50  # Maximum number of seats per sitting
     sitting_duration = timedelta(minutes=90)  # 1,5 hours
 
     # Define the time range for 1.5 hours before and after the booking
@@ -266,14 +267,15 @@ def check_availability(date, time, number_of_guests):
     if number_of_guests > total_seats:
         return False, "The selected time is fully booked."
 
-
     # Check if all seats are booked
     if available_seats <= 0:
         return False, "The selected time is fully booked."
 
     # Check if the user's booking exceeds available seats
     elif number_of_guests > available_seats:
-        return False, f"Only {available_seats} seats are available for the chosen time."
+        return False, (
+            f"Only {available_seats} seats are available for the chosen time."
+        )
 
     return True, None
 
@@ -303,7 +305,7 @@ def change_reservation(request):
             'email': email,
             'message_content': message_content,
         }
-        
+
         # Check if both username and email are provided
         if not username or not email:
             # If either is missing, show an error message
@@ -318,12 +320,12 @@ def change_reservation(request):
             # If no matching user, show an error message
             messages.error(request, 'Invalid username or email.')
             return render(request, 'reservations/contact_us.html', context)
-        
+
         # Check if message content is at least 10 characters
         if not message_content or len(message_content) < 10:
             # Show an error message if the message is too short
             messages.error(
-                request, 
+                request,
                 'Message must be at least 10 characters long.'
             )
             return render(request, 'reservations/contact_us.html', context)
@@ -388,7 +390,7 @@ def edit_reservation(request, reservation_id):
                 [reservation.email],
                 fail_silently=False,
             )
-            
+
             # Show a success message and redirect to the reservation list
             messages.success(
                 request,
