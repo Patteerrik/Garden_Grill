@@ -40,7 +40,7 @@
                         <div class="form-group mb-3">
                             <!-- Input field for reservation date -->
                             <label for="date">Date</label>
-                            <input type="date" class="form-control" id="date" name="date" value="{{ form.date.value|default_if_none:'' }}" autocomplete="date" required>
+                            <input type="date" class="form-control" id="date" name="date" value="{{ form.date.value|default_if_none:'' }}" autocomplete="bday" required>
                             <div class="invalid-feedback">
                                 Please select a date. <!-- Feedback if date field is empty -->
                             </div>

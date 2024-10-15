@@ -47,8 +47,7 @@
                         <!-- Message Field -->
                         <div class="form-group mb-3">
                             <label for="message">Message</label>
-                            <textarea class="form-control" id="message" placeholder="At least 10 characters " min="10" name="message" rows="4"
-                                placeholder="Enter your message"
+                            <textarea class="form-control" id="message" placeholder="At least 10 characters " name="message" rows="4"
                                 required>{{ message_content|default_if_none:'' }}</textarea>
                             <div class="invalid-feedback">Please enter a message of at least 10 characters.</div>
                         </div>
