@@ -32,7 +32,7 @@
                             <!-- Input field for user's name -->
                             <label for="reservation_name">Name</label>
                             <input type="text" class="form-control" id="reservation_name" name="reservation_name"
-                                placeholder="Enter your name" value="{{ form.reservation_name.value }}" required>
+                                placeholder="Enter your name" value="{{ form.reservation_name.value }}" autocomplete="name" required>
                             <div class="invalid-feedback">
                                 Please enter your name. <!-- Feedback if name field is empty -->
                             </div>
@@ -40,7 +40,7 @@
                         <div class="form-group mb-3">
                             <!-- Input field for reservation date -->
                             <label for="date">Date</label>
-                            <input type="date" class="form-control" id="date" name="date" value="{{ form.date.value|default_if_none:'' }}" required>
+                            <input type="date" class="form-control" id="date" name="date" value="{{ form.date.value|default_if_none:'' }}" autocomplete="date" required>
                             <div class="invalid-feedback">
                                 Please select a date. <!-- Feedback if date field is empty -->
                             </div>
@@ -48,7 +48,7 @@
                         <div class="form-group mb-3">
                             <!-- Input field for reservation time -->
                             <label for="time">Time</label>
-                            <input type="time" class="form-control" id="time" name="time" value="{{ form.time.value|default_if_none:'' }}" required>
+                            <input type="time" class="form-control" id="time" name="time" value="{{ form.time.value|default_if_none:'' }}" autocomplete="off" required>
                             <div class="invalid-feedback">
                                 Please select a time. <!-- Feedback if time field is empty -->
                             </div>
@@ -57,7 +57,7 @@
                             <!-- Input field for number of guests -->
                             <label for="number_of_guests">Number of Guests</label>
                             <input type="number" class="form-control" id="number_of_guests" name="number_of_guests"
-                                min="1" placeholder="Max 50 guests" value="{{ form.number_of_guests.value }}" required>
+                                min="1" placeholder="Max 50 guests" value="{{ form.number_of_guests.value }}" autocomplete="off" required>
                             <div class="invalid-feedback">
                                 Please enter the number of guests. <!-- Feedback if guests field is empty -->
                             </div>
@@ -68,7 +68,7 @@
                         <div class="form-group mb-3">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="email"
-                                placeholder="Enter email for reservation" value="{{ form.email.value }}" required>
+                                placeholder="Enter email for reservation" value="{{ form.email.value }}" autocomplete="email" required>
                             <div class="invalid-feedback">
                                 Please enter a valid email.<!-- Feedback if email field is empty -->
                             </div>
