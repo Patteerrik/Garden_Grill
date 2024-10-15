@@ -161,7 +161,7 @@ def create_reservation(request):
         # Set up initial form data with default or empty values
         initial_data = {
             'reservation_name': '',
-            'email': request.user.email if request.user.is_staff else '',
+            'email': '' if request.user.is_staff else request.user.email,
             'time': '',
             'number_of_guests': ''
         }
@@ -216,8 +216,9 @@ def process_reservation_form(request, form):
 
         # Check if there are enough available seats
         is_available, message = check_availability(date, time, number_of_guests)
+
         if not is_available:
-            messages.error(request, message)  # Skickar kapacitetsmeddelandet som en alert
+            messages.error(request, message)
             return None
 
         # Create a new reservation if there are enough available seats
@@ -235,7 +236,6 @@ def process_reservation_form(request, form):
         new_reservation.save()
         return new_reservation
 
-    # Returnera None om formuläret inte är giltigt
     return None
 
 
@@ -261,6 +261,11 @@ def check_availability(date, time, number_of_guests):
 
     booked_seats = existing_reservations['number_of_guests__sum'] or 0
     available_seats = total_seats - booked_seats
+
+    # If a user tries to book more than 50 seats in one booking
+    if number_of_guests > total_seats:
+        return False, "The selected time is fully booked."
+
 
     # Check if all seats are booked
     if available_seats <= 0:
@@ -317,8 +322,10 @@ def change_reservation(request):
         # Check if message content is at least 10 characters
         if not message_content or len(message_content) < 10:
             # Show an error message if the message is too short
-            messages.error
-            (request, 'Message must be at least 10 characters long.')
+            messages.error(
+                request, 
+                'Message must be at least 10 characters long.'
+            )
             return render(request, 'reservations/contact_us.html', context)
 
         try:
