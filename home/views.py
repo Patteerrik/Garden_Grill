@@ -98,7 +98,7 @@ def login_view(request):
         if user is not None:
             # If credentials are correct, log the user in and redirect to the homepage
             login(request, user)
-            return redirect('home')
+            return redirect('reservations:logged_in_user')
         else:
             # If credentials are incorrect, show an error message
             messages.error(request, 'Invalid username or password')
