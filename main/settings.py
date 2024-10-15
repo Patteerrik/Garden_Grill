@@ -200,11 +200,11 @@ USE_TZ = True
 
 # Session settings to expire sessions after inactivity
 # End session after 10 minutes of inactivity
-SESSION_COOKIE = 600
+SESSION_COOKIE_AGE = 600
 # End session when browser closes
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Save the session after every request
-SESSION_SAVE_EVERY_REQUEST = True
+SESSION_SAVE_EVERY_REQUEST = False
 
 
 # https://www.youtube.com/watch?v=-E2igrFADI0
