@@ -117,17 +117,7 @@
 {% block header-text %}
 <header class="header-section">
   <div class="header-content">
-    {% if user.is_authenticated %}
-      {% if user.is_staff %}
-        <!-- Message for logged in admin users -->
-        <h1>Welcome Admin!</h1>
-      {% else %}
-        <!-- Message for logged in users -->
-        <h1>Welcome back, {{ user.username }}!</h1>
-        <p>Use the 'Create Reservation' button to make a new booking, or contact us to change or cancel an existing
-          reservation. You can also explore our menu.</p>
-      {% endif %}
-    {% else %}
+    {% if not user.is_authenticated %}
       <!-- Message for non logged in users -->
       <h1>Welcome to Garden and Grill</h1>
       <p>Experience a blend of comfort and elegance in the heart of the city.</p>

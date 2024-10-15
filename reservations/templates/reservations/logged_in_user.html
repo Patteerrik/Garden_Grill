@@ -5,11 +5,10 @@
 <header class="header-section logged-in-header">
     <div class="header-content logged-in-content">
         <!-- Display a dynamic welcome message based on user status -->
-        <h1>Welcome {{ user.is_authenticated|yesno:", " }}{{ user.username }}!</h1>
+        <h1>Welcome back, {{ user.username }}!</h1>
         <!-- Personalized welcome message for logged in users -->
-        <p>Welcome back, {{ user.username }}! Use the 'Create Reservation' button to make a new booking, or contact us to change or cancel an existing reservation. You can also
-            click
-            'Menu' to explore our delicious dishes and seasonal specials.</p>
+        <p>Use the 'Create Reservation' button to make a new booking, or contact us to change or cancel an existing
+            reservation. You can also click 'Menu' to explore our delicious dishes and seasonal specials.</p>
     </div>
 </header>
 {% endblock %}
