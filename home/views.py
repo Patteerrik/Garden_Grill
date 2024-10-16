@@ -17,14 +17,16 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 # Validate email format
 from django.core.validators import validate_email
-
+from django.views.decorators.csrf import csrf_exempt # TEST REMOVE!!!!
 
 # Home view, renders the base.html template
+@csrf_exempt
 def home(request):
     return render(request, 'base.html', {})
 
 
 # Handles user registration
+@csrf_exempt
 def register(request):
     # If the form is submitted via POST
     if request.method == 'POST':
@@ -87,6 +89,7 @@ def register(request):
 
 
 # Login view
+@csrf_exempt
 def login_view(request):
     # If the form is submitted via POST
     if request.method == 'POST':
@@ -111,6 +114,7 @@ def login_view(request):
 
 
 # Logout view
+@csrf_exempt
 def logout_view(request):
     logout(request)  # Log out user
     request.session.flush()  # Clear session data
@@ -118,6 +122,7 @@ def logout_view(request):
 
 
 # Menu view
+@csrf_exempt
 def menu_view(request):
     # Gets menu categories with related items
     categories = MenuCategory.objects.prefetch_related('menu_items').all()

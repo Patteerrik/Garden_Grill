@@ -27,7 +27,7 @@ from django.contrib.messages import get_messages
 from django import forms
 # Import Django's form
 from django.views.decorators.csrf import csrf_exempt
-
+@csrf_exempt
 def logged_in_user(request):
     # check if user is admin
     if request.user.is_staff:
@@ -37,7 +37,7 @@ def logged_in_user(request):
         # If user is not admin show user page
         return render(request, 'reservations/logged_in_user.html')
 
-
+@csrf_exempt
 def is_admin_user(user):
     # Return True if the user is an admin, False if not
     return user.is_staff
@@ -181,7 +181,7 @@ def create_reservation(request):
         {'form': form}
     )
 
-
+@csrf_exempt
 def send_reservation_conf_email(reservation):
     """
     Sends a confirmation email to the user after the reservation is saved.
@@ -204,7 +204,7 @@ def send_reservation_conf_email(reservation):
         fail_silently=False,
     )
 
-
+@csrf_exempt
 def process_reservation_form(request, form):
     """
     Handles the form and creates a new reservation.
@@ -243,7 +243,7 @@ def process_reservation_form(request, form):
 
     return None
 
-
+@csrf_exempt
 def check_availability(date, time, number_of_guests):
     """
     Checks availability for a specific date and time within a 1.5 hour window.
@@ -282,7 +282,7 @@ def check_availability(date, time, number_of_guests):
 
     return True, None
 
-
+@csrf_exempt
 def success_reservation(request, pk):
     # Retrieve the reservation by pk or return 404 if not found
     reservation = get_object_or_404(Reservation, pk=pk)
@@ -419,7 +419,7 @@ def edit_reservation(request, reservation_id):
         {'form': form, 'reservation': reservation}
     )
 
-
+@csrf_exempt
 def users_reservations(request):
     # Get all reservations for the logged-in user
     user_reservations = Reservation.objects.filter(email=request.user.email)
