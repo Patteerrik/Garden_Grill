@@ -509,9 +509,22 @@ For easier readability of the README, I chose to add a separate file for [testin
 * [https://www.pexels.com/sv-se/] was used for backround image
 * [https://fontawesome.com/] was used for all fonts
 * [https://ui.dev/amiresponsive] was used along with devtools to check the response on different screen sizes and devices.
+* [https://www.figma.com/](https://www.figma.com/) was used for wireframes
+
+The following resources were used for guidance and inspiration during the development of this project:
+* Daisy McGirr´s [Django tutorial youtube series](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy)
 * Django documentation:[https://www.djangoproject.com/](https://docs.djangoproject.com/en/5.1/)
 * User registration and authentication tutorial [https://www.djangoproject.com/](https://docs.djangoproject.com/en/5.1/topics/auth/default/)
-* Email validation and handling inspiration from [geeksforgeeks](https://www.geeksforgeeks.org/how-to-use-validate_email-in-django/)
+* Email validation and handling from [geeksforgeeks](https://www.geeksforgeeks.org/how-to-use-validate_email-in-django/)
+* URL routing from [https://www.djangoproject.com/](https://docs.djangoproject.com/en/5.1/topics/http/urls/)
+* Render/redirect [](https://docs.djangoproject.com/en/5.1/topics/http/shortcuts/)
+* For logged in status [Using the Django authentication system](https://docs.djangoproject.com/en/5.1/topics/auth/default/#django.contrib.auth.decorators.login_required)
+* send_mail function [Sending email](https://docs.djangoproject.com/en/5.1/topics/email/#send-mail)
+* Handled time zones and date [Time zones](https://docs.djangoproject.com/en/5.1/topics/i18n/timezones/)
+* Used Sum() to calculate the total number of guests [Aggregation](https://docs.djangoproject.com/en/5.1/topics/db/aggregation/)
+* The get_user_model() function was used to dynamically retrieve the user model[Customizing authentication in Django](https://docs.djangoproject.com/en/5.1/topics/auth/customizing/#django.contrib.auth.get_user_model)
+* The messages framework is used to provide user feedback [The messages framework](https://docs.djangoproject.com/en/5.1/ref/contrib/messages/)
+
+Special thanks to:
 * My mentor Gareth McGirr
-* Daisy McGirr´s [Django tutorial youtube series](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy)
 * Roo from Code Institute for helping me with env related issues
