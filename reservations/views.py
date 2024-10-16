@@ -26,7 +26,7 @@ from django.contrib.messages import get_messages
 # Used to get and display messages to users
 from django import forms
 # Import Django's form
-
+from django.views.decorators.csrf import csrf_exempt
 
 def logged_in_user(request):
     # check if user is admin
@@ -43,14 +43,16 @@ def is_admin_user(user):
     return user.is_staff
 
 
-@login_required
+# @login_required
+@csrf_exempt
 def logged_in_admin(request):
     # Show the admin page for logged-in admins
     return render(request, 'reservations/logged_in_admin.html')
 
 
-@login_required
-@user_passes_test(is_admin_user)
+#@login_required
+#@user_passes_test(is_admin_user)
+@csrf_exempt
 def list_reservation(request):
     # Retrieves the current time
     now = timezone.localtime()
@@ -126,7 +128,8 @@ def list_reservation(request):
     })
 
 
-@login_required
+#@login_required
+@csrf_exempt
 def create_reservation(request):
     # Check if the request method is POST
     if request.method == 'POST':
@@ -290,7 +293,8 @@ def success_reservation(request, pk):
     )
 
 
-@login_required
+#@login_required
+@csrf_exempt
 def change_reservation(request):
     # Check if the request method is POST
     if request.method == 'POST':
@@ -352,14 +356,16 @@ def change_reservation(request):
     return render(request, 'reservations/contact_us.html')
 
 
-@login_required
+#@login_required
+@csrf_exempt
 def success_email(request):
     # Render the success page after reservation email is sent
     return render(request, 'reservations/success_email.html')
 
 
-@login_required
-@user_passes_test(lambda u: u.is_staff)
+#@login_required
+#@user_passes_test(lambda u: u.is_staff)
+@csrf_exempt
 def edit_reservation(request, reservation_id):
     # Retrieve the reservation by ID or show 404 if not found
     reservation = get_object_or_404(Reservation, id=reservation_id)
