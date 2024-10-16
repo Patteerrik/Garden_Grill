@@ -31,7 +31,8 @@
                         <div class="form-group mb-3">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" id="username" name="username"
-                                   value="{{ username|default_if_none:'' }}" placeholder="Enter your username" autocomplete="username" required>
+                                value="{{ username|default_if_none:'' }}" placeholder="Enter your username"
+                                autocomplete="username" required>
                             <div class="invalid-feedback">Please enter your username.</div>
                         </div>
 
@@ -39,7 +40,8 @@
                         <div class="form-group mb-3">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="email"
-                                   value="{{ email|default_if_none:'' }}" placeholder="Enter your email" autocomplete="email" required>
+                                value="{{ email|default_if_none:'' }}" placeholder="Enter your email"
+                                autocomplete="email" required>
                             <div class="invalid-feedback">Please enter a valid email.</div>
                         </div>
 
@@ -47,7 +49,7 @@
                         <div class="form-group mb-3">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password"
-                                   placeholder="Enter your password" autocomplete="new-password" required>
+                                placeholder="Enter your password" autocomplete="new-password" required>
                             <div class="invalid-feedback">Please enter your password.</div>
                         </div>
 
@@ -55,7 +57,7 @@
                         <div class="form-group mb-3">
                             <label for="confirm_password">Confirm Password</label>
                             <input type="password" class="form-control" id="confirm_password" name="confirm_password"
-                                   placeholder="Confirm your password" autocomplete="new-password" required>
+                                placeholder="Confirm your password" autocomplete="new-password" required>
                             <div class="invalid-feedback">Please confirm your password.</div>
                         </div>
 
@@ -66,6 +68,7 @@
 
                 <!-- Footer with login link -->
                 <div class="card-footer text-center">
+                    <!-- I had to remove the link I had here because of "Redundant Links" in the https://wave.webaim.org/ test. -->
                     <small>Already have an account? Click "Log in" in the navbar</a></small>
                 </div>
             </div>
