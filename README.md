@@ -353,15 +353,15 @@ I used GitHub Projects to keep track of and organize user stories. The Kanban bo
 
 ## Home page (Not logged in user)
 
-* The home page offers a warm and welcoming message with clear links to the 'Log In' and 'Register' pages, as well as a clearly visible menu button. Users are encouraged to log in, register, or explore the menu, making it easy for potential guests to view the offerings and make a reservation.
+* The home page offers a warm and welcoming message, as well as a clearly visible menu button. Users are encouraged to log in, register, or explore the menu, making it easy for potential guests to view the offerings and make a reservation.
 
-![Alt text](main/static/images/Welcome_not_logged_in_user_readme.png)
+![Alt text](main/static/images/Welcome_not_logged_in_user_readme.pn)
 
 ## Home page (Logged in user)
 
 * For logged in users, the home page displays a personalized welcome message and provides a 'Create Reservation' button, making it easy for users to make a reservation.
 
-![Alt text](main/static/images/Welcome_logge_in_user_readme.png)
+![Alt text](main/static/images/Welcome_logge_in_user_readme.pn)
 
 ## Home page (Logged in Admin)
 
@@ -370,7 +370,7 @@ I used GitHub Projects to keep track of and organize user stories. The Kanban bo
 ![Alt text](main/static/images/Welcome_logged_in_admin_readme.png)
 
 ## Menu
-* The menu page displays a list where users can easily view detailed information about what the restaurant offers for lunch, dinner, dessert, and drinks. The menu is scrollable, allowing users to browse through all offerings seamlessly.
+* The menu page shows a list where users can easily see detailed information about what the restaurant offers for lunch, dinner, dessert, and drinks. The menu can be scrolled, letting users smoothly browse through all the options.
 
 ![Alt text](main/static/images/Menu_readme.png)
 
@@ -380,9 +380,9 @@ I used GitHub Projects to keep track of and organize user stories. The Kanban bo
 
 ![Alt text](main/static/images/Register_readme.png)
 
-## Login
+## Log in
 
-* The login page includes fields for 'Username' and 'Password' along with a 'Login' button. Beneath the button, there’s a message: 'Don’t have an account?' with a link directing users to the registration page for sign up.
+* The login page includes fields for 'Username' and 'Password' along with a 'Log in' button. Beneath the button, there’s a message: 'Don’t have an account?' with a link directing users to the registration page for sign up.
 
 ![Alt text](main/static/images/Login_readme.png)
 
@@ -477,23 +477,41 @@ For easier readability of the README, I chose to add a separate file for [testin
 ## Features left to implement
 * Forgot password on the log in page
 * Search bar so that admin can easily find existing reservations.
+* Make it possible for the admin to see today's bookings and the number of available seats directly on the homepage.
+
 
 ## Deployment
 
-* This app was deployed to Heroku
+ This app was deployed to Heroku
   * Sign up for Heroku
   * Click "create new app"
   * Give the app a unique name
+  * Choose a region
   * Click settings in the section on top of the page
-  * Scroll down and press "Add buildpack"
-  * 
+  * Click reveal config vars
+    * ALLOWED_HOSTS
+    * DATABASE_URL
+    * DEBUG
+    * DISABLE_COLLECTSTATIC
+    * EMAIL_HOST_PASSWORD
+    * EMAIL_HOST_USER
+    * SECRET_KEY
   * Click deploy in the section on top of the page
   * Select method "Connect to Github" then press "Connect to Github" button
   * Search for Garden_grill
   * Click connect
-  * Click "Enable automatic deploys" button to enable Heroku to rebuild the app when a new change is pushed to Github
+  * Scroll down to Manual deploy and choose the main branch
+  * Click deploy
 
 ## Credits
 
+* [https://favicon.io/] was used to create the favicon
+* [https://www.pexels.com/sv-se/] was used for backround image
+* [https://fontawesome.com/] was used for all fonts
+* [https://ui.dev/amiresponsive] was used along with devtools to check the response on different screen sizes and devices.
+* Django documentation:[https://www.djangoproject.com/](https://docs.djangoproject.com/en/5.1/)
+* User registration and authentication tutorial [https://www.djangoproject.com/](https://docs.djangoproject.com/en/5.1/topics/auth/default/)
+* Email validation and handling inspiration from [geeksforgeeks](https://www.geeksforgeeks.org/how-to-use-validate_email-in-django/)
 * My mentor Gareth McGirr
-
+* Daisy McGirr´s [Django tutorial youtube series](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy)
+* Roo from Code Institute for helping me with env related issues
