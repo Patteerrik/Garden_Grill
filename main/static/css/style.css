@@ -689,7 +689,7 @@ footer.site-footer {
 
 /* User reservation.html */
 
-.menu-box-reservations h2 {
+.menu-box-reservations h1 {
     color: white !important;
 }
 
@@ -773,8 +773,8 @@ footer.site-footer {
     margin-bottom:40px;
 }
 
-.admin-list-reservations h2, h4 {
-    color:white
+.admin-list-reservations h1, h2, h3 {
+    color:white !important;
 }
 
 /* List reservation.html ends here! (admin) */
