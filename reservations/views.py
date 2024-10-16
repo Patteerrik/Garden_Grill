@@ -26,8 +26,8 @@ from django.contrib.messages import get_messages
 # Used to get and display messages to users
 from django import forms
 # Import Django's form
-from django.views.decorators.csrf import csrf_exempt
-@csrf_exempt
+
+
 def logged_in_user(request):
     # check if user is admin
     if request.user.is_staff:
@@ -37,22 +37,20 @@ def logged_in_user(request):
         # If user is not admin show user page
         return render(request, 'reservations/logged_in_user.html')
 
-@csrf_exempt
+
 def is_admin_user(user):
     # Return True if the user is an admin, False if not
     return user.is_staff
 
 
-# @login_required
-@csrf_exempt
+@login_required
 def logged_in_admin(request):
     # Show the admin page for logged-in admins
     return render(request, 'reservations/logged_in_admin.html')
 
 
-#@login_required
-#@user_passes_test(is_admin_user)
-@csrf_exempt
+@login_required
+@user_passes_test(is_admin_user)
 def list_reservation(request):
     # Retrieves the current time
     now = timezone.localtime()
@@ -128,8 +126,7 @@ def list_reservation(request):
     })
 
 
-#@login_required
-@csrf_exempt
+@login_required
 def create_reservation(request):
     # Check if the request method is POST
     if request.method == 'POST':
@@ -181,7 +178,7 @@ def create_reservation(request):
         {'form': form}
     )
 
-@csrf_exempt
+
 def send_reservation_conf_email(reservation):
     """
     Sends a confirmation email to the user after the reservation is saved.
@@ -204,7 +201,7 @@ def send_reservation_conf_email(reservation):
         fail_silently=False,
     )
 
-@csrf_exempt
+
 def process_reservation_form(request, form):
     """
     Handles the form and creates a new reservation.
@@ -243,7 +240,7 @@ def process_reservation_form(request, form):
 
     return None
 
-@csrf_exempt
+
 def check_availability(date, time, number_of_guests):
     """
     Checks availability for a specific date and time within a 1.5 hour window.
@@ -282,7 +279,7 @@ def check_availability(date, time, number_of_guests):
 
     return True, None
 
-@csrf_exempt
+
 def success_reservation(request, pk):
     # Retrieve the reservation by pk or return 404 if not found
     reservation = get_object_or_404(Reservation, pk=pk)
@@ -293,8 +290,7 @@ def success_reservation(request, pk):
     )
 
 
-#@login_required
-@csrf_exempt
+@login_required
 def change_reservation(request):
     # Check if the request method is POST
     if request.method == 'POST':
@@ -356,16 +352,15 @@ def change_reservation(request):
     return render(request, 'reservations/contact_us.html')
 
 
-#@login_required
-@csrf_exempt
+@login_required
+
 def success_email(request):
     # Render the success page after reservation email is sent
     return render(request, 'reservations/success_email.html')
 
 
-#@login_required
-#@user_passes_test(lambda u: u.is_staff)
-@csrf_exempt
+@login_required
+@user_passes_test(lambda u: u.is_staff)
 def edit_reservation(request, reservation_id):
     # Retrieve the reservation by ID or show 404 if not found
     reservation = get_object_or_404(Reservation, id=reservation_id)
@@ -419,7 +414,7 @@ def edit_reservation(request, reservation_id):
         {'form': form, 'reservation': reservation}
     )
 
-@csrf_exempt
+
 def users_reservations(request):
     # Get all reservations for the logged-in user
     user_reservations = Reservation.objects.filter(email=request.user.email)
