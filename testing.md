@@ -138,11 +138,16 @@
 
 ### Accessibility Testing
 
+#### WAVE Testing
 
+* All pages were tested with the [WAVE Web Accessibility Tool](https://wave.webaim.org/).
+*  No accessibility errors were found on all tested pages.
 
 #### Lighthouse testing
 
-* After a lot of effort and improvements, I’ve managed to score green in all Lighthouse metrics across every page. By adding meta descriptions and keywords, I was able to push the SEO score to 100. The best practice warnings were related to the Google Map iframe, which I couldn’t fully resolve. By hiding the iframe and replaced it with a button I was able to increase the performance and best practies to green.
+* After a lot of work and improvements, I was able to get green scores in all Lighthouse metrics on every page. Adding meta descriptions and keywords helped push the SEO score to 100. At first, using the Google Map iframe made the Best Practices score drop to 75. I fixed this by adding a "Show Map" button instead, which raised the Best Practices score to 100.
+
+
 
 ![Alt text](main/static/images/Lighthouse-test-readme.png)
 
@@ -159,4 +164,15 @@
 
 #### Security Testing
 
+* **CSRF Protection**: The site uses Django’s built-in protection to stop Cross-Site Request Forgery attacks. All forms use CSRF tokens to keep form submissions safe.
+
+* **User Authentication**: Django’s system is used to manage user logins. Sensitive actions (like creating or managing reservations) are only allowed for logged in users.
+
+* **Admin-Only Features**: Admin features are protected by user status (is_staff), so only authorized users can access them.
+
+* **Password Security**: User passwords are safely stored using Django’s password hashing system. Passwords are never saved in plain text.
+
+* **Session Management**: User sessions are safely managed, with sessions ending after 10 minutes of inactivity to log users out for security.
+
+* **Error Handling**: Custom 404 and 500 pages are used to handle unexpected errors in a secure way.
 
