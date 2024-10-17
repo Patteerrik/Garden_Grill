@@ -8,8 +8,6 @@
 | --- | --- | --- |
 | Click on all the links in the navbar and footer. | The user is navigated to the correct page without errors. | The user is navigated to the correct page without errors. |
 | Click on "Menu" button | The user is navigated to the "Menu" page | The user is navigated to the "Menu" page |
-| Click on "log in" link in the welcome text | The user is navigated to the "Login" page | The user is navigated to the "Login" page |
-| Click on "register" link in the welcome text | The user is navigated to the "Register" page | The user is navigated to the "Register" page |
 | Click on "Show Map" | The map becomes visible | The map becomes visible |
 
 * For logged in users
@@ -19,7 +17,9 @@
 | Click on "Garden and Grill" logo | The user is navigated to the main page | The user is navigated to the main page |
 | Click on "Create Reservation" button | The user is navigated to the "Create Reservation" page | The user is navigated to the "Create Reservation" page |
 | Click on "Menu" button | The user is navigated to the "Menu" page | The user is navigated to the "Menu" page |
+| Click on "Create reservation" link in the navbar | The user is navigated to the "Create reservation" page | The user is navigated to the "Create reservation" page |
 | Click on "Contact Us" link in the navbar | The user is navigated to the "Contact Us" page | The user is navigated to the "Contact Us" page |
+| Click on "My reservation" link in the navbar | The user is navigated to the "My reservation" page | The user is navigated to the "My reservation" page |
 | Click on  "Show Map" | The map becomes visible | The map becomes visible |
 
 * For logged in admin
