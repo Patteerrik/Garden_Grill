@@ -1,11 +1,12 @@
 # Garden and Grill
 
-* Garden and Grill is a fictional restaurant located in the centre of stockholm. It is a full-stack web project built using the Django MVC framework. The project aims to provide a user friendly platform where customers can make table reservations at the restaurant "Garden and Grill." The system has been developed with a focus on user experience, security, and efficient reservation management, both for restaurant administrators and guests. [The live link can be found here:](https://gardengrill-d40b8e344381.herokuapp.com/)
+* Garden and Grill is a fictional restaurant located in the centre of Stockholm. It is a full-stack web project built using the Django MVC framework. The project aims to provide a user friendly platform where customers can make table reservations at the restaurant "Garden and Grill." The system has been developed with a focus on user experience, security, and efficient reservation management, both for restaurant administrators and guests. [The live link can be found here:](https://gardengrill-d40b8e344381.herokuapp.com/)
 
 
 ![Alt text](main/static/images/AmIResponsive.png)
 
 ## Table of Contents
+
 1. [Introduction](#garden-and-grill)
 2. [Agile Planning](#agile-planning)
    - [Sprints](#sprints)
@@ -14,32 +15,32 @@
 3. [Features](#features)
    - [Users (Guests)](#users-guests)
    - [Administrators](#administrators)
-4. [Technologies Used](#tecknologies-used)
+4. [Technologies Used](#technologies-used)
 5. [Wireframes](#wireframes)
    - [Home Page](#home-page)
-   - [Log in page](#log-in-page)
-   - [Register page](#register-page)
-   - [Menu page](#menu-page)
-   - [Logged in user](#logged-in-user)
-   - [Create reservation (user)](#create-reservation-user)
-   - [My reservations (user)](#my-reservations-user)
-   - [Contact us page](#contact-us-page)
-   - [Message success](#message-success)
-   - [Logged in admin](#logged-in-admin)
-   - [Create reservation (admin)](#create-reservation-admin)
-   - [Reservation success](#reservation-success)
-   - [Manage reservations (admin)](#manage-reservation-admin)
-   - [404 error page (user)](#404-error-page-user)
-   - [404 error page (admin)](#404-error-page-admin)
-   - [500 error page](#500-error-page)
+   - [Log in Page](#log-in-page)
+   - [Register Page](#register-page)
+   - [Menu Page](#menu-page)
+   - [Logged-in User](#logged-in-user)
+   - [Create Reservation (User)](#create-reservation-user)
+   - [My Reservations (User)](#my-reservations-user)
+   - [Contact Us Page](#contact-us-page)
+   - [Message Success](#message-success)
+   - [Logged-in Admin](#logged-in-admin)
+   - [Create Reservation (Admin)](#create-reservation-admin)
+   - [Reservation Success](#reservation-success)
+   - [Manage Reservations (Admin)](#manage-reservations-admin)
+   - [404 Error Page (User)](#404-error-page-user)
+   - [404 Error Page (Admin)](#404-error-page-admin)
+   - [500 Error Page](#500-error-page)
 6. [Navigation Bar](#navigation-bar)
    - [Logged-in User](#logged-in-user)
    - [Not Logged-in User](#not-logged-in-user)
    - [Smaller Screens](#smaller-screens)
 7. [Footer](#footer)
 8. [Home Page](#home-page-not-logged-in-user)
-   - [Home Page (Logged in User)](#home-page-logged-in-user)
-   - [Home Page (Logged in Admin)](#home-page-logged-in-admin)
+   - [Home Page (Logged-in User)](#home-page-logged-in-user)
+   - [Home Page (Logged-in Admin)](#home-page-logged-in-admin)
 9. [Menu](#menu)
 10. [Register](#register)
 11. [Login](#login)
@@ -48,7 +49,7 @@
    - [Create Reservation (Admin)](#create-reservation-admin)
 13. [Reservation Success](#reservation-success)
 14. [Current Reservations](#current-reservations)
-15. [Manage Reservation (Admin)](#manage-reservation-admin)
+15. [Manage Reservations (Admin)](#manage-reservations-admin)
    - [Edit Reservation (Admin)](#edit-reservation-admin)
    - [Cancel Reservation (Admin)](#cancel-reservation-admin)
 16. [Contact Us](#contact-us)
@@ -68,15 +69,18 @@
 * This project followed a simplified Agile approach. The work was broken down into small tasks called user stories, each with clear goals to meet. 
 
 ### Sprints
+
 This project used a simple Kanban method. Tasks were tracked on a GitHub Projects board, with user stories moving from "To Do" to "In Progress" and then to "Done." This helped deliver features continuously without using sprints.
 
 ### Prioritization
+
 * Tasks were labeled based on priority, following the categories:
 - **Must have:** Key features that the project needs to work.
 - **Should have:** Features that improve the user experience but aren't essential.
 - **Could have:** Extra features that are nice to add if there's time.
 
 ### Kanban Board
+
 I used GitHub Projects to keep track of and organize user stories. The Kanban board showed the progress of each task, moving from "To Do" to "Done." Each user story had clear acceptance criteria to know when the task was finished.
 
 
@@ -85,6 +89,7 @@ I used GitHub Projects to keep track of and organize user stories. The Kanban bo
 ## Features
 
 ### Users (Guests)
+
 * Users can register, log in and log out.
 * Guests can book a table using a simple form where they enter their name, date, time and number of guests.
 * Guests can manage their booking by sending a request email to the restaurant.
@@ -92,11 +97,13 @@ I used GitHub Projects to keep track of and organize user stories. The Kanban bo
 
 
 ### Administrators
+
 * Administrators have access to a list that displays all current reservations and can edit or cancel reservations.
 * Administrators can see available spots so that admin have a clear view on the restaurants capacity during the day.
 * The system automatically removes expired reservations to ensure it remains up to date.
 
-## Tecknologies used
+## Technologies Used
+
 * Django
 * Html
 * CSS
@@ -329,10 +336,11 @@ I used GitHub Projects to keep track of and organize user stories. The Kanban bo
 </table>
 
 ### Navigation bar 
-* The navigationbar appears on every page and is responsive.
+
+* The navbar appears on every page and is responsive.
 * It helps to organize content for an easy to use experience.
 * Clicking on the logo will direct the user to home page.
-* The Navbar looks different depending the users logged in status.
+* The navbar looks different depending the users logged in status.
 
 #### Logged-in user
 
@@ -347,6 +355,7 @@ I used GitHub Projects to keep track of and organize user stories. The Kanban bo
   ![Alt text](main/static/images/Navbar_sscreens_readme.png)
 
 ## Footer
+
 * The footer has a transparent color scheme that complements the background and contains links to social media pages that open in a new tab.
 
 ![Alt text](main/static/images/Footer.png)
@@ -370,6 +379,7 @@ I used GitHub Projects to keep track of and organize user stories. The Kanban bo
 ![Alt text](main/static/images/Welcome_logged_in_admin_readme.png)
 
 ## Menu
+
 * The menu page shows a list where users can easily see detailed information about what the restaurant offers for lunch, dinner, dessert, and drinks. The menu can be scrolled, letting users smoothly browse through all the options.
 
 ![Alt text](main/static/images/Menu_readme.png)
@@ -472,12 +482,14 @@ This page contains a simple form with three input fields: Reservation Name, Emai
 
 ## Testing and validation
 
-For easier readability of the README, I chose to add a separate file for [testing](./testing.md).
+For easier readability of the README, I have created a separate file for [testing](./testing.md).
 
 ## Features left to implement
-* Forgot password on the log in page
+
+* Forgot password functionality on the Log In page
 * Search bar so that admin can easily find existing reservations.
-* Make it possible for the admin to see today's bookings and the number of available seats directly on the homepage.
+* Allow the admin to view today's reservations and the number of available seats directly on the homepage.
+* Allow the admin to update the menu through the frontend.
 
 
 ## Deployment
@@ -505,26 +517,31 @@ For easier readability of the README, I chose to add a separate file for [testin
 
 ## Credits
 
-* [https://favicon.io/] was used to create the favicon
-* [https://www.pexels.com/sv-se/] was used for backround image
-* [https://fontawesome.com/] was used for all fonts
-* [https://ui.dev/amiresponsive] was used along with devtools to check the response on different screen sizes and devices.
-* [https://www.figma.com/](https://www.figma.com/) was used for wireframes
+* [https://favicon.io/] was used to create the favicon.
+* [https://www.pexels.com/sv-se/] was used for the background image.
+* [https://fontawesome.com/] was used for all icons.
+* [https://ui.dev/amiresponsive] was used along with devtools to check responsiveness on different screen sizes and devices.
+* [https://www.figma.com/](https://www.figma.com/) was used for wireframes.
 
 The following resources were used for guidance and inspiration during the development of this project:
-* Daisy McGirr´s [Django tutorial youtube series](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy)
-* Django documentation:[https://www.djangoproject.com/](https://docs.djangoproject.com/en/5.1/)
-* User registration and authentication tutorial [https://www.djangoproject.com/](https://docs.djangoproject.com/en/5.1/topics/auth/default/)
-* Email validation and handling from [geeksforgeeks](https://www.geeksforgeeks.org/how-to-use-validate_email-in-django/)
-* URL routing from [https://www.djangoproject.com/](https://docs.djangoproject.com/en/5.1/topics/http/urls/)
-* Render/redirect [](https://docs.djangoproject.com/en/5.1/topics/http/shortcuts/)
-* For logged in status [Using the Django authentication system](https://docs.djangoproject.com/en/5.1/topics/auth/default/#django.contrib.auth.decorators.login_required)
-* send_mail function [Sending email](https://docs.djangoproject.com/en/5.1/topics/email/#send-mail)
-* Handled time zones and date [Time zones](https://docs.djangoproject.com/en/5.1/topics/i18n/timezones/)
-* Used Sum() to calculate the total number of guests [Aggregation](https://docs.djangoproject.com/en/5.1/topics/db/aggregation/)
-* The get_user_model() function was used to dynamically retrieve the user model[Customizing authentication in Django](https://docs.djangoproject.com/en/5.1/topics/auth/customizing/#django.contrib.auth.get_user_model)
-* The messages framework is used to provide user feedback [The messages framework](https://docs.djangoproject.com/en/5.1/ref/contrib/messages/)
+* Daisy McGirr's [Django tutorial YouTube series](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy).
+* Django documentation [https://www.djangoproject.com/](https://docs.djangoproject.com/en/5.1/).
+* User registration and authentication tutorial [https://www.djangoproject.com/](https://docs.djangoproject.com/en/5.1/topics/auth/default/).
+* Email validation and handling from [geeksforgeeks](https://www.geeksforgeeks.org/how-to-use-validate_email-in-django/).
+* URL routing [https://www.djangoproject.com/](https://docs.djangoproject.com/en/5.1/topics/http/urls/).
+* Render/redirect [Django shortcuts](https://docs.djangoproject.com/en/5.1/topics/http/shortcuts/).
+* For logged in status [Using the Django authentication system](https://docs.djangoproject.com/en/5.1/topics/auth/default/#django.contrib.auth.decorators.login_required).
+* The send_mail function [Sending email](https://docs.djangoproject.com/en/5.1/topics/email/#send-mail).
+* Time zones and date handling [Time zones](https://docs.djangoproject.com/en/5.1/topics/i18n/timezones/).
+* Sum() to calculate the total number of guests [Aggregation](https://docs.djangoproject.com/en/5.1/topics/db/aggregation/).
+* The get_user_model() function was used to dynamically retrieve the user model [Customizing authentication in Django](https://docs.djangoproject.com/en/5.1/topics/auth/customizing/#django.contrib.auth.get_user_model).
+* The messages framework was used to provide user feedback [The messages framework](https://docs.djangoproject.com/en/5.1/ref/contrib/messages/).
+* The Django template language was used to dynamically display content based on user status [The Django template language](https://docs.djangoproject.com/en/5.1/ref/templates/language/).
+* [Managing static files](https://docs.djangoproject.com/en/5.1/howto/static-files/) was used to load static files.
+* [Optimizing Google Fonts Performance](https://www.smashingmagazine.com/2019/06/optimizing-google-fonts-performance/) to improve performance by preloading fonts.
+* [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/).
+* [Lazy loading](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading) to improve the score in the Lighthouse test.
 
 Special thanks to:
-* My mentor Gareth McGirr
-* Roo from Code Institute for helping me with env related issues
+* My mentor Gareth McGirr.
+* Roo from Code Institute for helping with environment related issues.
