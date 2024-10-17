@@ -17,6 +17,8 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 # Validate email format
 from django.core.validators import validate_email
+#
+from django.contrib.auth.backends import ModelBackend 
 
 
 # Home view, renders the base.html template
@@ -78,9 +80,20 @@ def register(request):
             email=email,
             password=password if password else None
         )
-        # Success message and redirect to login page
-        messages.success(request, f"Welcome, {username}!")
-        return redirect('login')
+
+        # Automatically log the user in after registration
+        login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+
+        # Send a welcome email to the user
+        send_mail(
+            'Welcome to Garden and Grill!',
+            f'Thank you for signing up, {username}!',
+            settings.DEFAULT_FROM_EMAIL,
+            [email],
+            fail_silently=False,
+        )
+
+        return redirect('reservations:logged_in_user')
 
     # Show the registration form
     return render(request, 'home/register.html')
