@@ -68,13 +68,13 @@
 .menu-item h3 {
     font-size: 1.4rem; 
     margin-bottom: 8px;
-    color: #FFD700; 
+    color: #FFD700 !important; 
     font-weight: 600; 
 }
 
 .menu-item p {
     font-size: 1rem; 
-    color: #ccc; 
+    color: #ffffff; 
 }
 
 .menu-item strong {
