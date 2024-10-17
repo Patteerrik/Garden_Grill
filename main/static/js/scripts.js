@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Contact us page
 
-
+// Inpiration from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
 (function () {
     'use strict';
     // Form validation
@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 form.classList.add('was-validated'); // Add validation styles to the form
             }, false);
         });
+    // https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
+    // https://tr.javascript.info/onload-ondomcontentloaded
+    // https://javascript.info/settimeout-setinterval#settimeout
     // Alert fade-out logic
     document.addEventListener('DOMContentLoaded', function () {
         const alert = document.querySelector('.contact-us-alert');
@@ -58,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
     // Remove green checkmark on server validation failure
     document.querySelectorAll('.form-control').forEach(function (input) {
         if (input.value && input.classList.contains('is-invalid')) {
