@@ -353,7 +353,6 @@ def change_reservation(request):
 
 
 @login_required
-
 def success_email(request):
     # Render the success page after reservation email is sent
     return render(request, 'reservations/success_email.html')
