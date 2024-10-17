@@ -35,14 +35,14 @@
 
 | Action | Expectation | Result |
 | --- | --- | --- |
-| Submit registration form with valid data | The user is successfully registered and redirected. And registration email is sent to user | The user is successfully registered and redirected. And registration email is sent to user |
+| Submit registration form with valid data | The user is successfully registered and redirected to home page. And registration email is sent to user | The user is successfully registered and redirected to home page. And registration email is sent to user |
 | Submit registration form with missing username | A message "Please enter your username." appears | A message "Please enter your username." appears |
 | Submit registration form with missing email | A message "Please enter a valid email." appears | A message "Please enter a valid email." appears |
 | Submit registration form with invalid email format | A message "Please enter a valid email." appears | A message "Please enter a valid email." appears |
 | Submit registration form with missing password | A message "Please enter your password." appears | A message "Please enter your password." appears |
 | Submit registration form with missing confirm password | A message "Please confirm your password." appears | A message "Please confirm your password." appears |
 | Submit registration form with mismatched password and confirm password | A message "Passwords do not match" appears | A message "Passwords do not match" appears |
-| Click on the "Login here" link on the registration page | The user is navigated to the login page | The user is navigated to the login page |
+
 
 #### Login and Logout
 
@@ -53,6 +53,7 @@
 | Enter with a empty username field on the login page | A message "Please enter your usernam." appears | A message "Please enter your username." appears |
 | Enter with a empty password field on the login page | A message "Please enter your password." appears | A message "Please enter your password." appears |
 | Log out after being logged in | The user is logged out and redirected to home page | The user is logged out and redirected to home page |
+| Click 'Register here' link under log in form | User is navigated to register page | User is navigated to register page |
 | User session ends when the browser is closed | The session is terminated and the user is logged out | The session is terminated and the user is logged out |
 | User session ends after 10 minutes of inactivity | The session is terminated and the user is logged out | The session is terminated and the user is logged out |
 
@@ -60,7 +61,8 @@
 
 | Action | Expectation | Result |
 | --- | --- | --- |
-| Click on "Edit" from "Your current reservations" page as a logged-in user | The user is navigated to the "Contact Us" page | The user is navigated to the "Contact Us" page |
+| Click on "Edit" from "Your current reservations" page as a logged in user | The user is navigated to the "Contact Us" page | The user is navigated to the "Contact Us" page |
+
 
 ##### Create reservation (User)
 
@@ -79,7 +81,7 @@
 
 | Action | Expectation | Result |
 | --- | --- | --- |
-| Click on "Edit" from "Current reservations" page as a logged-in admin | The admin is navigated to the "Edit Reservation" page | The admin is navigated to the "Edit Reservation" page |
+| Click on "Edit" from "Current reservations" page as a logged in admin | The admin is navigated to the "Edit Reservation" page | The admin is navigated to the "Edit Reservation" page |
 | Click on "Cancel" from "Current reservations" page as a logged in admin | A message "Reservation has been canceled. Cancellation email sent." appears, and the page refreshes | A message "Reservation has been canceled. Cancellation email sent." appears, and the page refreshes |
 | Click on "Update reservation" on the "Edit Reservation" page | Admin is navigated to the "Current Reservations" page, a message "Reservation has been updated. A confirmation email has been sent." appears, the page updates with the new information, and a confirmation email is sent to the user | Admin is navigated to the "Current Reservations" page, a message "Reservation has been updated. A confirmation email has been sent." appears, the page updates with the new information, and a confirmation email is sent to the user |
 
