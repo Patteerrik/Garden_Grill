@@ -70,7 +70,7 @@
 
 ### Sprints
 
-This project used a simple Kanban method. Tasks were tracked on a GitHub Projects board, with user stories moving from "To Do" to "In Progress" and then to "Done." This helped deliver features continuously without using sprints.
+* This project used a simple Kanban method. Tasks were tracked on a GitHub Projects board, with user stories moving from "To Do" to "In Progress" and then to "Done." This helped deliver features continuously.
 
 ### Prioritization
 
@@ -364,13 +364,13 @@ I used GitHub Projects to keep track of and organize user stories. The Kanban bo
 
 * The home page offers a warm and welcoming message, as well as a clearly visible menu button. Users are encouraged to log in, register, or explore the menu, making it easy for potential guests to view the offerings and make a reservation.
 
-![Alt text](main/static/images/Welcome_not_logged_in_user_readme.pn)
+![Alt text](main/static/images/Welcome_not_logged_in_user_readme.png)
 
 ## Home page (Logged in user)
 
 * For logged in users, the home page displays a personalized welcome message and provides a 'Create Reservation' button, making it easy for users to make a reservation.
 
-![Alt text](main/static/images/Welcome_logge_in_user_readme.pn)
+![Alt text](main/static/images/Welcome_logge_in_user_readme.png)
 
 ## Home page (Logged in Admin)
 
