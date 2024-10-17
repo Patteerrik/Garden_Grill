@@ -501,6 +501,7 @@ For easier readability of the README, I have created a separate file for [testin
   * Choose a region
   * Click settings in the section on top of the page
   * Click reveal config vars
+  * Add the following:
     * ALLOWED_HOSTS
     * DATABASE_URL
     * DEBUG
