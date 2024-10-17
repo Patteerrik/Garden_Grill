@@ -6,7 +6,7 @@
 
 | Action | Expectation| Result|
 | --- | --- | --- |
-| Click on all links in the navbar and footer. | The user is navigated to the correct page without errors. | The user is navigated to the correct page without errors. |
+| Click on all the links in the navbar and footer. | The user is navigated to the correct page without errors. | The user is navigated to the correct page without errors. |
 | Click on "Menu" button | The user is navigated to the "Menu" page | The user is navigated to the "Menu" page |
 | Click on "log in" link in the welcome text | The user is navigated to the "Login" page | The user is navigated to the "Login" page |
 | Click on "register" link in the welcome text | The user is navigated to the "Register" page | The user is navigated to the "Register" page |
