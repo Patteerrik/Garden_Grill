@@ -22,7 +22,14 @@
 | Click on "My reservation" link in the navbar | The user is navigated to the "My reservation" page | The user is navigated to the "My reservation" page |
 | Click on  "Show Map" | The map becomes visible | The map becomes visible |
 
+
 * For logged in admin
+
+| Action | Expectation| Result|
+| --- | --- | --- |
+| Click on navbar and footer links | The admin is navigated to the correct page | The admin is navigated to the correct page |
+| Click on "Create Reservation" button | The admin is navigated to the "Create Reservation" page | The admin is navigated to the "Create Reservation" page |
+| Click on "Managed Reservation" button | The admin is navigated to the "Current Reservation" page | The admin is navigated to the "Current Reservation" page |
 
 #### User Registration
 
