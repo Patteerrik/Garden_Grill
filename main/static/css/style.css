@@ -26,6 +26,8 @@ main {
 /* Footer */
 footer { 
     font-size: 1.2rem;
+    position: relative;
+    z-index: 1;
 }
 
 footer.site-footer {
