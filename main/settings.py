@@ -48,8 +48,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "gardengrill-d40b8e344381.herokuapp.com",
-    "8000-patteerrik-gardengrill-bepklsfb4ex.ws.codeinstitute-ide.net"
+    "gardengrill-d40b8e344381.herokuapp.com"
 ]
 
 
@@ -159,8 +158,8 @@ if 'test' in sys.argv:
 
 # Trusted origins for CSRF protection
 CSRF_TRUSTED_ORIGINS = [
-    "https://gardengrill-d40b8e344381.herokuapp.com",
-    "https://8000-patteerrik-gardengrill-bepklsfb4ex.ws.codeinstitute-ide.net"
+    "https://localhost",
+    "https://gardengrill-d40b8e344381.herokuapp.com"
 ]
 
 
