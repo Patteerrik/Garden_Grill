@@ -202,6 +202,8 @@ def send_reservation_conf_email(reservation):
     )
 
 
+
+
 def process_reservation_form(request, form):
     """
     Handles the form and creates a new reservation.
