@@ -128,6 +128,11 @@ def list_reservation(request):
 
 @login_required
 def create_reservation(request):
+    # If the user is not logged in, redirect to the login page
+    if not request.user.is_authenticated:
+        messages.info(request, "You must be logged in to make a reservation.")
+        return redirect('login')
+    
     # Check if the request method is POST
     if request.method == 'POST':
         form = ReservationForm(request.POST)
