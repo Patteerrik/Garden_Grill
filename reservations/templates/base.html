@@ -111,52 +111,51 @@
   </nav>
 
   <!-- Welcome message -->
-  {% block header-text %}
-  <header class="header-section">
+{% block header-text %}
+<header class="header-section">
     <div class="header-content">
-      {% if not user.is_authenticated %}
-      <!-- Message for non logged in users -->
-      <h1>Welcome to Garden and Grill</h1>
-      <p>Experience a blend of comfort and elegance in the heart of the city.</p>
-      <p class="lead">
-        Located in the heart of Stockholm by the serene waterfront, Garden and Grill blends comfort, elegance, and
-        exquisite dining. Whether you're visiting for a casual lunch or an intimate dinner, our warm and inviting
-        atmosphere feels like home.
-        Discover our carefully crafted menu, featuring fresh, locally-sourced ingredients, served in a warm and inviting
-        atmosphere.
-        Please log in or register to make a reservation.
-      </p>
-      {% endif %}
+        {% if not user.is_authenticated %}
+        <!-- Message for non logged in users -->
+        <h1>Welcome to Garden and Grill</h1>
+        <p>Experience a blend of comfort and elegance in the heart of the city.</p>
+        <p class="lead">
+            Located in the heart of Stockholm by the serene waterfront, Garden and Grill blends comfort, elegance, and
+            exquisite dining. Whether you're visiting for a casual lunch or an intimate dinner, our warm and inviting
+            atmosphere feels like home.
+            <strong>Want to book a table?</strong> Please log in or register to make a reservation.
+        </p>
+        {% endif %}
     </div>
-  </header>
-  {% endblock %}
+</header>
+{% endblock %}
 
   <!-- Buttons for creating reservations or viewing menu -->
-  {% block buttons %}
-  <div class="navigation-buttons">
+{% block buttons %}
+<div class="navigation-buttons">
     {% if user.is_authenticated %}
-
+    
     <!-- Buttons for admin users -->
     {% if user.is_staff %}
     <a href="{% url 'reservations:create_reservation' %}" class="btn btn-primary">Create Reservations</a>
     <a href="{% url 'reservations:list_reservation' %}" class="btn btn-secondary">Manage Reservations</a>
     {% else %}
-
+    
     <!-- Buttons for regular users -->
     <a href="{% url 'reservations:create_reservation' %}" class="btn btn-primary">Create Reservation</a>
     <a href="{% url 'menu' %}" class="btn btn-secondary">Menu</a>
     {% endif %}
+    
     {% else %}
-
-    <!-- Menu button centered for none logged in users -->
+    
+    <!-- Buttons for non-logged-in users -->
     <div style="text-align: center;">
-      <a href="{% url 'menu' %}" class="btn btn-secondary btn-large" id="menu-button">Menu</a>
-
-
+        <a href="{% url 'login' %}?next={% url 'reservations:create_reservation' %}" class="btn btn-secondary btn-large">Create Reservation</a>
+        <a href="{% url 'menu' %}" class="btn btn-secondary btn-large">Menu</a>
     </div>
+    
     {% endif %}
-  </div>
-  {% endblock %}
+</div>
+{% endblock %}
   <main>
     <!-- Main content section -->
     {% block content %}
