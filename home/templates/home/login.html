@@ -13,6 +13,12 @@
                 </div>
                 <!-- Logout message -->
                 <div class="card-body">
+                    {% if request.GET.next == '/reservations/create/' %}
+                    <p class="text-center text-warning">
+                        You must be logged in to create a reservation.
+                    </p>
+                    {% endif %}
+
                     {% if messages %} <!-- Display any message -->
                     <div id="message-container" class="text-center mb-3">
                         <!-- Loop through each message -->
@@ -25,28 +31,30 @@
                     {% endif %}
 
                     <!-- Login form begins -->
-                    <form action="{% url 'login' %}" method="post" class="needs-validation" novalidate>
-                        {% csrf_token %} <!-- CSRF token for security -->
-
-                        <!-- Username input field -->
+                    <!-- Login form -->
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        
+                        <!-- Skickar vidare "next" om användaren kom från en viss sida -->
+                        <input type="hidden" name="next" value="{{ request.GET.next }}">
+                    
                         <div class="form-group mb-3">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" name="username" id="username"
-                                   placeholder="Enter your username" value="{{ username|default_if_none:'' }}" autocomplete="username" required>
-                            <div class="invalid-feedback">Please enter your username.</div>
+                                   placeholder="Enter your username" required>
                         </div>
-
-                        <!-- Password input field -->
+                    
                         <div class="form-group mb-3">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" name="password" id="password"
-                                   placeholder="Enter your password" autocomplete="email" required>
-                            <div class="invalid-feedback">Please enter your password.</div>
+                                   placeholder="Enter your password" required>
                         </div>
-
-                        <!-- Submit button -->
+                    
                         <button type="submit" class="btn btn-primary w-100">Log in</button>
                     </form>
+                    
+                    
+                    
                 </div>
 
                 <!-- Footer with registration link -->
