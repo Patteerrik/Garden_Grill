@@ -105,24 +105,24 @@ def login_view(request):
     # Get the 'next' parameter from the URL 
     next_url = request.GET.get('next', '')
 
-     # Check if the request is a POST request
+    # Check if the request is a POST request
     if request.method == 'POST':
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
         next_url = request.POST.get('next', '')
-        
+
         # Authenticate the user with provided credentials
         user = authenticate(request, username=username, password=password)
         if user is not None:
             # If authentication is successful, log the user in
             login(request, user)
-            
+
             # Redirect the user to the 'next' URL if it exists
             return redirect(next_url) if next_url else redirect('reservations:logged_in_user')
-        
+
         # If authentication fails, display an error message
         messages.error(request, 'Invalid username or password')
-        
+
     # Show the login page and keep 'next' to redirect the user after login
     return render(request, 'home/login.html', {'next': next_url})
 
