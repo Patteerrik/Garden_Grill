@@ -231,6 +231,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
+
 # Specify MIME types for CSS and JavaScript
 WHITENOISE_MIMETYPES = {
     '.css': 'text/css',
