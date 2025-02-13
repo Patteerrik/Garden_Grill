@@ -97,6 +97,7 @@ ADMIN_EMAIL = os.getenv('EMAIL_HOST_USER')
 
 
 MIDDLEWARE = [
+    'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
