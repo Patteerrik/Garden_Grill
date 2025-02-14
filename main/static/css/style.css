@@ -11,7 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', Arial, sans-serif;
-    background-image: none;
+    background-image: url("/static/images/pexels-chanwalrus-94186-resized-small-screens.webp");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -24,26 +24,6 @@ body {
 main {
     flex-grow: 1;
 }
-
-.background-image-container {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: -1;
-    background-color: #000;
-}
-
-.background-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block; 
-    aspect-ratio: 16 / 9;
-}
-
-
 /* Footer */
 footer { 
     font-size: 1.2rem;
@@ -162,6 +142,10 @@ footer.site-footer {
         padding-top: 50px; 
         background-size: cover; 
     }
+
+    body {
+        background-image: url('/static/images/pexels-chanwalrus-941861.5f55935a22aa.webp');
+      }
 
     /* social media icons */
 

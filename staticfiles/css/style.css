@@ -11,7 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', Arial, sans-serif;
-    background-image: url("../images/pexels-chanwalrus-941861.webp");
+    background-image: url("/static/images/pexels-chanwalrus-94186-resized-small-screens.webp");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -142,6 +142,10 @@ footer.site-footer {
         padding-top: 50px; 
         background-size: cover; 
     }
+
+    body {
+        background-image: url('/static/images/pexels-chanwalrus-941861.5f55935a22aa.webp');
+      }
 
     /* social media icons */
 
@@ -932,4 +936,3 @@ footer.site-footer {
     margin-top: 20px;
 }
 }
-

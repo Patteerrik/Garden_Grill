@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'allauth',
+    'compressor',
     'allauth.account',
     'allauth.socialaccount',
 
@@ -231,7 +232,19 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Use WhiteNoise for static file serving
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+COMPRESS_ENABLED = True
 
+COMPRESS_STORAGE = 'compressor.storage.CompressorFileStorage'
+
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
+
+
+COMPRESS_ROOT = BASE_DIR / 'staticfiles'
 
 # Specify MIME types for CSS and JavaScript
 WHITENOISE_MIMETYPES = {
