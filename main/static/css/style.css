@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 html, body {
     height: 100%;
     margin: 0;
@@ -11,6 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', Arial, sans-serif;
+    font-display: swap;
     background-image: url("/static/images/pexels-chanwalrus-94186-resized-small-screens.webp");
     background-size: cover;
     background-position: center;

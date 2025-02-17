@@ -44,6 +44,7 @@ def is_admin_user(user):
 
 
 @login_required
+@user_passes_test(lambda u: u.is_staff)
 def logged_in_admin(request):
     # Show the admin page for logged-in admins
     return render(request, 'reservations/logged_in_admin.html')

@@ -32,22 +32,22 @@
 
                     <!-- Login form begins -->
                     <!-- Login form -->
-                    <form action="{% url 'login' %}" method="post">
+                    <form action="{% url 'login' %}" method="post" autocomplete="on">
                         {% csrf_token %}
                         
-                        <!-- Skickar vidare "next" om användaren kom från en viss sida -->
+                        <!-- Forwarding 'next' if the user came from a certain page-->
                         <input type="hidden" name="next" value="{{ request.GET.next }}">
                     
                         <div class="form-group mb-3">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" name="username" id="username"
-                                   placeholder="Enter your username" required>
+                                   placeholder="Enter your username" required autocomplete="username">
                         </div>
                     
                         <div class="form-group mb-3">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" name="password" id="password"
-                                   placeholder="Enter your password" required>
+                                   placeholder="Enter your password" required autocomplete="current-password">
                         </div>
                     
                         <button type="submit" class="btn btn-primary w-100">Log in</button>
