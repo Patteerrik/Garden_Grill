@@ -153,6 +153,7 @@
       <!-- Buttons for non-logged-in users -->
           <a href="{% url 'login' %}?next={% url 'reservations:create_reservation' %}" class="btn btn-primary">Create Reservation</a>
           <a href="{% url 'menu' %}" class="btn btn-secondary">Menu</a>
+          
       {% endif %}
   </div>
   {% endblock %}
