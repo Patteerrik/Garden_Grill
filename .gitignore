@@ -7,4 +7,4 @@ db.sqlite3
 __pycache__/
 *.pyc
 .venv
-.DS_Store
+.DS_Storestaticfiles/CACHE/
