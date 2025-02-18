@@ -1,5 +1,4 @@
 {% load static %}
-{% load compress %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,10 +37,10 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{% static 'favicon/favicon.ico' %}">
   
-  {% compress css %}
+  
   <!-- Custom CSS -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
-  {% endcompress %}
+  
 
   {% block extra_css %}
   <!-- Block for adding extra CSS if needed in child templates -->
