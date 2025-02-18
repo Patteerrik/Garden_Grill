@@ -109,6 +109,11 @@ footer.site-footer {
     padding: 20px; 
 }
 
+
+#map-container {
+    margin-top: 10px;
+}
+
 @media (min-width: 375px) {
     .header-section {
         min-height: 50vh; 
@@ -429,68 +434,114 @@ footer.site-footer {
         color: #FFD700 !important; 
     }
 
-@media (min-width: 768px) {
-
-
-    #map-container iframe {
-        height: 370px;
-        width: 250px;
-        margin-bottom:2.6rem
-    }
-
-    .opening-hours-box {
-        width: 250px;
-        height: 370px;
-        padding: 20px;
-        margin-bottom:10px
-    }
-
-    .opening-hours-content p {
-        margin: 2px 0;
-        line-height: 1.2;  
-}
+    @media (min-width: 768px) {
+        #map-container iframe {
+            height:370px;
+            width: 250px;
+        }
     
-    .col-md-5 {
-        text-align: center;
-        margin: 0 auto;
-        flex-basis: 48%;
-        padding: 0;
-    }
-
-    .bottom-section {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
-
-    .map-title {
-        padding: 10px;
-    }
-}
-
-@media (min-width: 769px) {
-
-    #map-container {
-        margin-top: -20px; 
-        padding: 55px; 
-    }
-
-    .opening-hours-box {
-        margin-top: 2.2rem; 
-    }
-
+        .opening-hours-box {
+            width: 250px;
+            height: 370px;
+            padding: 20px;
+            margin-bottom: -25px
+        }
     
-    .bottom-section {
-        margin-bottom: 8rem; 
+        .opening-hours-content p {
+            margin: 2px 0;
+            line-height: 1.2
+        }
+    
+        .col-md-5 {
+            text-align: center;
+            margin: 0 auto;
+            flex-basis: 48%;
+            padding: 0;
+        }
+    
+        .bottom-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: -15px;
+        }
+    
+        .opening-hours-box {
+            margin-top: -1.5rem;
+        }
+
+        .map-visible {
+            display: flex;
+            justify-content: space-between;
+        }
+    
+        .only-opening-hours {
+            display: block;
+            text-align: center;
+        }
+    
+        .only-opening-hours .opening-hours-container {
+            margin: 0 auto;
+            min-height: 400px;
+        }
     }
 
-    .map-title {
-        position: relative;
-        color: #FFD700; 
-        border-radius: 10px;
+    @media (min-width: 769px) {
+        #map-container iframe {
+            height:370px;
+            width: 250px
+        }
+    
+        #map-container {
+            margin-top: 1rem
+        }
+        .opening-hours-box {
+            width: 250px;
+            height: 370px;
+            padding: 20px;
+            margin-bottom: 1rem;
+        }
+    
+        .opening-hours-content p {
+            margin: 2px 0;
+            line-height: 1.2
+        }
+    
+        .col-md-5 {
+            text-align: center;
+            margin: 0 auto;
+            flex-basis: 48%;
+            padding: 0
+        }
+    
+        .bottom-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: -15px
+        }
+    
+        .opening-hours-box {
+            margin-top: 1rem;
+        }
+    
+        .map-visible {
+            display: flex;
+            justify-content: space-between
+        }
+    
+        .only-opening-hours {
+            display: block;
+            text-align: center
+        }
+    
+        .only-opening-hours .opening-hours-container {
+            margin: 0 auto;
+            min-height: 400px
+        }
     }
-}
 
 @media (min-width: 1024px) {
 
@@ -512,12 +563,25 @@ footer.site-footer {
 
 @media (min-width: 1200px) {
     #map-container iframe, .opening-hours-box {
-        width: 300px; 
+        width: 400px; 
         height: 400px; 
     }
 
     .col-md-5 {
         flex-basis: 45%; 
+    }
+
+    
+    .opening-hours-box h3 {
+        font-size: 1.8rem; 
+    }
+
+    .opening-hours-content h4 {
+        font-size: 1.4rem; 
+    }
+
+    .opening-hours-content p {
+        font-size: 1.2rem; 
     }
 }
 
@@ -530,6 +594,19 @@ footer.site-footer {
     justify-content: center;
     gap: 20px;
     margin-top: 20px; 
+}
+
+#load-map-btn-mobile {
+    display: block !important;
+}
+
+#load-map-btn-mobile:active,
+#load-map-btn-mobile:focus {
+    background-color: black !important; 
+    border-color: #e6dac4 !important;
+    color: white !important;
+    box-shadow: none !important;
+    
 }
 
 .btn-primary, .btn-secondary {
@@ -892,7 +969,24 @@ footer.site-footer {
         justify-content: space-between; 
         width: 80%; 
         margin: 0 auto;
-}
+    }
+
+    .navigation-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: nowrap;
+    }
+
+    .navigation-buttons a {
+        flex: 1;
+        text-align: center;
+        max-width: 200px;
+    }
+
+    #load-map-btn-mobile {
+        display: none!important;
+    }
 }
 
 @media (max-width: 900px) {
