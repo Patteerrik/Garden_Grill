@@ -1,27 +1,64 @@
 /* jshint esversion: 6 */
 
 // Adds an event handler to load the map when the "Load Map" button is clicked (main page)
-document.addEventListener('DOMContentLoaded', function () {
-    var loadMapBtn = document.getElementById("load-map-btn");
+document.addEventListener("DOMContentLoaded", function () {
+    var loadMapBtns = document.querySelectorAll("#load-map-btn, #load-map-btn-mobile");
+    var mapContainer = document.getElementById("map-container");
+    var bottomSection = document.querySelector(".bottom-section");
 
-    if (loadMapBtn) {
-        loadMapBtn.addEventListener("click", function () {
-            var mapContainer = document.getElementById("map-container");
-            mapContainer.innerHTML = `
-                <iframe src="https://maps.google.com/maps?q=59.327597,18.035186&t=&z=13&ie=UTF8&iwloc=&output=embed" 
-                        style="border:0;" loading="lazy" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-            `;
-
-            // Change top value for .map-title when map is displayed
-            var mapTitle = document.querySelector(".map-title");
-            if (mapTitle) {
-                mapTitle.style.top = "25px"; // Change top value to 25px when map is displayed
-            }
-
-            this.style.display = 'none'; // Hides button when maps is loaded
-        });
+    // 
+    if (!mapContainer.querySelector("iframe")) {
+        bottomSection.classList.add("only-opening-hours");
     }
+
+    loadMapBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            var iframe = mapContainer.querySelector("iframe");
+
+            if (!iframe) {
+                // 
+                mapContainer.innerHTML = `
+                    <iframe src="https://maps.google.com/maps?q=59.327597,18.035186&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        style="border:0;" loading="lazy" allowfullscreen="" aria-hidden="false" tabindex="0">
+                    </iframe>
+                `;
+                loadMapBtns.forEach(b => b.textContent = "Hide Map");
+                bottomSection.classList.remove("only-opening-hours"); // 
+            } else {
+                if (window.innerWidth >= 768) {
+                    // 
+                    iframe.style.display = iframe.style.display === "none" ? "block" : "none";
+                    loadMapBtns.forEach(b => b.textContent = iframe.style.display === "none" ? "Show Map" : "Hide Map");
+
+                    if (iframe.style.display === "none") {
+                        bottomSection.classList.add("only-opening-hours");
+                    } else {
+                        bottomSection.classList.remove("only-opening-hours");
+                    }
+                } else {
+                    
+                    if (mapContainer.innerHTML.trim() === "") {
+                        mapContainer.innerHTML = `
+                            <iframe src="https://maps.google.com/maps?q=59.327597,18.035186&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                style="border:0;" loading="lazy" allowfullscreen="" aria-hidden="false" tabindex="0">
+                            </iframe>
+                        `;
+                        loadMapBtns.forEach(b => b.textContent = "Hide Map");
+                        bottomSection.classList.remove("only-opening-hours");
+                    } else {
+                        mapContainer.innerHTML = ""; 
+                        loadMapBtns.forEach(b => b.textContent = "Show Map");
+                        bottomSection.classList.add("only-opening-hours");
+                    }
+                }
+            }
+        });
+    });
 });
+
+
+
+
 
 
 
