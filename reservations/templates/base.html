@@ -144,6 +144,7 @@
       {% else %}
       
       <!-- Buttons for regular users -->
+      <button id="load-map-btn" class="btn btn-primary">Show Map</button>
       <a href="{% url 'reservations:create_reservation' %}" class="btn btn-primary">Create Reservation</a>
       <a href="{% url 'menu' %}" class="btn btn-secondary">Menu</a>
       {% endif %}
@@ -151,8 +152,9 @@
       {% else %}
       
       <!-- Buttons for non-logged-in users -->
-          <a href="{% url 'login' %}?next={% url 'reservations:create_reservation' %}" class="btn btn-primary">Create Reservation</a>
-          <a href="{% url 'menu' %}" class="btn btn-secondary">Menu</a>
+      <button id="load-map-btn" class="btn btn-primary">Show Map</button>
+      <a href="{% url 'login' %}?next={% url 'reservations:create_reservation' %}" class="btn btn-primary">Create Reservation</a>
+      <a href="{% url 'menu' %}" class="btn btn-secondary">Menu</a>
           
       {% endif %}
   </div>
@@ -167,14 +169,13 @@
   <!-- Bottom Section (hidden for admin users) -->
   {% if not user.is_staff %}
   <div class="bottom-section">
-    <div class="row justify-content-center align-items-center">
+    <div class=" justify-content-center align-items-center"></div>
       {% block bottom-section %}
       <!-- google maps -->
       <div class="col-md-5 d-flex flex-column justify-content-center align-items-center mb-4 mb-md-0">
-        <h2 class="map-title text-center">Find us here!</h2>
-        <button id="load-map-btn" class="btn btn-primary">Show Map</button>
-        <div id="map-container" style="padding-bottom: 20px;"></div>
-      </div>
+        <button id="load-map-btn-mobile" class="btn btn-secondary">Show Map</button>
+        <div id="map-container" style="padding-bottom: 20p;"></div>
+    </div>
 
       <!-- Opening hours -->
       <div
