@@ -312,6 +312,13 @@ def change_reservation(request):
             'message_content': message_content,
         }
 
+        if not message_content or len(message_content) < 10:
+            messages.error(
+                request,
+                'Message must be at least 10 characters long.'
+            )
+            return render(request, 'reservations/contact_us.html', context)
+
         # Check if both username and email are provided
         if not username or not email:
             # If either is missing, show an error message
