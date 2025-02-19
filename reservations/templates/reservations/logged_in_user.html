@@ -4,12 +4,18 @@
 <header class="header-section">
     <div class="header-content">
         <h1>Welcome {{ user.username }}!</h1>
-        <p>You're now logged in! Feel free to browse the menu or create a reservation.</p>
-        <p>
+        <p class="d-none d-md-block">
+            You're now logged in! Feel free to browse the menu or create a reservation.  
             Use the 'Create Reservation' button to make a new booking.  
             To change or cancel an existing reservation, visit 'Bookings' and select 'Contact us' or 'My reservations'.  
             You can also click 'Menu' to explore our delicious dishes and seasonal specials.  
             If you want to see our location, click the "Show Map" button.
+        </p>
+
+        <p class="d-block d-md-none">
+            You're logged in!  
+            Use the menu at the top right to create, manage, or explore reservations.  
+            Click 'Menu' to see our dishes or 'Show Map' to find our location.
         </p>
     </div>
 </header>
