@@ -106,11 +106,14 @@ def login_view(request):
     # Get the 'next' parameter from the URL
     next_url = request.GET.get('next', '')
 
+    # Ensure username always has a default value
+    username = ""
+
     # Check if the request is a POST request
     if request.method == 'POST':
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-        next_url = request.POST.get('next', '')
+        username = request.POST.get('username', '')  # Get username
+        password = request.POST.get('password', '')  # Get password
+        next_url = request.POST.get('next', '')  # Get next URL
 
         # Authenticate the user with provided credentials
         user = authenticate(request, username=username, password=password)
@@ -126,7 +129,10 @@ def login_view(request):
         messages.error(request, 'Invalid username or password')
 
     # Show the login page and keep 'next' to redirect the user after login
-    return render(request, 'home/login.html', {'next': next_url})
+    return render(
+        request, 'home/login.html',
+        {'next': next_url, 'username': username}
+    )
 
 
 # Logout view
