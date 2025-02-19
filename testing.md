@@ -9,6 +9,8 @@
 | Click on all the links in the navbar and footer. | The user is navigated to the correct page without errors. | The user is navigated to the correct page without errors. |
 | Click on "Menu" button | The user is navigated to the "Menu" page | The user is navigated to the "Menu" page |
 | Click on "Show Map" | The map becomes visible | The map becomes visible |
+| Click on "Create Reservation" | The user is redirected to the login page before accessing the reservation form | The user is redirected to the login page before accessing the reservation form |
+| Click on "Create Reservation", then log in | The user is redirected directly to the "Create Reservation" page after logging in. | The user is redirected directly to the "Create Reservation" page after logging in. |
 
 * For logged in users
 
@@ -117,6 +119,16 @@
 | Enter incorrect email | A error message "Invalid username or email." appears | A error message "Invalid username or email." appears | 
 | Leave the message field blank | A error message "Please enter a message of at least 10 characters." appears | A error message "Please enter a message of at least 10 characters." appears |
 | Enter more than 0 or less than 10 characters | A message "Message must be at least 10 characters long." appears | A message "Message must be at least 10 characters long." appears |
+
+#### Navigation on Mobile Devices
+
+| Action | Expectation | Result |
+| --- | --- | --- |
+| Tap the navbar toggle (hamburger menu) | The menu expands, displaying all navigation links. | The menu expands, displaying all navigation links. |
+| Tap outside the expanded menu | The menu remains open. | The menu remains open. |
+| Tap the navbar toggle again | The menu collapses. | The menu collapses. |
+| Click on any links in the dropdown | The user is navigated to the correct page without errors. | The user is navigated to the correct page without errors. |
+
 
 #### Validator testing
 
