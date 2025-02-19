@@ -54,7 +54,7 @@
 | --- | --- | --- |
 | Log in with valid credentials | The user is logged in and redirected to main page | The user is logged in and redirected to main page |
 | Log in with invalid credentials | A message "Invalid username or password" appears | A message "Invalid username or password" appears |
-| Enter with a empty username field on the login page | A message "Please enter your usernam." appears | A message "Please enter your username." appears |
+| Enter with a empty username field on the login page | A message "Please enter your username." appears | A message "Please enter your username." appears |
 | Enter with a empty password field on the login page | A message "Please enter your password." appears | A message "Please enter your password." appears |
 | Log out after being logged in | The user is logged out and redirected to home page | The user is logged out and redirected to home page |
 | Click 'Register here' link under log in form | User is navigated to register page | User is navigated to register page |
