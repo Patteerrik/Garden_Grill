@@ -1,9 +1,8 @@
-
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
+  
   <!-- Meta tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -170,12 +169,11 @@
   <!-- Bottom Section (hidden for admin users) -->
   {% if not user.is_staff %}
   <div class="bottom-section">
-    <div class=" justify-content-center align-items-center"></div>
       {% block bottom-section %}
       <!-- google maps -->
       <div class="col-md-5 d-flex flex-column justify-content-center align-items-center mb-4 mb-md-0">
         <button id="load-map-btn-mobile" class="btn btn-secondary">Show Map</button>
-        <div id="map-container" style="padding-bottom: 20p;"></div>
+        <div id="map-container"></div>
     </div>
 
       <!-- Opening hours -->
@@ -201,7 +199,6 @@
       </div>
       {% endblock %}
     </div>
-  </div>
   {% endif %}
 
 
