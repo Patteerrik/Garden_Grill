@@ -33,26 +33,32 @@
                     <!-- Login form begins -->
                      
                     <!-- Login form -->
-                    <form action="{% url 'login' %}" method="post" autocomplete="on">
+                    <!-- Login form -->
+                    <form action="{% url 'login' %}" method="post" class="needs-validation" novalidate>
+
                         {% csrf_token %}
-                        
+
                         <!-- Forwarding 'next' if the user came from a certain page-->
                         <input type="hidden" name="next" value="{{ request.GET.next }}">
-                    
+
                         <div class="form-group mb-3">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" name="username" id="username"
-                                   placeholder="Enter your username" required autocomplete="username">
+                                    value="{{ username|default_if_none:'' }}" placeholder="Enter your username"
+                                    autocomplete="username" required>
+                            <div class="invalid-feedback">Please enter your username.</div>
                         </div>
-                    
+
                         <div class="form-group mb-3">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" name="password" id="password"
-                                   placeholder="Enter your password" required autocomplete="current-password">
+                                   placeholder="Enter your password" autocomplete="current-password" required>
+                            <div class="invalid-feedback">Please enter your password.</div>
                         </div>
-                    
+
                         <button type="submit" class="btn btn-primary w-100">Log in</button>
                     </form>
+
                     
                     
                     
