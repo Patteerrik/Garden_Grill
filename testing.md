@@ -139,7 +139,17 @@
 
 ![Alt text](main/static/images/Html-validator-readme.png)
 
-* All pages were tested with the [W3C VALIDATOR](https://validator.w3.org/) and passed without errors.
+### Validation and Testing
+
+* All pages were tested with the [W3C HTML Validator](https://validator.w3.org/) and passed without errors. Since the W3C Validator cannot process Django templating directly, the HTML code was validated by following these steps:
+
+1. Navigate to the desired page.
+2. Right-click and select "View Page Source."
+3. Copy the raw HTML source.
+4. Paste the copied HTML into the W3C Validator.
+
+This method ensures that the rendered HTML code, after being processed by Django templates, is correctly validated for structure, tags, and formatting.
+
 
 ##### CSS
 
@@ -155,7 +165,7 @@
 
 ##### JAVASCRIPT
 
-![Alt text](main/static/images/JSnew-validator-readme.png)
+![Alt text](staticfiles/images/JSnew-validator-readme-new.png)
 
 * All pages were tested with the [Jshint Validator](https://jshint.com/) and passed without any errors.
 
