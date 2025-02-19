@@ -33,7 +33,7 @@ def register(request):
         email = request.POST.get('email', '')  # Get email
         username = request.POST.get('username', '')  # Get username
         password = request.POST.get('password', '')  # Get password
-        # Confirm passsword
+        # Confirm password
         confirm_password = request.POST.get('confirm_password', '')
 
         # Keep form data if validation fails
