@@ -1,14 +1,16 @@
 {% extends 'base.html' %} <!-- Inherit base template -->
 
 {% block header-text %}
-<!-- Header section for logged in users -->
-<header class="header-section logged-in-header">
-    <div class="header-content logged-in-content">
-        <!-- Display a dynamic welcome message based on user status -->
+<header class="header-section">
+    <div class="header-content">
         <h1>Welcome {{ user.username }}!</h1>
-        <!-- Personalized welcome message for logged in users -->
-        <p>Use the 'Create Reservation' button to make a new booking, or contact us to change or cancel an existing
-            reservation. You can also click 'Menu' to explore our delicious dishes and seasonal specials.</p>
+        <p>You're now logged in! Feel free to browse the menu or create a reservation.</p>
+        <p>
+            Use the 'Create Reservation' button to make a new booking.  
+            To change or cancel an existing reservation, visit 'Bookings' and select 'Contact us' or 'My reservations'.  
+            You can also click 'Menu' to explore our delicious dishes and seasonal specials.  
+            If you want to see our location, click the "Show Map" button.
+        </p>
     </div>
 </header>
 {% endblock %}

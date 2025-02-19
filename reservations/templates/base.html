@@ -40,7 +40,6 @@
   
   <!-- Custom CSS -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
-  
 
   {% block extra_css %}
   <!-- Block for adding extra CSS if needed in child templates -->
@@ -119,13 +118,15 @@
       {% if not user.is_authenticated %}
       <!-- Message for non logged in users -->
       <h1>Welcome to Garden and Grill</h1>
-      <p>Experience a blend of comfort and elegance in the heart of the city.</p>
-      <p class="lead">
-        Located in the heart of Stockholm by the serene waterfront, Garden and Grill blends comfort, elegance, and
-        exquisite dining. Whether you're visiting for a casual lunch or an intimate dinner, our warm and inviting
-        atmosphere feels like home.
-        <strong>Want to create a reservation?</strong> Please log in or register to make a reservation.
-    </p>
+          <p>Experience a blend of comfort and elegance in the heart of the city.</p>
+          <p class="lead">
+            Located in the heart of Stockholm by the serene waterfront, Garden and Grill blends comfort, elegance, and
+            exquisite dining. Whether you're visiting for a casual lunch or an intimate dinner, our warm and inviting
+            atmosphere feels like home. <strong>Want to find us?</strong> Click "Show Map" to view our location.
+            <strong>Curious about our dishes?</strong> Click "Menu" to explore our selection.
+            <strong>Want to create a reservation?</strong> Please log in or register to make a reservation.
+        </p>
+
       {% endif %}
     </div>
   </header>
