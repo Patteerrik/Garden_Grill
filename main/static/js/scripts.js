@@ -6,37 +6,45 @@ document.addEventListener("DOMContentLoaded", function () {
     var mapContainer = document.getElementById("map-container");
     var bottomSection = document.querySelector(".bottom-section");
 
-    // 
+    // Check if mapContainer exists
+    if (!mapContainer) {
+        return; // Stop execution if the map container is not found
+    }
+
+    // Add class only if the map is not loaded yet
     if (!mapContainer.querySelector("iframe")) {
         bottomSection.classList.add("only-opening-hours");
     }
-
+    
+    // This will toggle the map visibility when clicked
     loadMapBtns.forEach(function (btn) {
         btn.addEventListener("click", function () {
             var iframe = mapContainer.querySelector("iframe");
 
             if (!iframe) {
-                // 
+                // Create and insert an iframe for the map
                 mapContainer.innerHTML = `
                     <iframe src="https://maps.google.com/maps?q=59.327597,18.035186&t=&z=13&ie=UTF8&iwloc=&output=embed"
                         style="border:0;" loading="lazy" allowfullscreen="" aria-hidden="false" tabindex="0">
                     </iframe>
                 `;
+                // Update button text to "Hide Map"
                 loadMapBtns.forEach(b => b.textContent = "Hide Map");
-                bottomSection.classList.remove("only-opening-hours"); // 
+                bottomSection.classList.remove("only-opening-hours");
             } else {
                 if (window.innerWidth >= 768) {
-                    // 
+                    // Toggle map visibility on screens larger than 768px
                     iframe.style.display = iframe.style.display === "none" ? "block" : "none";
                     loadMapBtns.forEach(b => b.textContent = iframe.style.display === "none" ? "Show Map" : "Hide Map");
-
+                    
+                    // Show/hide the opening hours section
                     if (iframe.style.display === "none") {
                         bottomSection.classList.add("only-opening-hours");
                     } else {
                         bottomSection.classList.remove("only-opening-hours");
                     }
                 } else {
-                    
+                    // Toggle map visibility on smaller screens
                     if (mapContainer.innerHTML.trim() === "") {
                         mapContainer.innerHTML = `
                             <iframe src="https://maps.google.com/maps?q=59.327597,18.035186&t=&z=13&ie=UTF8&iwloc=&output=embed"
@@ -46,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         loadMapBtns.forEach(b => b.textContent = "Hide Map");
                         bottomSection.classList.remove("only-opening-hours");
                     } else {
-                        mapContainer.innerHTML = ""; 
+                        mapContainer.innerHTML = ""; // Remove the iframe
                         loadMapBtns.forEach(b => b.textContent = "Show Map");
                         bottomSection.classList.add("only-opening-hours");
                     }
@@ -55,13 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-
-
-
-
-
-
 
 // Contact us page
 
