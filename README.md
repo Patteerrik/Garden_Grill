@@ -3,7 +3,7 @@
 * Garden and Grill is a fictional restaurant located in the centre of Stockholm. It is a full-stack web project built using the Django MVC framework. The project aims to provide a user friendly platform where customers can make table reservations at the restaurant "Garden and Grill." The system has been developed with a focus on user experience, security, and efficient reservation management, both for restaurant administrators and guests. [The live link can be found here:](https://gardengrill-d40b8e344381.herokuapp.com/)
 
 
-![Alt text](main/static/images/AmIResponsive.png)
+![Alt text](staticfiles/images/AmIResponsive.png)
 
 ## Table of Contents
 
@@ -364,19 +364,19 @@ I used GitHub Projects to keep track of and organize user stories. The Kanban bo
 
 * The home page offers a warm and welcoming message, as well as a clearly visible menu button. Users are encouraged to log in, register, or explore the menu, making it easy for potential guests to view the offerings and make a reservation.
 
-![Alt text](main/static/images/Welcome_not_logged_in_user_readme.png)
+![Alt text](staticfiles/images/Welcome_not_logged_in_user_readme.png)
 
 ## Home page (Logged in user)
 
 * For logged in users, the home page displays a personalized welcome message and provides a 'Create Reservation' button, making it easy for users to make a reservation.
 
-![Alt text](main/static/images/Welcome_logge_in_user_readme.png)
+![Alt text](staticfiles/images/Welcome_logge_in_user_readme.png)
 
 ## Home page (Logged in Admin)
 
 * For logged in admins, the home page features two buttons that allow them to manage and create reservations.
 
-![Alt text](main/static/images/Welcome_logged_in_admin_readme.png)
+![Alt text](staticfiles/images/Welcome_logged_in_admin_readme.png)
 
 ## Menu
 
@@ -388,7 +388,7 @@ I used GitHub Projects to keep track of and organize user stories. The Kanban bo
 
 * The register page contains a form where users must provide a username, email, and password to complete the registration. 
 
-![Alt text](main/static/images/Register_readme.png)
+![Alt text](staticfiles/images/Register_readme.png)
 
 ## Log in
 
