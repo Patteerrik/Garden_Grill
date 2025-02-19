@@ -114,6 +114,8 @@ MIDDLEWARE = [
 CACHE_MIDDLEWARE_SECONDS = 0
 CACHE_MIDDLEWARE_KEY_PREFIX = 'gardengrill'
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+
 # Crispy forms settings
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap5')
