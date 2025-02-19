@@ -11,6 +11,7 @@
 | Click on "Show Map" | The map becomes visible | The map becomes visible |
 | Click on "Create Reservation" | The user is redirected to the login page before accessing the reservation form | The user is redirected to the login page before accessing the reservation form |
 | Click on "Create Reservation", then log in | The user is redirected directly to the "Create Reservation" page after logging in. | The user is redirected directly to the "Create Reservation" page after logging in. |
+| Click on "Create Reservation" button on the "Menu" page | The user is redirected to the login page before accessing the reservation form | The user is redirected to the login page before accessing the reservation form |
 
 * For logged in users
 
@@ -23,6 +24,7 @@
 | Click on "Contact Us" link in the navbar | The user is navigated to the "Contact Us" page | The user is navigated to the "Contact Us" page |
 | Click on "My reservation" link in the navbar | The user is navigated to the "My reservation" page | The user is navigated to the "My reservation" page |
 | Click on  "Show Map" | The map becomes visible | The map becomes visible |
+| Click on "Create Reservation" button on the "Menu" page | The user is navigated to the "Create Reservation" page | The user is navigated to the "Create Reservation" page |
 
 
 * For logged in admin
