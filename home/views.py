@@ -18,7 +18,7 @@ from django.core.exceptions import ValidationError
 # Validate email format
 from django.core.validators import validate_email
 #
-from django.contrib.auth.backends import ModelBackend 
+from django.contrib.auth.backends import ModelBackend
 
 
 # Home view, renders the base.html template
@@ -82,7 +82,9 @@ def register(request):
         )
 
         # Automatically log the user in after registration
-        login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+        login(
+            request, user, backend='django.contrib.auth.backends.ModelBackend'
+        )
 
         # Send a welcome email to the user
         send_mail(
@@ -99,10 +101,9 @@ def register(request):
     return render(request, 'home/register.html')
 
 
-
 # Login view
 def login_view(request):
-    # Get the 'next' parameter from the URL 
+    # Get the 'next' parameter from the URL
     next_url = request.GET.get('next', '')
 
     # Check if the request is a POST request
@@ -118,7 +119,8 @@ def login_view(request):
             login(request, user)
 
             # Redirect the user to the 'next' URL if it exists
-            return redirect(next_url) if next_url else redirect('reservations:logged_in_user')
+            return redirect(next_url) if next_url else \
+                redirect('reservations:logged_in_user')
 
         # If authentication fails, display an error message
         messages.error(request, 'Invalid username or password')

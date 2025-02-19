@@ -133,7 +133,7 @@ def create_reservation(request):
     if not request.user.is_authenticated:
         messages.info(request, "You must be logged in to make a reservation.")
         return redirect('login')
-    
+
     # Check if the request method is POST
     if request.method == 'POST':
         form = ReservationForm(request.POST)
@@ -206,8 +206,6 @@ def send_reservation_conf_email(reservation):
         # If set to False, raises an error if email fails to send
         fail_silently=False,
     )
-
-
 
 
 def process_reservation_form(request, form):
