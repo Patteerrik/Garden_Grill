@@ -88,7 +88,6 @@ footer.site-footer {
 }
   
 .header-content p {
-    /*font-family: 'Lato', sans-serif;*/
     font-size: 1.2em;
     line-height: 1.5;
     font-family: 'Roboto', sans-serif;
@@ -443,12 +442,12 @@ footer.site-footer {
             width: 250px;
             height: 370px;
             padding: 20px;
-            margin-bottom: -25px
+            margin-bottom: -25px;
         }
     
         .opening-hours-content p {
             margin: 2px 0;
-            line-height: 1.2
+            line-height: 1.2;
         }
     
         .col-md-5 {
@@ -489,11 +488,11 @@ footer.site-footer {
     @media (min-width: 769px) {
         #map-container iframe {
             height:370px;
-            width: 250px
+            width: 250px;
         }
     
         #map-container {
-            margin-top: 1rem
+            margin-top: 1rem;
         }
         .opening-hours-box {
             width: 250px;
@@ -504,14 +503,14 @@ footer.site-footer {
     
         .opening-hours-content p {
             margin: 2px 0;
-            line-height: 1.2
+            line-height: 1.2;
         }
     
         .col-md-5 {
             text-align: center;
             margin: 0 auto;
             flex-basis: 48%;
-            padding: 0
+            padding: 0;
         }
     
         .bottom-section {
@@ -519,7 +518,7 @@ footer.site-footer {
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: flex-start;
-            margin-top: -15px
+            margin-top: -15px;
         }
     
         .opening-hours-box {
@@ -528,17 +527,17 @@ footer.site-footer {
     
         .map-visible {
             display: flex;
-            justify-content: space-between
+            justify-content: space-between;
         }
     
         .only-opening-hours {
             display: block;
-            text-align: center
+            text-align: center;
         }
     
         .only-opening-hours .opening-hours-container {
             margin: 0 auto;
-            min-height: 400px
+            min-height: 400px;
         }
     }
 
@@ -556,7 +555,7 @@ footer.site-footer {
         font-size:1rem !important;
     } 
      .opening-hours-content h4 {
-         font-size:1.2rem
+         font-size:1.2rem;
     }
 }
 
@@ -714,11 +713,6 @@ footer.site-footer {
 .card-footer {
     color: #ebcc1e;;
 }
-
-.card-footer small {
-    
-}
-
 
 .register-alert {
     background-color: #f8d7da;
