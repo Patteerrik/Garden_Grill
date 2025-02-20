@@ -4,6 +4,8 @@
 <header class="header-section">
     <div class="header-content">
         <h1>Welcome {{ user.username }}!</h1>
+
+        <!-- Message displayed on larger screens -->
         <p class="d-none d-md-block">
             You're now logged in! Feel free to browse the menu or create a reservation.  
             Use the 'Create Reservation' button to make a new booking.  
@@ -12,6 +14,7 @@
             If you want to see our location, click the "Show Map" button.
         </p>
 
+        <!-- Message displayed on smaller screens -->
         <p class="d-block d-md-none">
             You're logged in!  
             Use the menu at the top right to create, manage, or explore reservations.  
